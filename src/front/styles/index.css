@@ -4,3 +4,14 @@
 * {
   background: white;
 }
+.boton-iniciar {
+  border: 1px #20c997 solid;
+  border-radius: 16px;
+  color: #20c997;
+}
+.boton-registrate {
+  border: 1px #20c997 solid;
+  border-radius: 16px;
+  background-color: #20c997;
+  color: white;
+}
