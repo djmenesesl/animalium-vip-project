@@ -8,6 +8,60 @@ export const Home = () => {
 
   return (
     <div className="container">
+      <div class="container buscador">
+        <div class="row">
+          <div class="col-md-3">
+            <label for="validationCustom04" class="form-label">
+              Tipo de mascota
+            </label>
+            <select class="form-select" id="validationDefault04" required>
+              <option selected disabled value="">
+                Choose...
+              </option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label for="validationCustom04" class="form-label">
+              Cantidad
+            </label>
+            <select class="form-select" id="validationDefault04" required>
+              <option selected disabled value="">
+                Choose...
+              </option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+              <option>...</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label for="validationCustom04" class="form-label">
+              Ubicacion
+            </label>
+            <select class="form-select" id="validationDefault04" required>
+              <option selected disabled value="">
+                Choose...
+              </option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="col-md-6 mt-1 pb-1">
+            <button type="button" class="boton-cuidador w-75 p-2 mt-4">
+              Buscar cuidador
+            </button>
+          </div>
+        </div>
+      </div>
+      /*
       <div className="container h-100">
         <div className="card mb-3" style={{ height: "300px" }}>
           <div className="row g-0">
