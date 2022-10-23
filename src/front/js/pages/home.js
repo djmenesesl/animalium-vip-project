@@ -1,20 +1,31 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
+import { DatePicker } from "antd";
+import "antd/dist/antd.css";
+const { RangePicker } = DatePicker;
+import moment from "moment";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
+  const [dates, setDates] = useState([]);
+  console.log(dates);
 
   return (
     <div className="container">
-      <div class="container buscador">
-        <div class="row">
-          <div class="col-md-3">
-            <label for="validationCustom04" class="form-label">
+      <div className="container buscador border border-3 ps-5">
+        <div className="row">
+          <div className="col-md-3">
+            <label for="validationCustom04" className="form-label">
               Tipo de mascota
             </label>
-            <select class="form-select" id="validationDefault04" required>
+            <select
+              style={{ fontSize: "15px" }}
+              className="form-select"
+              id="validationDefault04"
+              required
+            >
               <option selected disabled value="">
                 Choose...
               </option>
@@ -24,11 +35,16 @@ export const Home = () => {
               <option>...</option>
             </select>
           </div>
-          <div class="col-md-3">
-            <label for="validationCustom04" class="form-label">
+          <div className="col-md-3">
+            <label for="validationCustom04" className="form-label">
               Cantidad
             </label>
-            <select class="form-select" id="validationDefault04" required>
+            <select
+              style={{ fontSize: "15px" }}
+              className="form-select"
+              id="validationDefault04"
+              required
+            >
               <option selected disabled value="">
                 Choose...
               </option>
@@ -37,14 +53,34 @@ export const Home = () => {
               <option value="3">Three</option>
               <option>...</option>
             </select>
+          </div>
+
+          <div className="col-md-6">
+            <label for="validationCustom04" className="form-label">
+              Fechas
+            </label>
+            <div className="calendar">
+              <RangePicker
+                className="w-75"
+                style={{ fontSize: "27px", borderRadius: "0.25rem" }}
+                onChange={(values) => {
+                  setDates(
+                    values.map((item) => {
+                      return moment(item).format("DD-MM-YYYY");
+                    })
+                  );
+                }}
+              />
+            </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-6">
-            <label for="validationCustom04" class="form-label">
+
+        <div className="row mt-2">
+          <div className="col-md-6">
+            <label for="validationCustom04" className="form-label">
               Ubicacion
             </label>
-            <select class="form-select" id="validationDefault04" required>
+            <select className="form-select" id="validationDefault04" required>
               <option selected disabled value="">
                 Choose...
               </option>
@@ -54,14 +90,14 @@ export const Home = () => {
               <option>...</option>
             </select>
           </div>
-          <div class="col-md-6 mt-1 pb-1">
-            <button type="button" class="boton-cuidador w-75 p-2 mt-4">
+          <div className="col-md-6 mt-1 pb-1">
+            <button type="button" className="boton-cuidador w-75 p-2 mt-4">
               Buscar cuidador
             </button>
           </div>
         </div>
       </div>
-      /*
+
       <div className="container h-100">
         <div className="card mb-3" style={{ height: "300px" }}>
           <div className="row g-0">
