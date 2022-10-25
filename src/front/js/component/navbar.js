@@ -85,7 +85,9 @@ export const Navbar = () => {
               Iniciar Sesión
             </button>
             <button className="boton-registrate p-2" type="submit">
-              Registrate
+              <Link to="/registro" style={{ color: "white" }}>
+                Registrate
+              </Link>
             </button>
           </div>
         </div>

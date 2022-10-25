@@ -18,7 +18,7 @@ export const Home = () => {
         <div className="row">
           <div className="col-md-3">
             <label for="validationCustom04" className="form-label">
-              Tipo de mascota
+              <strong>Tipo de mascota</strong>
             </label>
             <select
               style={{ fontSize: "15px" }}
@@ -27,7 +27,7 @@ export const Home = () => {
               required
             >
               <option selected disabled value="">
-                Choose...
+                Please Select...
               </option>
               <option value="1">One</option>
               <option value="2">Two</option>
@@ -37,7 +37,7 @@ export const Home = () => {
           </div>
           <div className="col-md-3">
             <label for="validationCustom04" className="form-label">
-              Cantidad
+              <strong>Cantidad</strong>
             </label>
             <select
               style={{ fontSize: "15px" }}
@@ -46,7 +46,7 @@ export const Home = () => {
               required
             >
               <option selected disabled value="">
-                Choose...
+                Please Select...
               </option>
               <option value="1">One</option>
               <option value="2">Two</option>
@@ -57,7 +57,7 @@ export const Home = () => {
 
           <div className="col-md-6">
             <label for="validationCustom04" className="form-label">
-              Fechas
+              <strong>Fechas</strong>
             </label>
             <div className="calendar">
               <RangePicker
@@ -78,20 +78,24 @@ export const Home = () => {
         <div className="row mt-2">
           <div className="col-md-6">
             <label for="validationCustom04" className="form-label">
-              Ubicacion
+              <strong>Ubicación</strong>
             </label>
             <select className="form-select" id="validationDefault04" required>
               <option selected disabled value="">
-                Choose...
+                Please Select...
               </option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
+              <option value="1">Caracas</option>
+              <option value="2">Maturín</option>
               <option value="3">Three</option>
               <option>...</option>
             </select>
           </div>
           <div className="col-md-6 mt-1 pb-1">
             <button type="button" className="boton-cuidador w-75 p-2 mt-4">
+              <i
+                className="fa-solid fa-magnifying-glass"
+                style={{ color: "white", background: "transparent" }}
+              ></i>{" "}
               Buscar cuidador
             </button>
           </div>
