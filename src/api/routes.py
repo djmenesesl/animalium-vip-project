@@ -2,10 +2,11 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Cuidadores
+from api.models import db, User, Cuidador, Cliente
 from api.utils import generate_sitemap, APIException
 from werkzeug.security import generate_password_hash, check_password_hash
 import os, bcrypt
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
 api = Blueprint('api', __name__)
 
@@ -19,7 +20,7 @@ def handle_hello():
 
     return jsonify(response_body), 200
 
-@api.route('/user', methods=['GET'])
+@api.route('/clientes', methods=['GET'])
 def showUsuarios():
     get_usuarios = User.query.all()
     lista_usuarios = list(map(lambda usuarios: usuarios.serialize(), get_usuarios))
@@ -28,9 +29,9 @@ def showUsuarios():
 
 @api.route('/cuidadores', methods=['GET'])
 def showCuidadores():
-    get_cuidadores = Cuidadores.query.all()
+    get_cuidador = Cuidador.query.all()
     lista_cuidadores = list(map(lambda cuidadores: cuidadores.serialize(), get_cuidadores))
-    print(list_cuidadores)
+    print(lista_cuidadores)
     return jsonify(lista_cuidadores), 200
 
 @api.route('/user', methods=['POST'])
@@ -40,7 +41,7 @@ def create_user():
     salt = salt_bytes.decode()
     print(body)
     hashed_password = generate_password_hash(f'{body["password"]}{salt}')
-    new_user = User(
+    new_user = Cliente(
                         email=body["email"],
                         nombre=body["nombre"],
                         apellido=body["apellido"],
@@ -54,3 +55,64 @@ def create_user():
     print("User: ", new_user)
     print("User serialized: ", new_user.serialize())
     return jsonify(body), 200
+
+@api.route('/cuidador', methods=['POST'])
+def create_cuidador():
+    body = request.json
+    salt_bytes = bcrypt.gensalt()
+    salt = salt_bytes.decode()
+    print(body)
+    hashed_password = generate_password_hash(f'{body["password"]}{salt}')
+    new_cuidador = Cuidador(
+                        email=body["email"],
+                        nombre=body["nombre"],
+                        apellido=body["apellido"],
+                        telefono=body["telefono"], 
+                        ubicacion=body["ubicacion"], 
+                        tipoMascota=body["tipoMascota"], 
+                        cantidadMascota=body["cantidadMascota"], 
+                        password=hashed_password,
+                        salt=salt,
+                        
+                    )
+    db.session.add(new_cuidador)
+    db.session.commit()
+    print("User: ", new_cuidador)
+    print("User serialized: ", new_cuidador.serialize())
+    return jsonify(body), 200
+
+@api.route('/login', methods=['POST'])
+def login():
+    body = request.json
+    cliente = Cliente.query.filter_by(email=body["email"]).one_or_none()
+    if cliente is None:
+        return jsonify({
+            "message": "Invalid credentials, email"
+        }), 400 
+
+    password_is_valid = check_password_hash(cliente.hashed_password, f'{body["password"]}{cliente.salt}')
+    if not password_is_valid:
+        return jsonify({
+            "message": "Invalid credentials, password"
+        }), 400 
+    print("Password is valid: ", password_is_valid)
+    access_token = create_access_token(identity=cliente.id)
+    print(access_token)
+    return jsonify({
+        "token": access_token
+    }), 201
+
+@api.route("/user", methods=['GET'])
+@jwt_required()
+def get_user_info():
+    cliente_id = get_jwt_identity()
+    cliente = Cliente.query.get(cliente_id).one_or_none()
+    if not cliente:
+        return jsonify({
+            "message": "Not found",
+            "user_id": None
+        }), 404
+    return jsonify({
+            "message": "Ruta protegida",
+            "user": cliente.serialize()
+        }), 200

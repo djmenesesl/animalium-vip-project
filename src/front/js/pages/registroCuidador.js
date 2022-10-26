@@ -3,18 +3,21 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { Context } from "../store/appContext";
 
-export const Registro = (props) => {
+export const RegistroCuidador = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [telefono, setTelefono] = useState("");
+  const [ubicacion, setUbicacion] = useState("");
+  const [tipoMascota, setTipoMascota] = useState("");
+  const [cantidadMascota, setCantidadMascota] = useState("");
 
   let navigate = useNavigate();
   async function handleSubmit(event) {
     event.preventDefault();
     try {
-      const response = await fetch(process.env.BACKEND_URL + "/api/user", {
+      const response = await fetch(process.env.BACKEND_URL + "/api/cuidador", {
         method: "POST",
         headers: {
           "Content-Type": "Application/json",
@@ -25,6 +28,9 @@ export const Registro = (props) => {
           nombre: nombre,
           apellido: apellido,
           telefono: telefono,
+          ubicacion: ubicacion,
+          tipoMascota: tipoMascota,
+          cantidadMascota: cantidadMascota,
         }),
       });
       if (!response.ok) {
@@ -96,6 +102,71 @@ export const Registro = (props) => {
               setTelefono(event.target.value);
             }}
           />
+        </div>
+        <div className="col-md-4">
+          <label for="ivalidationDefault04" className="form-label">
+            Ubicación
+          </label>
+          <select
+            style={{ fontSize: "15px" }}
+            className="form-select"
+            id="validationDefault04"
+            value={ubicacion}
+            onChange={(event) => {
+              setUbicacion(event.target.value);
+            }}
+            required
+          >
+            <option selected disabled value="">
+              ¿Dónde te encuentras?
+            </option>
+            <option value="1">Caracas</option>
+            <option value="2">Maturín</option>
+          </select>
+        </div>
+        <div className="col-md-4">
+          <label for="inputTelefono4" className="form-label">
+            Tipo de mascota que cuidas
+          </label>
+          <select
+            style={{ fontSize: "15px" }}
+            className="form-select"
+            id="validationDefault04"
+            value={tipoMascota}
+            onChange={(event) => {
+              setTipoMascota(event.target.value);
+            }}
+            required
+          >
+            <option selected disabled value="">
+              ¿Qué tipo de mascota cuidas?
+            </option>
+            <option value="1">Perro</option>
+            <option value="2">Gato</option>
+          </select>
+        </div>
+        <div className="col-md-4">
+          <label for="inputTelefono4" className="form-label">
+            Cantidad de mascotas que puedes cuidar
+          </label>
+          <select
+            style={{ fontSize: "15px" }}
+            className="form-select"
+            id="validationDefault04"
+            value={cantidadMascota}
+            onChange={(event) => {
+              setCantidadMascota(event.target.value);
+            }}
+            required
+          >
+            <option selected disabled value="">
+              ¿Cuantas mascotas puedes cuidar?
+            </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
         </div>
         <div className="col-md-6">
           <label for="inputPassword4" className="form-label">
