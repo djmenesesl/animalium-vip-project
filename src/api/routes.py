@@ -46,7 +46,7 @@ def create_user():
                         nombre=body["nombre"],
                         apellido=body["apellido"],
                         telefono=body["telefono"], 
-                        password=hashed_password,
+                        hashed_password=hashed_password,
                         salt=salt,
                         
                     )
@@ -54,7 +54,7 @@ def create_user():
     db.session.commit()
     print("User: ", new_user)
     print("User serialized: ", new_user.serialize())
-    return jsonify(body), 200
+    return jsonify(new_user.serialize()), 201
 
 @api.route('/cuidador', methods=['POST'])
 def create_cuidador():
@@ -71,7 +71,7 @@ def create_cuidador():
                         ubicacion=body["ubicacion"], 
                         tipoMascota=body["tipoMascota"], 
                         cantidadMascota=body["cantidadMascota"], 
-                        password=hashed_password,
+                        hashed_password=hashed_password,
                         salt=salt,
                         
                     )
@@ -79,12 +79,13 @@ def create_cuidador():
     db.session.commit()
     print("User: ", new_cuidador)
     print("User serialized: ", new_cuidador.serialize())
-    return jsonify(body), 200
+    return jsonify(new_cuidador.serialize()), 201
 
 @api.route('/login', methods=['POST'])
 def login():
     body = request.json
     cliente = Cliente.query.filter_by(email=body["email"]).one_or_none()
+    
     if cliente is None:
         return jsonify({
             "message": "Invalid credentials, email"
@@ -99,14 +100,15 @@ def login():
     access_token = create_access_token(identity=cliente.id)
     print(access_token)
     return jsonify({
-        "token": access_token
+        "token": access_token,
+        
     }), 201
 
 @api.route("/user", methods=['GET'])
 @jwt_required()
 def get_user_info():
     cliente_id = get_jwt_identity()
-    cliente = Cliente.query.get(cliente_id).one_or_none()
+    cliente = Cliente.query.get(cliente_id)
     if not cliente:
         return jsonify({
             "message": "Not found",

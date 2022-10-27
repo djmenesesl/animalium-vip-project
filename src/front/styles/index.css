@@ -21,3 +21,24 @@
   background-color: #20c997;
   color: white;
 }
+.bg-login {
+  background-image: url(https://res.cloudinary.com/dz8eyr7mb/image/upload/v1666830709/Animalium/img-login_iqzhxq.png);
+
+  padding-left: 10px;
+
+  height: 543px;
+  width: 390px;
+}
+
+.bg-registro {
+  background-image: url(https://res.cloudinary.com/dpihypqmp/image/upload/v1666813443/cld-sample-4.jpg);
+  background-position: center center;
+  padding-left: 10px;
+  border-top-left-radius: 25%;
+}
+
+.bg-patitas {
+  background-image: url(https://res.cloudinary.com/dz8eyr7mb/image/upload/v1666841209/Animalium/bg-patitas_pptcob.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+}

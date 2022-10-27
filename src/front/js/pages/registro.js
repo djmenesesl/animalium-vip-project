@@ -39,7 +39,87 @@ export const Registro = (props) => {
   }
 
   return (
-    <div className="container">
+    <div className="container-fluid">
+      <div className="container p-2 w-75 bg-light mt-3 rounded shadow">
+        <div class="row align-items-stretch">
+          <div className="col bg-registro d-none d-lg-block col-ms-5 col-lg-5 col-xl-6 rounded"></div>
+          <div className="col bg-white p-5 rounded-end">
+            <div className="text-end">
+              <img src="" alt=""></img>
+            </div>
+            <h2 className="fw-bold text-center py-2">Registro</h2>
+            <h6 className="fw-bold text-center py-2">
+              ¡Qué gusto conocer a tu mascota!
+            </h6>
+            <h6 className="fw-bold text-center py-2">¿Quieres ser cuidador?</h6>
+            <form action="#">
+              <div className="mb-4">
+                <label for="name" className="form-label">
+                  Nombre
+                </label>
+                <input type="text" className="form-control" name="name"></input>
+                <label for="apellido" className="form-label">
+                  Apellido
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="apellido"
+                ></input>
+                <label for="email" className="form-label">
+                  Correo
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  name="email"
+                ></input>
+                <label for="telefono" className="form-label">
+                  Telefono
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="telefono"
+                ></input>
+              </div>
+              <div className="mb-4">
+                <label for="Password" className="form-label">
+                  Contraseña
+                </label>
+                <input
+                  type="Password"
+                  className="form-control"
+                  name="Password"
+                ></input>
+                <label for="Password" className="form-label">
+                  Repetir contraseña
+                </label>
+                <input
+                  type="Password"
+                  className="form-control"
+                  name="Password"
+                ></input>
+              </div>
+              <div className="d-grid">
+                <button
+                  type="submit"
+                  className="btn btn-success"
+                  style={{
+                    backgroundColor: "#20C997",
+                    border: "1px solid #20C997",
+                    borderRadius: "8px",
+                  }}
+                >
+                  Crear Cuenta
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    /*
       <form className="row g-3" onSubmit={handleSubmit}>
         <div className="col-md-6">
           <label for="inputName4" className="form-label">
@@ -124,6 +204,6 @@ export const Registro = (props) => {
           </button>
         </div>
       </form>
-    </div>
+      */
   );
 };

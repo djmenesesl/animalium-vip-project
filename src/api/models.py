@@ -5,7 +5,7 @@ db = SQLAlchemy()
 class User(db.Model):
     __abstract__=True
     email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(480), unique=False, nullable=False)
+    hashed_password = db.Column(db.String(480), unique=False, nullable=False)
     nombre= db.Column (db.String(250), nullable=False)
     apellido = db.Column (db.String(250), nullable=False)
     telefono = db.Column (db.String(250), nullable=False)
