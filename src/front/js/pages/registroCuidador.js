@@ -29,8 +29,8 @@ export const RegistroCuidador = (props) => {
           apellido: apellido,
           telefono: telefono,
           ubicacion: ubicacion,
-          tipoMascota: tipoMascota,
-          cantidadMascota: cantidadMascota,
+          tipo_mascota: tipoMascota,
+          cantidad_mascota: cantidadMascota,
         }),
       });
       if (!response.ok) {
@@ -45,7 +45,224 @@ export const RegistroCuidador = (props) => {
   }
 
   return (
-    <div className="container">
+    <div className="container-fluid bg-patitas">
+      <div className="container p-2 w-75 bg-light mt-3 rounded shadow">
+        <div class="row align-items-stretch">
+          <div className="col bg-cuidador d-none d-lg-block col-ms-5 col-lg-5 col-xl-6 rounded"></div>
+          <div className="col bg-white p-5 rounded-end">
+            <h2
+              className="fw-bold text-center"
+              style={{
+                fontSize: "32px",
+                fontWeight: "500",
+              }}
+            >
+              Registro
+            </h2>
+            <h6
+              className="fw-bold text-center py-2"
+              style={{
+                fontSize: "16px",
+                fontWeight: "400",
+              }}
+            >
+              ¡Qué gusto sera conocer a tu mascota!
+            </h6>
+
+            <form action="#" onSubmit={handleSubmit}>
+              <div className="mb-4">
+                <label for="nnputname4" className="form-label">
+                  Nombre
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="inputname4"
+                  aria-describedby="emailHelp"
+                  value={nombre}
+                  onChange={(event) => {
+                    setNombre(event.target.value);
+                  }}
+                  style={{
+                    border: "1px solid #CED4DA",
+                    borderRadius: "4px",
+                  }}
+                ></input>
+                <label for="inputapellido4" className="form-label mt-2">
+                  Apellido
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="inputapellido4"
+                  aria-describedby="emailHelp"
+                  value={apellido}
+                  onChange={(event) => {
+                    setApellido(event.target.value);
+                  }}
+                  style={{
+                    border: "1px solid #CED4DA",
+                    borderRadius: "4px",
+                  }}
+                ></input>
+                <label for="nputemail4" className="form-label mt-2">
+                  Correo
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="inputemail4"
+                  aria-describedby="emailHelp"
+                  value={email}
+                  onChange={(event) => {
+                    setEmail(event.target.value);
+                  }}
+                  style={{
+                    border: "1px solid #CED4DA",
+                    borderRadius: "4px",
+                  }}
+                ></input>
+                <label for="inputtelefono4" className="form-label mt-2">
+                  Telefono
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="inputtelefono4"
+                  aria-describedby="emailHelp"
+                  value={telefono}
+                  onChange={(event) => {
+                    setTelefono(event.target.value);
+                  }}
+                  style={{
+                    border: "1px solid #CED4DA",
+                    borderRadius: "4px",
+                  }}
+                ></input>
+                <label for="ivalidationDefault04" className="form-label mt-2">
+                  Ubicación
+                </label>
+                <select
+                  style={{
+                    fontSize: "15px",
+                    border: "1px solid #CED4DA",
+                    borderRadius: "4px",
+                  }}
+                  className="form-select"
+                  id="validationDefault04"
+                  value={ubicacion}
+                  onChange={(event) => {
+                    setUbicacion(event.target.value);
+                  }}
+                  required
+                >
+                  <option selected disabled value="">
+                    ¿Dónde te encuentras?
+                  </option>
+                  <option value="Caracas">Caracas</option>
+                  <option value="Maturín">Maturín</option>
+                </select>
+                <label for="inputTelefono4" className="form-label mt-2">
+                  Tipo de mascota
+                </label>
+                <select
+                  style={{
+                    fontSize: "15px",
+                    border: "1px solid #CED4DA",
+                    borderRadius: "4px",
+                  }}
+                  className="form-select"
+                  id="validationDefault04"
+                  value={tipoMascota}
+                  onChange={(event) => {
+                    setTipoMascota(event.target.value);
+                  }}
+                  required
+                >
+                  <option selected disabled value="">
+                    ¿Qué tipo de mascota cuidas?
+                  </option>
+                  <option value="Perro">Perro</option>
+                  <option value="Gato">Gato</option>
+                </select>
+                <label for="inputTelefono4" className="form-label mt-2">
+                  Cantidad de mascotas
+                </label>
+                <select
+                  style={{
+                    fontSize: "15px",
+                    border: "1px solid #CED4DA",
+                    borderRadius: "4px",
+                  }}
+                  className="form-select"
+                  id="validationDefault04"
+                  value={cantidadMascota}
+                  onChange={(event) => {
+                    setCantidadMascota(event.target.value);
+                  }}
+                  required
+                >
+                  <option selected disabled value="">
+                    ¿Cuantas mascotas puedes cuidar?
+                  </option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+
+              <div className="col-md-4"></div>
+              <div className="mb-4">
+                <label for="Password" className="form-label">
+                  Contraseña
+                </label>
+                <input
+                  type="Password"
+                  className="form-control"
+                  id="inputpassword4"
+                  aria-describedby="emailHelp"
+                  style={{
+                    border: "1px solid #CED4DA",
+                    borderRadius: "4px",
+                  }}
+                ></input>
+                <label for="inputpassword4" className="form-label mt-2">
+                  Repetir contraseña
+                </label>
+                <input
+                  type="Password"
+                  className="form-control"
+                  id="inputpassword4"
+                  value={password}
+                  onChange={(event) => {
+                    setPassword(event.target.value);
+                  }}
+                  style={{
+                    border: "1px solid #CED4DA",
+                    borderRadius: "4px",
+                  }}
+                ></input>
+              </div>
+              <div className="d-grid">
+                <button
+                  type="submit"
+                  className="btn btn-success"
+                  style={{
+                    backgroundColor: "#20C997",
+                    border: "1px solid #20C997",
+                    borderRadius: "8px",
+                  }}
+                >
+                  Crear Cuenta
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    /*<div className="container">
       <form className="row g-3" onSubmit={handleSubmit}>
         <div className="col-md-6">
           <label for="inputName4" className="form-label">
@@ -195,6 +412,6 @@ export const RegistroCuidador = (props) => {
           </button>
         </div>
       </form>
-    </div>
+    </div>*/
   );
 };

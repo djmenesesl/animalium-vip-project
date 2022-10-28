@@ -28,8 +28,8 @@ class User(db.Model):
 class Cuidador(User):
     id = db.Column(db.Integer, primary_key=True)
     ubicacion = db.Column (db.String(250), nullable=False)
-    tipoMascota = db.Column (db.String(250), nullable=False)
-    cantidadMascota = db.Column (db.String(250), nullable=False)
+    tipo_mascota = db.Column (db.String(250), nullable=False)
+    cantidad_mascota = db.Column (db.String(250), nullable=False)
     
     
     def serialize(self):
@@ -40,8 +40,8 @@ class Cuidador(User):
             "apellido": self.apellido,
             "telefono": self.telefono,
             "ubicacion": self.ubicacion,
-            "tipoMascota": self.tipoMascota,
-            "cantidadMascota": self.cantidadMascota,
+            "tipo_mascota": self.tipo_mascota,
+            "cantidad_mascota": self.cantidad_mascota,
             "imagen": self.imagen
         }
 

@@ -28,7 +28,7 @@ export const Login = (props) => {
       const body = await response.json();
       console.log(body);
       localStorage.setItem("token", body.token);
-      navigate("/cliente/profile");
+      navigate(`/${body.role}/profile/${body.id}`);
     } catch (error) {
       console.log(error);
     }
@@ -40,9 +40,6 @@ export const Login = (props) => {
         <div class="row align-items-stretch">
           <div className="col bg-login d-none d-lg-block col-ms-5 col-lg-5 col-xl-6 rounded"></div>
           <div className="col bg-white p-5 rounded-end">
-            <div className="text-end">
-              <img src="" alt=""></img>
-            </div>
             <h2
               className="fw-bold text-center py-2"
               style={{
@@ -61,15 +58,20 @@ export const Login = (props) => {
             >
               Qué gusto tenerte de vuelta
             </h6>
-            <form action="#">
+            <form action="#" onSubmit={handleSubmit}>
               <div className="mb-4">
-                <label for="email" className="form-label">
+                <label for="inputEmail4" className="form-label">
                   Email
                 </label>
                 <input
                   type="email"
                   className="form-control"
-                  name="email"
+                  id="inputEmail4"
+                  aria-describedby="emailHelp"
+                  value={email}
+                  onChange={(event) => {
+                    setEmail(event.target.value);
+                  }}
                   style={{
                     border: "1px solid #CED4DA",
                     borderRadius: "4px",
@@ -77,13 +79,17 @@ export const Login = (props) => {
                 ></input>
               </div>
               <div className="mb-1">
-                <label for="Password" className="form-label">
+                <label for="inputPassword4" className="form-label">
                   Contraseña
                 </label>
                 <input
-                  type="Password"
+                  type="password"
                   className="form-control"
-                  name="Password"
+                  id="inputPassword4"
+                  value={password}
+                  onChange={(event) => {
+                    setPassword(event.target.value);
+                  }}
                   style={{
                     border: "1px solid #CED4DA",
                     borderRadius: "4px",

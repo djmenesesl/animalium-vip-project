@@ -23,22 +23,24 @@
 }
 .bg-login {
   background-image: url(https://res.cloudinary.com/dz8eyr7mb/image/upload/v1666830709/Animalium/img-login_iqzhxq.png);
-
-  padding-left: 10px;
-
-  height: 543px;
-  width: 390px;
+  background-size: cover;
 }
 
 .bg-registro {
-  background-image: url(https://res.cloudinary.com/dpihypqmp/image/upload/v1666813443/cld-sample-4.jpg);
-  background-position: center center;
-  padding-left: 10px;
-  border-top-left-radius: 25%;
+  background-image: url(https://res.cloudinary.com/dz8eyr7mb/image/upload/v1666915987/Animalium/img-registro-cliente_tfm7cq.png);
+  background-size: cover;
 }
 
 .bg-patitas {
   background-image: url(https://res.cloudinary.com/dz8eyr7mb/image/upload/v1666841209/Animalium/bg-patitas_pptcob.png);
   background-repeat: no-repeat;
   background-position: center center;
+  background-size: cover;
+}
+
+.bg-cuidador {
+  background-image: url(https://res.cloudinary.com/dz8eyr7mb/image/upload/v1666841610/img-registro-cuidadores_hwn2yw.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }

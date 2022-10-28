@@ -69,8 +69,8 @@ def create_cuidador():
                         apellido=body["apellido"],
                         telefono=body["telefono"], 
                         ubicacion=body["ubicacion"], 
-                        tipoMascota=body["tipoMascota"], 
-                        cantidadMascota=body["cantidadMascota"], 
+                        tipo_mascota=body["tipo_mascota"], 
+                        cantidad_mascota=body["cantidad_mascota"], 
                         hashed_password=hashed_password,
                         salt=salt,
                         
@@ -85,23 +85,29 @@ def create_cuidador():
 def login():
     body = request.json
     cliente = Cliente.query.filter_by(email=body["email"]).one_or_none()
-    
-    if cliente is None:
+    cuidador = Cuidador.query.filter_by(email=body["email"]).one_or_none()
+    if cliente is None and cuidador is None:
         return jsonify({
             "message": "Invalid credentials, email"
         }), 400 
 
-    password_is_valid = check_password_hash(cliente.hashed_password, f'{body["password"]}{cliente.salt}')
+    user = cliente if cuidador is None else cuidador
+    password_is_valid = check_password_hash(user.hashed_password, f'{body["password"]}{user.salt}')
     if not password_is_valid:
         return jsonify({
             "message": "Invalid credentials, password"
-        }), 400 
+        }), 400
+    
     print("Password is valid: ", password_is_valid)
-    access_token = create_access_token(identity=cliente.id)
+    
+    access_token = create_access_token(identity=user.id)
+    
     print(access_token)
+    
     return jsonify({
         "token": access_token,
-        
+        "role": "cliente" if isinstance(user, Cliente) else "cuidador",
+        "id": user.id
     }), 201
 
 @api.route("/user", methods=['GET'])
