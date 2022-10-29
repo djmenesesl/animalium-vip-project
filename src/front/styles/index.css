@@ -35,7 +35,7 @@
   background-image: url(https://res.cloudinary.com/dz8eyr7mb/image/upload/v1666841209/Animalium/bg-patitas_pptcob.png);
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover;
+  background-size: 100%;
 }
 
 .bg-cuidador {
@@ -43,4 +43,7 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+}
+.bg-footer {
+  background-color: #20c997;
 }

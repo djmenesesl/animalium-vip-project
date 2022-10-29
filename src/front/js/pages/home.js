@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { DatePicker } from "antd";
@@ -102,29 +103,62 @@ export const Home = () => {
         </div>
       </div>
 
-      <div className="container h-100">
-        <div className="card mb-3" style={{ height: "300px" }}>
-          <div className="row g-0">
-            <div className="col-md-4">
-              <img
-                src="../../img/rigo-baby.jpg"
-                className="img-fluid rounded-start"
-                alt="..."
-              />
-            </div>
-            <div className="col-md-8">
-              <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <p className="card-text">
-                  <small className="text-muted">Last updated 3 mins ago</small>
-                </p>
+      <div
+        className="container card justify-content-center align-items-center"
+        style={{
+          width: "1027px",
+          height: "501px",
+          backgroundColor: "#623CEA",
+          borderRadius: "15px",
+          marginTop: "100px",
+          marginBottom: "100px",
+        }}
+      >
+        <div className="row g-0" style={{ backgroundColor: "#623CEA" }}>
+          <div
+            className="col-md-7 text-center"
+            style={{ backgroundColor: "#623CEA" }}
+          >
+            <div className="card-body" style={{ backgroundColor: "#623CEA" }}>
+              <div
+                className="card-title"
+                style={{
+                  backgroundColor: "#623CEA",
+                  color: "white",
+                  fontSize: "48px",
+                }}
+              >
+                ¿Quieres ser cuidador?
               </div>
+
+              <p
+                className="card-text"
+                style={{
+                  backgroundColor: "#623CEA",
+                  color: "#FAFAFA",
+                  fontSize: "16px",
+                }}
+              >
+                Puedes aplicar en este botón
+              </p>
+              <button type="button" className="boton-cuidador w-50 p-2 mt-4">
+                <Link
+                  target={"_blank"}
+                  to="/registrocuidador"
+                  style={{ color: "white" }}
+                >
+                  ¡Postularme!
+                </Link>
+              </button>
             </div>
+          </div>
+          <div className="col-md-4" style={{ backgroundColor: "#623CEA" }}>
+            <img
+              src="https://images.hola.com/imagenes/mascotas/20221020219416/razas-perros-toy/1-154-385/razas-de-perro-toy-m.jpg?tx=w_360"
+              className="img-fluid rounded-start"
+              alt="..."
+              style={{ borderRadius: "10px" }}
+            />
           </div>
         </div>
       </div>
