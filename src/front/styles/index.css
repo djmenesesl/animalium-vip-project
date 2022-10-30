@@ -4,6 +4,16 @@
 * {
   background: white;
 }
+.buscador {
+  width: 800px;
+  height: 250px;
+  border-radius: 10px;
+  padding-left: 90px;
+}
+#buscador-tope {
+  width: 800px;
+  height: 225px;
+}
 .boton-iniciar {
   border: 1px #20c997 solid;
   border-radius: 8px;
@@ -31,6 +41,13 @@
   background-size: cover;
 }
 
+.bg-hero {
+  background-image: url(https://res.cloudinary.com/dpihypqmp/image/upload/v1667143746/samples/image_3_qd4i42.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100%;
+}
+
 .bg-patitas {
   background-image: url(https://res.cloudinary.com/dz8eyr7mb/image/upload/v1666841209/Animalium/bg-patitas_pptcob.png);
   background-repeat: no-repeat;
@@ -44,6 +61,11 @@
   background-position: center center;
   background-size: cover;
 }
+
 .bg-footer {
-  background-color: #20c997;
+  background-image: url(https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667070083/Animalium/Footer_er2mr0.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 570px;
 }
