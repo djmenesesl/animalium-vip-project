@@ -3,16 +3,20 @@
 */
 * {
   background: white;
+
+  font-family: "Josefin Sans";
 }
 .buscador {
   width: 800px;
   height: 250px;
   border-radius: 10px;
   padding-left: 90px;
+  margin-top: 110px;
 }
 #buscador-tope {
   width: 800px;
   height: 225px;
+  padding-top: 30px;
 }
 .boton-iniciar {
   border: 1px #20c997 solid;
@@ -42,10 +46,11 @@
 }
 
 .bg-hero {
-  background-image: url(https://res.cloudinary.com/dpihypqmp/image/upload/v1667143746/samples/image_3_qd4i42.png);
+  background-image: url(https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667164691/Animalium/bg-hero_h4muqf.png);
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 100%;
+  background-size: cover;
+  height: 595px;
 }
 
 .bg-patitas {
@@ -55,11 +60,11 @@
   background-size: 100%;
 }
 
-.bg-cuidador {
-  background-image: url(https://res.cloudinary.com/dz8eyr7mb/image/upload/v1666841610/img-registro-cuidadores_hwn2yw.png);
+.bg-registro-cuidador {
+  background-image: url(https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667154603/Animalium/img-registro-cuidador_kdxokh.png);
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover;
+  background-size: 100%;
 }
 
 .bg-footer {
@@ -68,4 +73,261 @@
   background-position: center center;
   background-size: cover;
   height: 570px;
+}
+
+.bg-card-reserve {
+  background-image: url(https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667163377/Animalium/bg-section-1_i4qrg0.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.bg-mejores {
+  background-image: url(https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667165729/Animalium/bg-secton-2_f5nhvx.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 600px;
+}
+
+.bg-pasos {
+  background-image: url(https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667166167/Animalium/bg-section-3_j1fytg.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100%;
+  height: 550px;
+}
+
+/*Abajo viene css hecho por Cesar 30/10/2022*/
+
+/*Seccion Carousel Resenas Clientes*/
+
+.checked {
+  color: #f49e4c;
+}
+
+.img1 {
+  border-radius: 100%;
+  max-width: 72px;
+  height: 72px;
+}
+
+#span {
+  padding: 6px;
+}
+
+#p {
+  font-family: "Nunito", sans-serif;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.2px;
+  color: #424242;
+}
+
+#h1 {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 40px;
+  letter-spacing: 0.2px;
+  color: #212121;
+}
+
+#h6 {
+  padding: 10px;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 0.2px;
+  color: #343a40;
+}
+
+#card {
+  margin: 50px;
+  width: 450px;
+}
+
+/*Seccion Cuidadores*/
+
+#cardcuidador {
+  margin: 25px;
+  width: 305px;
+  height: 380px;
+  border-radius: 10px;
+  border-bottom-right-radius: 20px;
+  padding: 0px;
+}
+
+#h6cuidador {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 0.2px;
+  color: #343a40;
+}
+
+#pcuidador {
+  font-family: "Nunito";
+  font-size: 14px;
+  color: #212529;
+}
+
+#pcuidadorlocation {
+  margin: 0px;
+  font-family: "Nunito";
+  font-size: 14px;
+  color: #212529;
+}
+
+#locationcuidador {
+  padding: 5px;
+  padding-left: 0px;
+}
+
+#certificadohuella {
+  padding: 14px;
+}
+
+#prating {
+  font-family: "Nunito";
+  font-size: 12px;
+  color: #212529;
+}
+
+#pcuidador1 {
+  text-align: center;
+  width: 650px;
+  font-family: "Nunito", sans-serif;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.2px;
+  color: #424242;
+}
+
+/*Seccion Reserva*/
+
+#preserva {
+  width: 400px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: 0.2px;
+  color: #424242;
+}
+
+#cardreserva {
+  border: none;
+  margin-left: 270px;
+  margin-bottom: 70px;
+}
+
+#btnreserva {
+  background: #20c997;
+  border: 1px solid #28fcbd;
+  border-radius: 16px;
+  padding: 8px 16px;
+  gap: 8px;
+  width: 324px;
+  height: 48px;
+  margin-left: 35px;
+}
+
+#h1reserva {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 40px;
+  letter-spacing: 0.2px;
+  color: #212121;
+  width: 450px;
+  margin-left: 35px;
+}
+
+#pbtnreserva {
+  width: 150px;
+  height: 30px;
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 150%;
+  color: #ffffff;
+}
+
+#gifhuella {
+  width: 37px;
+  height: 37px;
+  padding: 0px;
+}
+
+#gifhuella1 {
+  width: 37px;
+  height: 37px;
+  padding: 0px;
+}
+
+/*Seccion Paso*/
+
+#h1paso {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 40px;
+  letter-spacing: 0.2px;
+  color: #212121;
+}
+
+#ppaso1 {
+  text-align: center;
+  width: 800px;
+  font-family: "Nunito", sans-serif;
+  padding-top: 20px;
+  margin-bottom: 0px;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: 0.2px;
+  color: #424242;
+}
+
+#cardpaso {
+  margin: 30px;
+  margin-top: 110px;
+  border-radius: 10px;
+  padding: 0px;
+  width: 330px;
+  height: 310px;
+}
+
+#ppaso {
+  font-family: "Nunito";
+  font-size: 16px;
+  line-height: 145%;
+  text-align: center;
+  color: #212529;
+}
+
+#h5paso {
+  font-family: "Nunito";
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 150%;
+  text-align: center;
+  color: #212529;
+}
+
+#imgpaso {
+  width: 54px;
+  height: 54px;
+  margin: 16px;
+}
+
+#imgcuidador {
+  width: 302px;
+  height: 185px;
+}
+
+#cardbodypaso {
+  /* Arriba | Derecha | Abajo | Izquierda */
+  padding: 24px 30px 32px 30px;
+  border-radius: 10px;
+}
+.card-body {
+  border-radius: 10px;
 }

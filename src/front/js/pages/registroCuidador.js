@@ -48,7 +48,7 @@ export const RegistroCuidador = (props) => {
     <div className="container-fluid bg-patitas">
       <div className="container p-2 w-75 bg-light mt-3 rounded shadow">
         <div class="row align-items-stretch">
-          <div className="col bg-cuidador d-none d-lg-block col-ms-5 col-lg-5 col-xl-6 rounded"></div>
+          <div className="col bg-registro-cuidador d-none d-lg-block col-ms-5 col-lg-5 col-xl-6 rounded"></div>
           <div className="col bg-white p-5 rounded-end">
             <h2
               className="fw-bold text-center"
@@ -66,7 +66,7 @@ export const RegistroCuidador = (props) => {
                 fontWeight: "400",
               }}
             >
-              ¡Qué gusto sera conocer a tu mascota!
+              ¡Genera ingresos extra cuidando mascotas!
             </h6>
 
             <form action="#" onSubmit={handleSubmit}>
