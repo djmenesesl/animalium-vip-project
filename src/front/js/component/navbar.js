@@ -84,7 +84,44 @@ export const Navbar = () => {
           </ul>
           <div>
             {store.usuario.token ? (
-              <p>Hola!</p>
+              <div class="dropdown me-1">
+                <button
+                  class="btn dropdown-toggle bg-transparent text-center boton-profile-navbar"
+                  type="button"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <img
+                    src="https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667342806/Animalium/Avatar_k0z1ns.png"
+                    alt=""
+                    className="d-flex justify-content-center text-center"
+                  />
+                </button>
+                <ul
+                  class="dropdown-menu dropdown-menu-end dropdown-menu-start"
+                  aria-labelledby="dropdownMenuButton1"
+                >
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      Ir al perfil
+                    </a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="#"
+                      style={{ color: "#20C997" }}
+                    >
+                      <i class="fa-solid fa-right-from-bracket bg-transparent me-2"></i>
+                      Cerrar sesion
+                    </a>
+                  </li>
+                </ul>
+              </div>
             ) : (
               <React.Fragment>
                 <button className="me-2 p-2 boton-iniciar" type="submit">

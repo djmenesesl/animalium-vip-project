@@ -454,3 +454,56 @@ body {
   cursor: pointer;
   border: solid 1px #20c997;
 }
+
+/*Css del boton para cargar imagenes en el profile*/
+.file input {
+  display: none;
+}
+
+.file label {
+  display: block;
+  align-items: center;
+  padding: 40px 8px;
+
+  width: 181px;
+  height: 134px;
+
+  background: #f8f9fa;
+  border: 1px dashed #adb5bd;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+#labelarchivo {
+  font-family: "Nunito";
+  font-size: 16px;
+  line-height: 150%;
+  text-align: center;
+  color: #6c757d;
+  padding: 17px;
+}
+
+#plusicon {
+  margin-top: 27px;
+  font-size: 14px;
+}
+
+#archivolabel {
+  padding: 0px;
+}
+
+/*Css del boton del navbar cuando hay una sesión activa"*/
+
+#dropdownMenuButton1 {
+  border: none;
+  text-align: center;
+}
+
+.boton-profile-navbar.btn:focus {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.boton-profile-navbar.dropdown-toggle::after {
+  display: none;
+}
