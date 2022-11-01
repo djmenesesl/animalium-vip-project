@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Login = (props) => {
+  const { store, actions } = useContext(Context);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   let navigate = useNavigate();
@@ -28,6 +29,7 @@ export const Login = (props) => {
       const body = await response.json();
       console.log(body);
       localStorage.setItem("token", body.token);
+      actions.setAutUsuario(body);
       navigate(`/${body.role}/profile/${body.id}`);
     } catch (error) {
       console.log(error);

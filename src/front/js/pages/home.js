@@ -356,8 +356,8 @@ export const Home = () => {
               data-bs-interval="10000"
             >
               <div class="row d-flex justify-content-center bg-transparent">
-                <div id="card" class="card d-block border-0">
-                  <div class="card-body text-center ">
+                <div id="card" class="card d-block border-0 bg-transparent">
+                  <div class="card-body text-center bg-transparent">
                     <div class="mediaobject">
                       <img
                         class="img1"
@@ -365,7 +365,7 @@ export const Home = () => {
                         alt=""
                       />
                     </div>
-                    <h6 id="h6" class="card-title">
+                    <h6 id="h6" class="card-title bg-transparent">
                       Cesar
                     </h6>
                     <div class="stars">
@@ -375,16 +375,16 @@ export const Home = () => {
                       <span id="span" class="fa fa-star checked"></span>
                       <span id="span" class="fa fa-star checked"></span>
                     </div>
-                    <p id="p" class="card-text">
-                      <strong>
+                    <p id="p" class="card-text bg-transparent">
+                      <strong className="bg-transparent">
                         "Me encantó el servicio!!! Cuidaron de mi Bolt de manera
                         maravillosa. Estoy muy contento. Súper recomendado!!"
                       </strong>
                     </p>
                   </div>
                 </div>
-                <div id="card" class="card d-block border-0">
-                  <div class="card-body text-center">
+                <div id="card" class="card d-block border-0 bg-transparent">
+                  <div class="card-body text-center bg-transparent">
                     <div class="mediaobject">
                       <img
                         class="img1"
@@ -402,8 +402,8 @@ export const Home = () => {
                       <span id="span" class="fa fa-star checked"></span>
                       <span id="span" class="fa fa-star checked"></span>
                     </div>
-                    <p id="p" class="card-text">
-                      <strong>
+                    <p id="p" class="card-text bg-transparent">
+                      <strong className="bg-transparent">
                         "No había usado un servicio así antes y me generó mucha
                         confianza que el cuidador nos enviara fotos y videos de
                         nuestros perritos, fue muy tranquilizador. Contrataría
@@ -435,8 +435,8 @@ export const Home = () => {
                       <span id="span" class="fa fa-star checked"></span>
                       <span id="span" class="fa fa-star checked"></span>
                     </div>
-                    <p id="p" class="card-text">
-                      <strong>
+                    <p id="p" class="card-text bg-transparent">
+                      <strong className="bg-transparent">
                         "Animalium es una maravilla!!!! Quedé súper encantada
                         con el servicio. Tienen a los mejores cuidadores. Lo
                         recomiendo al 100%."
@@ -444,8 +444,8 @@ export const Home = () => {
                     </p>
                   </div>
                 </div>
-                <div id="card" class="card d-block border-0">
-                  <div class="card-body text-center">
+                <div id="card" class="card d-block border-0 bg-transparent">
+                  <div class="card-body text-center bg-transparent">
                     <div class="mediaobject">
                       <img
                         class="img1"
@@ -463,8 +463,8 @@ export const Home = () => {
                       <span id="span" class="fa fa-star checked"></span>
                       <span id="span" class="fa fa-star checked"></span>
                     </div>
-                    <p id="p" class="card-text">
-                      <strong>
+                    <p id="p" class="card-text bg-transparent">
+                      <strong className="bg-transparent">
                         "Es genial que exista una solución como Animalium.
                         Dejamos a nuestros perros con Mariela y quedaron en
                         excelentes manos. Nos mantuvo informados de todo durante
@@ -496,8 +496,8 @@ export const Home = () => {
                       <span id="span" class="fa fa-star checked"></span>
                       <span id="span" class="fa fa-star checked"></span>
                     </div>
-                    <p id="p" class="card-text">
-                      <strong>
+                    <p id="p" class="card-text bg-transparent">
+                      <strong className="bg-transparent">
                         "Primera vez que usamos Animalium y quedamos muy
                         satisfechos con el cuidado que le dieron a nuestros tres
                         perros. Súper agradecido."
@@ -505,8 +505,8 @@ export const Home = () => {
                     </p>
                   </div>
                 </div>
-                <div id="card" class="card d-block border-0">
-                  <div class="card-body text-center">
+                <div id="card" class="card d-block border-0 bg-transparent">
+                  <div class="card-body text-center bg-transparent">
                     <div class="mediaobject">
                       <img
                         class="img1"
@@ -524,8 +524,8 @@ export const Home = () => {
                       <span id="span" class="fa fa-star checked"></span>
                       <span id="span" class="fa fa-star checked"></span>
                     </div>
-                    <p id="p" class="card-text">
-                      <strong>
+                    <p id="p" class="card-text bg-transparent">
+                      <strong className="bg-transparent">
                         “Como siempre, excelente. Me encanta la manera en que
                         Maribel cuida de nuestra Luna. Siempre es nuestra
                         primera opción.”

@@ -11,13 +11,15 @@
   height: 250px;
   border-radius: 10px;
   padding-left: 90px;
-  margin-top: 110px;
+  margin-top: 111px;
+  box-shadow: 0px 4px 8px rgba(51, 51, 51, 0.2);
 }
 #buscador-tope {
   width: 800px;
   height: 225px;
   padding-top: 30px;
 }
+
 .boton-iniciar {
   border: 1px #20c997 solid;
   border-radius: 8px;
@@ -50,6 +52,20 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+  height: 595px;
+}
+.bg-hero-cuidadores {
+  background-image: url(https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667241020/Animalium/hero-cuidadores_srkiux.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 595px;
+}
+.bg-hero-hcuidadores {
+  background-image: url(https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667240910/Animalium/Hero-Hazte-cuidador_ictwol.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100%;
   height: 595px;
 }
 
@@ -151,10 +167,10 @@
 #cardcuidador {
   margin: 25px;
   width: 305px;
-  height: 380px;
+  height: 360px;
   border-radius: 10px;
-  border-bottom-right-radius: 20px;
   padding: 0px;
+  filter: drop-shadow(0px 4px 10px rgba(51, 51, 51, 0.2));
 }
 
 #h6cuidador {
@@ -272,6 +288,7 @@
   font-size: 40px;
   letter-spacing: 0.2px;
   color: #212121;
+  margin-bottom: 0px;
 }
 
 #ppaso1 {
@@ -289,6 +306,15 @@
 #cardpaso {
   margin: 30px;
   margin-top: 110px;
+  border-radius: 10px;
+  padding: 0px;
+  width: 330px;
+  height: 310px;
+}
+
+#cardpaso2 {
+  margin: 30px;
+  margin-top: 50px;
   border-radius: 10px;
   padding: 0px;
   width: 330px;
@@ -329,5 +355,102 @@
   border-radius: 10px;
 }
 .card-body {
-  border-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#line {
+  width: 2px;
+  background-color: lightgrey !important;
+}
+
+#lead {
+  font-family: "Nunito";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 166%;
+  letter-spacing: 0.4px;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+#circle {
+  width: 48px;
+  height: 48px;
+  background: #623cea;
+  text-align: center;
+  font-family: "Nunito";
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 166%;
+  letter-spacing: 0.4px;
+}
+
+#h5stepper {
+  font-family: "Josefin Sans";
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+  color: rgba(0, 0, 0, 0.87);
+  margin: 0px;
+}
+
+#steppericon {
+  margin-left: 270px;
+}
+
+#infostepper {
+  margin-left: 20px;
+}
+#cardprofile {
+  width: 300px;
+  height: 500px;
+  box-shadow: 0px 4px 10px rgba(51, 51, 51, 0.2);
+  border-radius: 20px;
+  margin-left: 100px;
+  margin-right: 70px;
+}
+#imgprofile {
+  border-radius: 999px;
+  width: 108px;
+  height: 108px;
+  margin: 30px;
+}
+
+/*Css de Joan vista perfil*/
+body {
+  background: rgb(99, 39, 120);
+}
+.form-control:focus {
+  box-shadow: none;
+  border-color: #20c997;
+}
+.profile-button {
+  background: #20c997;
+  box-shadow: none;
+  border: none;
+}
+.profile-button:hover {
+  background: #20c997;
+}
+.profile-button:focus {
+  background: #20c997;
+  box-shadow: none;
+}
+.profile-button:active {
+  background: #20c997;
+  box-shadow: none;
+}
+.back:hover {
+  color: #20c997;
+  cursor: pointer;
+}
+.labels {
+  font-size: 11px;
+}
+.add-experience:hover {
+  background: #20c997;
+  color: #fff;
+  cursor: pointer;
+  border: solid 1px #20c997;
 }

@@ -110,9 +110,9 @@ def login():
         "id": user.id
     }), 201
 
-@api.route("/user", methods=['GET'])
+@api.route("/cliente", methods=['GET'])
 @jwt_required()
-def get_user_info():
+def get_cliente_info():
     cliente_id = get_jwt_identity()
     cliente = Cliente.query.get(cliente_id)
     if not cliente:
@@ -123,4 +123,19 @@ def get_user_info():
     return jsonify({
             "message": "Ruta protegida",
             "user": cliente.serialize()
+        }), 200
+
+@api.route("/cuidador", methods=['GET'])
+@jwt_required()
+def get_cuidador_info():
+    cuidador_id = get_jwt_identity()
+    cuidador = Cuidador.query.get(cuidador_id)
+    if not cuidador:
+        return jsonify({
+            "message": "Not found",
+            "user_id": None
+        }), 404
+    return jsonify({
+            "message": "Ruta protegida",
+            "user": cuidador.serialize()
         }), 200

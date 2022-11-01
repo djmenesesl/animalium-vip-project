@@ -17,6 +17,7 @@ import { Login } from "./pages/login";
 import { RegistroCuidador } from "./pages/registroCuidador";
 import { ProfileCliente } from "./pages/profileCliente";
 import { ProfileCuidador } from "./pages/profileCuidador";
+import { ProfileClientePublic } from "./pages/profileClientePublic";
 
 //create your first component
 const Layout = () => {
@@ -39,6 +40,10 @@ const Layout = () => {
             <Route element={<RegistroCuidador />} path="/registrocuidador" />
             <Route element={<Login />} path="/login" />
             <Route element={<ProfileCliente />} path="/cliente/profile/:id" />
+            <Route
+              element={<ProfileClientePublic />}
+              path="/cliente/profile/public/:id"
+            />
             <Route element={<ProfileCuidador />} path="/cuidador/profile/:id" />
             <Route element={<Single />} path="/single/:theid" />
             <Route element={<h1>Not found!</h1>} />
