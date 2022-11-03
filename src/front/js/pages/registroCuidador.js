@@ -47,7 +47,7 @@ export const RegistroCuidador = (props) => {
   return (
     <div className="container-fluid bg-patitas">
       <div className="container p-2 w-75 bg-light mt-3 rounded shadow">
-        <div class="row align-items-stretch">
+        <div className="row align-items-stretch">
           <div className="col bg-registro-cuidador d-none d-lg-block col-ms-5 col-lg-5 col-xl-6 rounded"></div>
           <div className="col bg-white p-5 rounded-end">
             <h2
@@ -71,7 +71,7 @@ export const RegistroCuidador = (props) => {
 
             <form action="#" onSubmit={handleSubmit}>
               <div className="mb-4">
-                <label for="nnputname4" className="form-label">
+                <label htmlFor="nnputname4" className="form-label">
                   Nombre
                 </label>
                 <input
@@ -88,7 +88,7 @@ export const RegistroCuidador = (props) => {
                     borderRadius: "4px",
                   }}
                 ></input>
-                <label for="inputapellido4" className="form-label mt-2">
+                <label htmlFor="inputapellido4" className="form-label mt-2">
                   Apellido
                 </label>
                 <input
@@ -105,7 +105,7 @@ export const RegistroCuidador = (props) => {
                     borderRadius: "4px",
                   }}
                 ></input>
-                <label for="nputemail4" className="form-label mt-2">
+                <label htmlFor="nputemail4" className="form-label mt-2">
                   Correo
                 </label>
                 <input
@@ -122,7 +122,7 @@ export const RegistroCuidador = (props) => {
                     borderRadius: "4px",
                   }}
                 ></input>
-                <label for="inputtelefono4" className="form-label mt-2">
+                <label htmlFor="inputtelefono4" className="form-label mt-2">
                   Telefono
                 </label>
                 <input
@@ -139,7 +139,10 @@ export const RegistroCuidador = (props) => {
                     borderRadius: "4px",
                   }}
                 ></input>
-                <label for="ivalidationDefault04" className="form-label mt-2">
+                <label
+                  htmlFor="ivalidationDefault04"
+                  className="form-label mt-2"
+                >
                   Ubicación
                 </label>
                 <select
@@ -162,7 +165,7 @@ export const RegistroCuidador = (props) => {
                   <option value="Caracas">Caracas</option>
                   <option value="Maturín">Maturín</option>
                 </select>
-                <label for="inputTelefono4" className="form-label mt-2">
+                <label htmlFor="inputTelefono4" className="form-label mt-2">
                   Tipo de mascota
                 </label>
                 <select
@@ -185,7 +188,7 @@ export const RegistroCuidador = (props) => {
                   <option value="Perro">Perro</option>
                   <option value="Gato">Gato</option>
                 </select>
-                <label for="inputTelefono4" className="form-label mt-2">
+                <label htmlFor="inputTelefono4" className="form-label mt-2">
                   Cantidad de mascotas
                 </label>
                 <select
@@ -214,7 +217,7 @@ export const RegistroCuidador = (props) => {
 
               <div className="col-md-4"></div>
               <div className="mb-4">
-                <label for="Password" className="form-label">
+                <label htmlFor="Password" className="form-label">
                   Contraseña
                 </label>
                 <input
@@ -227,7 +230,7 @@ export const RegistroCuidador = (props) => {
                     borderRadius: "4px",
                   }}
                 ></input>
-                <label for="inputpassword4" className="form-label mt-2">
+                <label htmlFor="inputpassword4" className="form-label mt-2">
                   Repetir contraseña
                 </label>
                 <input
@@ -262,156 +265,5 @@ export const RegistroCuidador = (props) => {
         </div>
       </div>
     </div>
-    /*<div className="container">
-      <form className="row g-3" onSubmit={handleSubmit}>
-        <div className="col-md-6">
-          <label for="inputName4" className="form-label">
-            Nombre
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="inputName4"
-            value={nombre}
-            onChange={(event) => {
-              setNombre(event.target.value);
-            }}
-          />
-        </div>
-        <div className="col-md-6">
-          <label for="inputApellido4" className="form-label">
-            Apellido
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="inputApellido4"
-            value={apellido}
-            onChange={(event) => {
-              setApellido(event.target.value);
-            }}
-          />
-        </div>
-        <div className="col-md-6">
-          <label for="inputEmail4" className="form-label">
-            Email
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            id="inputEmail4"
-            value={email}
-            onChange={(event) => {
-              setEmail(event.target.value);
-            }}
-          />
-        </div>
-        <div className="col-md-6">
-          <label for="inputTelefono4" className="form-label">
-            Telefono
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="inputTelefono4"
-            value={telefono}
-            onChange={(event) => {
-              setTelefono(event.target.value);
-            }}
-          />
-        </div>
-        <div className="col-md-4">
-          <label for="ivalidationDefault04" className="form-label">
-            Ubicación
-          </label>
-          <select
-            style={{ fontSize: "15px" }}
-            className="form-select"
-            id="validationDefault04"
-            value={ubicacion}
-            onChange={(event) => {
-              setUbicacion(event.target.value);
-            }}
-            required
-          >
-            <option selected disabled value="">
-              ¿Dónde te encuentras?
-            </option>
-            <option value="1">Caracas</option>
-            <option value="2">Maturín</option>
-          </select>
-        </div>
-        <div className="col-md-4">
-          <label for="inputTelefono4" className="form-label">
-            Tipo de mascota que cuidas
-          </label>
-          <select
-            style={{ fontSize: "15px" }}
-            className="form-select"
-            id="validationDefault04"
-            value={tipoMascota}
-            onChange={(event) => {
-              setTipoMascota(event.target.value);
-            }}
-            required
-          >
-            <option selected disabled value="">
-              ¿Qué tipo de mascota cuidas?
-            </option>
-            <option value="1">Perro</option>
-            <option value="2">Gato</option>
-          </select>
-        </div>
-        <div className="col-md-4">
-          <label for="inputTelefono4" className="form-label">
-            Cantidad de mascotas que puedes cuidar
-          </label>
-          <select
-            style={{ fontSize: "15px" }}
-            className="form-select"
-            id="validationDefault04"
-            value={cantidadMascota}
-            onChange={(event) => {
-              setCantidadMascota(event.target.value);
-            }}
-            required
-          >
-            <option selected disabled value="">
-              ¿Cuantas mascotas puedes cuidar?
-            </option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-          </select>
-        </div>
-        <div className="col-md-6">
-          <label for="inputPassword4" className="form-label">
-            Password
-          </label>
-          <input type="password" className="form-control" id="inputPassword4" />
-        </div>
-        <div className="col-md-6">
-          <label for="inputPassword4" className="form-label">
-            Ingresa de nuevo tu Contraseña
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            id="inputPassword4"
-            value={password}
-            onChange={(event) => {
-              setPassword(event.target.value);
-            }}
-          />
-        </div>
-
-        <div className="col-12">
-          <button type="submit" className="btn btn-primary">
-            Register
-          </button>
-        </div>
-      </form>
-    </div>*/
   );
 };

@@ -4,6 +4,7 @@ import { Context } from "../store/appContext";
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light pt-0 pb-0">
       <div className="container-fluid">
@@ -84,9 +85,9 @@ export const Navbar = () => {
           </ul>
           <div>
             {store.usuario.token ? (
-              <div class="dropdown me-1">
+              <div className="dropdown me-1">
                 <button
-                  class="btn dropdown-toggle bg-transparent text-center boton-profile-navbar"
+                  className="btn dropdown-toggle bg-transparent text-center boton-profile-navbar"
                   type="button"
                   id="dropdownMenuButton1"
                   data-bs-toggle="dropdown"
@@ -99,26 +100,29 @@ export const Navbar = () => {
                   />
                 </button>
                 <ul
-                  class="dropdown-menu dropdown-menu-end dropdown-menu-start"
+                  className="dropdown-menu dropdown-menu-end dropdown-menu-start"
                   aria-labelledby="dropdownMenuButton1"
                 >
                   <li>
-                    <a class="dropdown-item" href="#">
+                    <a className="dropdown-item" href="#">
                       Ir al perfil
                     </a>
                   </li>
                   <li>
-                    <hr class="dropdown-divider" />
+                    <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    <a
-                      class="dropdown-item"
-                      href="#"
+                    <Link
+                      className="dropdown-item"
+                      to="/login"
                       style={{ color: "#20C997" }}
+                      onClick={() => {
+                        actions.removeToken();
+                      }}
                     >
-                      <i class="fa-solid fa-right-from-bracket bg-transparent me-2"></i>
+                      <i className="fa-solid fa-right-from-bracket bg-transparent me-2"></i>
                       Cerrar sesion
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>

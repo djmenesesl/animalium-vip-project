@@ -28,6 +28,7 @@ export const Login = (props) => {
       alert("User authenticated");
       const body = await response.json();
       console.log(body);
+      debugger;
       localStorage.setItem("token", body.token);
       actions.setAutUsuario(body);
       navigate(`/${body.role}/profile/${body.id}`);
@@ -62,7 +63,7 @@ export const Login = (props) => {
             </h6>
             <form action="#" onSubmit={handleSubmit}>
               <div className="mb-4">
-                <label for="inputEmail4" className="form-label">
+                <label htmlFor="inputEmail4" className="form-label">
                   Email
                 </label>
                 <input
@@ -81,7 +82,7 @@ export const Login = (props) => {
                 ></input>
               </div>
               <div className="mb-1">
-                <label for="inputPassword4" className="form-label">
+                <label htmlFor="inputPassword4" className="form-label">
                   Contraseña
                 </label>
                 <input
@@ -138,45 +139,5 @@ export const Login = (props) => {
         </div>
       </div>
     </div>
-    /*
-      <form className="row g-3" onSubmit={handleSubmit}>
-        <div className="col-md-6">
-          <label for="inputEmail4" className="form-label">
-            Email
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            id="inputEmail4"
-            aria-describedby="emailHelp"
-            value={email}
-            onChange={(event) => {
-              setEmail(event.target.value);
-            }}
-          />
-        </div>
-
-        <div className="col-md-6">
-          <label for="inputPassword4" className="form-label">
-            Contraseña
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            id="inputPassword4"
-            value={password}
-            onChange={(event) => {
-              setPassword(event.target.value);
-            }}
-          />
-        </div>
-
-        <div className="col-12">
-          <button type="submit" className="btn btn-primary">
-            Iniciar Sesión
-          </button>
-        </div>
-      </form>
-      */
   );
 };

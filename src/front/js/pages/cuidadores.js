@@ -9,6 +9,33 @@ import { Context } from "../store/appContext";
 
 export const Cuidadores = () => {
   const { store, actions } = useContext(Context);
+  const [mascota, setMascota] = useState([]);
+  const [cantidad, setCantidad] = useState([]);
+
+  const [ubicacion, setUbicacion] = useState([]);
+  async function handleSubmit(event) {
+    event.preventDefault();
+    try {
+      const response = await fetch(
+        process.env.BACKEND_URL +
+          `/api/cuidadores?ubicacion=${ubicacion}&tipomascota=${mascota}&cantidadmascota=${cantidad}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "Application/json",
+          },
+        }
+      );
+      if (!response.ok) {
+        alert("No hay cuidadores en tu ciudad");
+        return;
+      }
+      const body = await response.json();
+      console.log(body);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className="contenedor">
@@ -29,7 +56,7 @@ export const Cuidadores = () => {
         <div className="container buscador border align-items-center justify-content-center align-middle pt-5">
           <div className="row">
             <div className="col-md-3">
-              <label for="validationCustom04" className="form-label">
+              <label htmlFor="validationCustom04" className="form-label">
                 <strong>Tipo de mascota</strong>
               </label>
               <select
@@ -37,16 +64,20 @@ export const Cuidadores = () => {
                 className="form-select"
                 id="validationDefault04"
                 required
+                value={mascota}
+                onChange={(event) => {
+                  setMascota(event.target.value);
+                }}
               >
                 <option selected disabled value="">
                   Seleccionar...
                 </option>
-                <option value="1">Perro</option>
-                <option value="2">Gato</option>
+                <option value="Perro">Perro</option>
+                <option value="Gato">Gato</option>
               </select>
             </div>
             <div className="col-md-3">
-              <label for="validationCustom04" className="form-label">
+              <label htmlFor="validationCustom04" className="form-label">
                 <strong>Cantidad</strong>
               </label>
               <select
@@ -54,6 +85,10 @@ export const Cuidadores = () => {
                 className="form-select"
                 id="validationDefault04"
                 required
+                value={cantidad}
+                onChange={(event) => {
+                  setCantidad(event.target.value);
+                }}
               >
                 <option selected disabled value="">
                   Seleccionar...
@@ -66,7 +101,7 @@ export const Cuidadores = () => {
             </div>
 
             <div className="col-md-6">
-              <label for="validationCustom04" className="form-label">
+              <label htmlFor="validationCustom04" className="form-label">
                 <strong>Fechas</strong>
               </label>
               <div className="calendar">
@@ -87,19 +122,31 @@ export const Cuidadores = () => {
 
           <div className="row mt-2">
             <div className="col-md-6">
-              <label for="validationCustom04" className="form-label">
+              <label htmlFor="validationCustom04" className="form-label">
                 <strong>Ubicación</strong>
               </label>
-              <select className="form-select" id="validationDefault04" required>
+              <select
+                className="form-select"
+                id="validationDefault04"
+                required
+                value={ubicacion}
+                onChange={(event) => {
+                  setUbicacion(event.target.value);
+                }}
+              >
                 <option selected disabled value="">
                   Seleccionar...
                 </option>
-                <option value="1">Caracas</option>
-                <option value="2">Maturín</option>
+                <option value="Caracas">Caracas</option>
+                <option value="Maturín">Maturín</option>
               </select>
             </div>
             <div className="col-md-6 mt-1 pb-1">
-              <button type="button" className="boton-cuidador w-75 p-2 mt-4">
+              <button
+                type="button"
+                className="boton-cuidador w-75 p-2 mt-4"
+                onClick={handleSubmit}
+              >
                 <i
                   className="fa-solid fa-magnifying-glass"
                   style={{ color: "white", background: "transparent" }}
@@ -112,66 +159,69 @@ export const Cuidadores = () => {
       </div>
 
       <div className="container-fluid bg-patitas pt-1">
-        <div class="container bg-transparent">
-          <div class="d-flex bg-transparent mt-5 ps-5">
+        <div className="container bg-transparent">
+          <div className="d-flex bg-transparent mt-5 ps-5">
             <h1 id="h1" className="bg-transparent">
               <strong>Cuidadores destacados</strong>
             </h1>
           </div>
         </div>
         <div className="container-fluid bg-transparent">
-          <div class="row d-flex justify-content-center bg-transparent">
-            <div id="cardcuidador" class="card bg-transparent">
+          <div className="row d-flex justify-content-center bg-transparent">
+            <div id="cardcuidador" className="card bg-transparent">
               <img
                 src="https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667163838/Animalium/pexels-oleksandr-pidvalnyi-1174081_1_uo4xzu.png"
                 id="imgcuidador"
-                class="card-img-top bg-transparent"
+                className="card-img-top bg-transparent"
                 alt="..."
               />
               <img
                 src="https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667106569/Animalium/supercuidador-icon_pbxfpn.png"
                 alt=""
                 id="certificadohuella"
-                class="position-absolute top-0 end-0 bg-transparent"
+                className="position-absolute top-0 end-0 bg-transparent"
               />
-              <div class="card-body">
+              <div className="card-body">
                 <h6 id="h6cuidador">
                   <strong>Natalia Andrade</strong>
-                  <span id="span" class="fa fa-star checked"></span>
+                  <span id="span" className="fa fa-star checked"></span>
                   <span id="prating">5.0</span>
                 </h6>
-                <p id="pcuidador" class="card-text">
+                <p id="pcuidador" className="card-text">
                   Tengo 22 años, actualmente soy estudiante de medicina
                   Veterinaria. Desde pequeña me han gustado los animales...
                 </p>
                 <p id="pcuidadorlocation">
-                  <i id="locationcuidador" class="fa-solid fa-location-dot"></i>
+                  <i
+                    id="locationcuidador"
+                    className="fa-solid fa-location-dot"
+                  ></i>
                   Caracas
                 </p>
               </div>
             </div>
-            <div id="cardcuidador" class="card bg-transparent">
+            <div id="cardcuidador" className="card bg-transparent">
               <img
                 src="https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667163831/Animalium/pexels-hikmet-9682588_2_nvxzrs.png"
                 id="imgcuidador"
-                class="card-img-top bg-transparent"
+                className="card-img-top bg-transparent"
                 alt="..."
               />
               <img
                 src="https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667106569/Animalium/supercuidador-icon_pbxfpn.png"
                 alt=""
                 id="certificadohuella"
-                class="position-absolute top-0 end-0 bg-transparent"
+                className="position-absolute top-0 end-0 bg-transparent"
               />
-              <div class="card-body">
-                <div class="row d-flex justify-content-center">
+              <div className="card-body">
+                <div className="row d-flex justify-content-center">
                   <h6 id="h6cuidador">
                     <strong>Miguel Rodríguez</strong>
-                    <span id="span" class="fa fa-star checked"></span>
+                    <span id="span" classNames="fa fa-star checked"></span>
                     <span id="prating">5.0</span>
                   </h6>
                 </div>
-                <p id="pcuidador" class="card-text">
+                <p id="pcuidador" className="card-text">
                   Crecí con animales y he sido rescatista, trabajo desde mi casa
                   y tengo el tiempo para darles cariño a las mascotas...
                 </p>
@@ -181,26 +231,26 @@ export const Cuidadores = () => {
                 </p>
               </div>
             </div>
-            <div id="cardcuidador" class="card bg-transparent">
+            <div id="cardcuidador" className="card bg-transparent">
               <img
                 src="https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667163832/Animalium/pexels-cottonbro-6318274_2_ug64zg.png"
                 id="imgcuidador"
-                class="card-img-top bg-transparent"
+                className="card-img-top bg-transparent"
                 alt="..."
               />
               <img
                 src="https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667106569/Animalium/supercuidador-icon_pbxfpn.png"
                 alt=""
                 id="certificadohuella"
-                class="position-absolute top-0 end-0 bg-transparent"
+                className="position-absolute top-0 end-0 bg-transparent"
               />
-              <div class="card-body">
+              <div className="card-body">
                 <h6 id="h6cuidador">
                   <strong>Sandra Abreu</strong>
-                  <span id="span" class="fa fa-star checked"></span>
+                  <span id="span" className="fa fa-star checked"></span>
                   <span id="prating">5.0</span>
                 </h6>
-                <p id="pcuidador" class="card-text">
+                <p id="pcuidador" className="card-text">
                   Me encantan las mascotas, estoy disponible para darles
                   atención y cuidarlos❤️ Lo más importante es que ellos...
                 </p>
@@ -211,41 +261,44 @@ export const Cuidadores = () => {
               </div>
             </div>
           </div>
-          <div class="row d-flex justify-content-center bg-transparent">
-            <div id="cardcuidador" class="card bg-transparent">
+          <div className="row d-flex justify-content-center bg-transparent">
+            <div id="cardcuidador" className="card bg-transparent">
               <img
                 src="https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667163838/Animalium/pexels-oleksandr-pidvalnyi-1174081_1_uo4xzu.png"
                 id="imgcuidador"
-                class="card-img-top bg-transparent"
+                className="card-img-top bg-transparent"
                 alt="..."
               />
               <img
                 src="https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667106569/Animalium/supercuidador-icon_pbxfpn.png"
                 alt=""
                 id="certificadohuella"
-                class="position-absolute top-0 end-0 bg-transparent"
+                className="position-absolute top-0 end-0 bg-transparent"
               />
-              <div class="card-body">
+              <div className="card-body">
                 <h6 id="h6cuidador">
                   <strong>Natalia Andrade</strong>
-                  <span id="span" class="fa fa-star checked"></span>
+                  <span id="span" className="fa fa-star checked"></span>
                   <span id="prating">5.0</span>
                 </h6>
-                <p id="pcuidador" class="card-text">
+                <p id="pcuidador" className="card-text">
                   Tengo 22 años, actualmente soy estudiante de medicina
                   Veterinaria. Desde pequeña me han gustado los animales...
                 </p>
                 <p id="pcuidadorlocation">
-                  <i id="locationcuidador" class="fa-solid fa-location-dot"></i>
+                  <i
+                    id="locationcuidador"
+                    className="fa-solid fa-location-dot"
+                  ></i>
                   Caracas
                 </p>
               </div>
             </div>
-            <div id="cardcuidador" class="card bg-transparent">
+            <div id="cardcuidador" className="card bg-transparent">
               <img
                 src="https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667163831/Animalium/pexels-hikmet-9682588_2_nvxzrs.png"
                 id="imgcuidador"
-                class="card-img-top bg-transparent"
+                className="card-img-top bg-transparent"
                 alt="..."
               />
               <img
@@ -254,49 +307,55 @@ export const Cuidadores = () => {
                 id="certificadohuella"
                 class="position-absolute top-0 end-0 bg-transparent"
               />
-              <div class="card-body">
-                <div class="row d-flex justify-content-center">
+              <div className="card-body">
+                <div className="row d-flex justify-content-center">
                   <h6 id="h6cuidador">
                     <strong>Miguel Rodríguez</strong>
-                    <span id="span" class="fa fa-star checked"></span>
+                    <span id="span" className="fa fa-star checked"></span>
                     <span id="prating">5.0</span>
                   </h6>
                 </div>
-                <p id="pcuidador" class="card-text">
+                <p id="pcuidador" className="card-text">
                   Crecí con animales y he sido rescatista, trabajo desde mi casa
                   y tengo el tiempo para darles cariño a las mascotas...
                 </p>
                 <p id="pcuidadorlocation">
-                  <i id="locationcuidador" class="fa-solid fa-location-dot"></i>
+                  <i
+                    id="locationcuidador"
+                    className="fa-solid fa-location-dot"
+                  ></i>
                   Maturin
                 </p>
               </div>
             </div>
-            <div id="cardcuidador" class="card bg-transparent">
+            <div id="cardcuidador" className="card bg-transparent">
               <img
                 src="https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667163832/Animalium/pexels-cottonbro-6318274_2_ug64zg.png"
                 id="imgcuidador"
-                class="card-img-top bg-transparent"
+                className="card-img-top bg-transparent"
                 alt="..."
               />
               <img
                 src="https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667106569/Animalium/supercuidador-icon_pbxfpn.png"
                 alt=""
                 id="certificadohuella"
-                class="position-absolute top-0 end-0 bg-transparent"
+                className="position-absolute top-0 end-0 bg-transparent"
               />
-              <div class="card-body">
+              <div className="card-body">
                 <h6 id="h6cuidador">
                   <strong>Sandra Abreu</strong>
-                  <span id="span" class="fa fa-star checked"></span>
+                  <span id="span" className="fa fa-star checked"></span>
                   <span id="prating">5.0</span>
                 </h6>
-                <p id="pcuidador" class="card-text">
+                <p id="pcuidador" className="card-text">
                   Me encantan las mascotas, estoy disponible para darles
                   atención y cuidarlos❤️ Lo más importante es que ellos...
                 </p>
                 <p id="pcuidadorlocation">
-                  <i id="locationcuidador" class="fa-solid fa-location-dot"></i>
+                  <i
+                    id="locationcuidador"
+                    className="fa-solid fa-location-dot"
+                  ></i>
                   Caracas
                 </p>
               </div>

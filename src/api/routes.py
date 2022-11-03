@@ -29,9 +29,15 @@ def showUsuarios():
 
 @api.route('/cuidadores', methods=['GET'])
 def showCuidadores():
-    get_cuidador = Cuidador.query.all()
+    print(request.args.get("ubicacion"))
+    print(request.args.get("tipomascota"))
+    print(request.args.get("cantidadmascota"))
+    ubicacion = request.args.get("ubicacion")
+    tipomascota = request.args.get("tipomascota")
+    cantidadmascota = request.args.get("cantidadmascota")
+    get_cuidadores = Cuidador.query.filter(Cuidador.ubicacion==ubicacion, Cuidador.tipo_mascota==tipomascota, Cuidador.cantidad_mascota>=cantidadmascota )
     lista_cuidadores = list(map(lambda cuidadores: cuidadores.serialize(), get_cuidadores))
-    print(lista_cuidadores)
+    
     return jsonify(lista_cuidadores), 200
 
 @api.route('/user', methods=['POST'])

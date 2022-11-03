@@ -22,6 +22,11 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ usuario: usuario });
       },
 
+      removeToken: () => {
+        localStorage.removeItem("token");
+        setStore({ usuario: {} });
+      },
+
       exampleFunction: () => {
         getActions().changeColor(0, "green");
       },

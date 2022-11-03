@@ -41,7 +41,7 @@ export const Registro = (props) => {
   return (
     <div className="container-fluid bg-patitas">
       <div className="container p-2 w-75 bg-light mt-3 rounded shadow">
-        <div class="row align-items-stretch">
+        <div className="row align-items-stretch">
           <div className="col bg-registro d-none d-lg-block col-ms-5 col-lg-5 col-xl-6 rounded"></div>
           <div className="col bg-white p-5 rounded-end">
             <h2
@@ -73,7 +73,7 @@ export const Registro = (props) => {
             </h6>
             <form action="#" onSubmit={handleSubmit}>
               <div className="mb-4">
-                <label for="nnputname4" className="form-label">
+                <label htmlFor="nnputname4" className="form-label">
                   Nombre
                 </label>
                 <input
@@ -90,7 +90,7 @@ export const Registro = (props) => {
                     borderRadius: "4px",
                   }}
                 ></input>
-                <label for="inputapellido4" className="form-label mt-2">
+                <label htmlFor="inputapellido4" className="form-label mt-2">
                   Apellido
                 </label>
                 <input
@@ -107,7 +107,7 @@ export const Registro = (props) => {
                     borderRadius: "4px",
                   }}
                 ></input>
-                <label for="nputemail4" className="form-label mt-2">
+                <label htmlFor="nputemail4" className="form-label mt-2">
                   Correo
                 </label>
                 <input
@@ -124,7 +124,7 @@ export const Registro = (props) => {
                     borderRadius: "4px",
                   }}
                 ></input>
-                <label for="inputtelefono4" className="form-label mt-2">
+                <label htmlFor="inputtelefono4" className="form-label mt-2">
                   Telefono
                 </label>
                 <input
@@ -143,7 +143,7 @@ export const Registro = (props) => {
                 ></input>
               </div>
               <div className="mb-4">
-                <label for="Password" className="form-label">
+                <label htmlFor="Password" className="form-label">
                   Contraseña
                 </label>
                 <input
@@ -156,7 +156,7 @@ export const Registro = (props) => {
                     borderRadius: "4px",
                   }}
                 ></input>
-                <label for="inputpassword4" className="form-label mt-2">
+                <label htmlFor="inputpassword4" className="form-label mt-2">
                   Repetir contraseña
                 </label>
                 <input
@@ -191,91 +191,5 @@ export const Registro = (props) => {
         </div>
       </div>
     </div>
-    /*
-      <form className="row g-3" onSubmit={handleSubmit}>
-        <div className="col-md-6">
-          <label for="inputName4" className="form-label">
-            Nombre
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="inputName4"
-            value={nombre}
-            onChange={(event) => {
-              setNombre(event.target.value);
-            }}
-          />
-        </div>
-        <div className="col-md-6">
-          <label for="inputApellido4" className="form-label">
-            Apellido
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="inputApellido4"
-            value={apellido}
-            onChange={(event) => {
-              setApellido(event.target.value);
-            }}
-          />
-        </div>
-        <div className="col-md-6">
-          <label for="inputEmail4" className="form-label">
-            Email
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            id="inputEmail4"
-            value={email}
-            onChange={(event) => {
-              setEmail(event.target.value);
-            }}
-          />
-        </div>
-        <div className="col-md-6">
-          <label for="inputTelefono4" className="form-label">
-            Telefono
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="inputTelefono4"
-            value={telefono}
-            onChange={(event) => {
-              setTelefono(event.target.value);
-            }}
-          />
-        </div>
-        <div className="col-md-6">
-          <label for="inputPassword4" className="form-label">
-            Password
-          </label>
-          <input type="password" className="form-control" id="inputPassword4" />
-        </div>
-        <div className="col-md-6">
-          <label for="inputPassword4" className="form-label">
-            Ingresa de nuevo tu Contraseña
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            id="inputPassword4"
-            value={password}
-            onChange={(event) => {
-              setPassword(event.target.value);
-            }}
-          />
-        </div>
-
-        <div className="col-12">
-          <button type="submit" className="btn btn-primary">
-            Register
-          </button>
-        </div>
-      </form>
-      */
   );
 };
