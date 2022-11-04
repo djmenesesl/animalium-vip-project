@@ -35,7 +35,13 @@ def showCuidadores():
     ubicacion = request.args.get("ubicacion")
     tipomascota = request.args.get("tipomascota")
     cantidadmascota = request.args.get("cantidadmascota")
-    get_cuidadores = Cuidador.query.filter(Cuidador.ubicacion==ubicacion, Cuidador.tipo_mascota==tipomascota, Cuidador.cantidad_mascota>=cantidadmascota )
+    landingcuidador = request.args.get("landingcuidador")
+    get_cuidadores = []
+    if landingcuidador is not None:
+        get_cuidadores = Cuidador.query.limit(6).all()
+        print(get_cuidadores)
+    if ubicacion is not None:
+        get_cuidadores = Cuidador.query.filter(Cuidador.ubicacion==ubicacion, Cuidador.tipo_mascota==tipomascota, Cuidador.cantidad_mascota>=cantidadmascota )
     lista_cuidadores = list(map(lambda cuidadores: cuidadores.serialize(), get_cuidadores))
     
     return jsonify(lista_cuidadores), 200

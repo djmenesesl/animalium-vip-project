@@ -6,13 +6,110 @@ const { RangePicker } = DatePicker;
 import moment from "moment";
 
 import { Context } from "../store/appContext";
+import { CuidadorCard } from "../component/cuidadorCard";
+const data = [
+  {
+    imagenUrl:
+      "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667163838/Animalium/pexels-oleksandr-pidvalnyi-1174081_1_uo4xzu.png",
+    iconoUrl:
+      "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667106569/Animalium/supercuidador-icon_pbxfpn.png",
+    nombre: "Natalia Andrade",
+    rating: "5.0",
+    descripcion:
+      "Tengo 22 años, actualmente soy estudiante de medicina Veterinaria. Desde pequeña me han gustado los animales...",
+    ubicacion: "Maturín",
+  },
+  {
+    imagenUrl:
+      "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667163831/Animalium/pexels-hikmet-9682588_2_nvxzrs.png",
+    iconoUrl:
+      "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667106569/Animalium/supercuidador-icon_pbxfpn.png",
+    nombre: "Miguel Rodríguez",
+    rating: "5.0",
+    descripcion:
+      "Crecí con animales y he sido rescatista, trabajo desde mi casa y tengo el tiempo para darles cariño a las mascotas...",
+    ubicacion: "Maturin",
+  },
+  {
+    imagenUrl:
+      "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667163831/Animalium/pexels-hikmet-9682588_2_nvxzrs.png",
+    iconoUrl:
+      "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667106569/Animalium/supercuidador-icon_pbxfpn.png",
+    nombre: "Miguel Rodríguez",
+    rating: "5.0",
+    descripcion:
+      "Crecí con animales y he sido rescatista, trabajo desde mi casa y tengo el tiempo para darles cariño a las mascotas...",
+    ubicacion: "Maturin",
+  },
+  {
+    imagenUrl:
+      "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667163838/Animalium/pexels-oleksandr-pidvalnyi-1174081_1_uo4xzu.png",
+    iconoUrl:
+      "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667106569/Animalium/supercuidador-icon_pbxfpn.png",
+    nombre: "Natalia Andrade",
+    rating: "5.0",
+    descripcion:
+      "Tengo 22 años, actualmente soy estudiante de medicina Veterinaria. Desde pequeña me han gustado los animales...",
+    ubicacion: "Maturín",
+  },
+  {
+    imagenUrl:
+      "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667163831/Animalium/pexels-hikmet-9682588_2_nvxzrs.png",
+    iconoUrl:
+      "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667106569/Animalium/supercuidador-icon_pbxfpn.png",
+    nombre: "Miguel Rodríguez",
+    rating: "5.0",
+    descripcion:
+      "Crecí con animales y he sido rescatista, trabajo desde mi casa y tengo el tiempo para darles cariño a las mascotas...",
+    ubicacion: "Maturin",
+  },
+  {
+    imagenUrl:
+      "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667163831/Animalium/pexels-hikmet-9682588_2_nvxzrs.png",
+    iconoUrl:
+      "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667106569/Animalium/supercuidador-icon_pbxfpn.png",
+    nombre: "Miguel Rodríguez",
+    rating: "5.0",
+    descripcion:
+      "Crecí con animales y he sido rescatista, trabajo desde mi casa y tengo el tiempo para darles cariño a las mascotas...",
+    ubicacion: "Maturin",
+  },
+];
 
 export const Cuidadores = () => {
   const { store, actions } = useContext(Context);
   const [mascota, setMascota] = useState([]);
   const [cantidad, setCantidad] = useState([]);
-
+  const [cuidadoresTop, setCuidadoresTop] = useState([]);
   const [ubicacion, setUbicacion] = useState([]);
+
+  async function setCuidadores() {
+    try {
+      const response = await fetch(
+        process.env.BACKEND_URL + `/api/cuidadores?landingcuidador=true`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "Application/json",
+          },
+        }
+      );
+      if (!response.ok) {
+        alert("No hay cuidadores en tu ciudad");
+        return;
+      }
+      const body = await response.json();
+      console.log(body);
+      setCuidadoresTop(body);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    setCuidadores();
+  }, []);
+
   async function handleSubmit(event) {
     event.preventDefault();
     try {
@@ -32,6 +129,7 @@ export const Cuidadores = () => {
       }
       const body = await response.json();
       console.log(body);
+      setCuidadoresTop(body);
     } catch (error) {
       console.log(error);
     }
@@ -168,70 +266,10 @@ export const Cuidadores = () => {
         </div>
         <div className="container-fluid bg-transparent">
           <div className="row d-flex justify-content-center bg-transparent">
-            <div id="cardcuidador" className="card bg-transparent">
-              <img
-                src="https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667163838/Animalium/pexels-oleksandr-pidvalnyi-1174081_1_uo4xzu.png"
-                id="imgcuidador"
-                className="card-img-top bg-transparent"
-                alt="..."
-              />
-              <img
-                src="https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667106569/Animalium/supercuidador-icon_pbxfpn.png"
-                alt=""
-                id="certificadohuella"
-                className="position-absolute top-0 end-0 bg-transparent"
-              />
-              <div className="card-body">
-                <h6 id="h6cuidador">
-                  <strong>Natalia Andrade</strong>
-                  <span id="span" className="fa fa-star checked"></span>
-                  <span id="prating">5.0</span>
-                </h6>
-                <p id="pcuidador" className="card-text">
-                  Tengo 22 años, actualmente soy estudiante de medicina
-                  Veterinaria. Desde pequeña me han gustado los animales...
-                </p>
-                <p id="pcuidadorlocation">
-                  <i
-                    id="locationcuidador"
-                    className="fa-solid fa-location-dot"
-                  ></i>
-                  Caracas
-                </p>
-              </div>
-            </div>
-            <div id="cardcuidador" className="card bg-transparent">
-              <img
-                src="https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667163831/Animalium/pexels-hikmet-9682588_2_nvxzrs.png"
-                id="imgcuidador"
-                className="card-img-top bg-transparent"
-                alt="..."
-              />
-              <img
-                src="https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667106569/Animalium/supercuidador-icon_pbxfpn.png"
-                alt=""
-                id="certificadohuella"
-                className="position-absolute top-0 end-0 bg-transparent"
-              />
-              <div className="card-body">
-                <div className="row d-flex justify-content-center">
-                  <h6 id="h6cuidador">
-                    <strong>Miguel Rodríguez</strong>
-                    <span id="span" classNames="fa fa-star checked"></span>
-                    <span id="prating">5.0</span>
-                  </h6>
-                </div>
-                <p id="pcuidador" className="card-text">
-                  Crecí con animales y he sido rescatista, trabajo desde mi casa
-                  y tengo el tiempo para darles cariño a las mascotas...
-                </p>
-                <p id="pcuidadorlocation">
-                  <i id="locationcuidador" class="fa-solid fa-location-dot"></i>
-                  Maturin
-                </p>
-              </div>
-            </div>
-            <div id="cardcuidador" className="card bg-transparent">
+            {cuidadoresTop.map((cardInfo, index) => {
+              return <CuidadorCard item={cardInfo} key={index} />;
+            })}
+            {/*<div id="cardcuidador" className="card bg-transparent">
               <img
                 src="https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667163832/Animalium/pexels-cottonbro-6318274_2_ug64zg.png"
                 id="imgcuidador"
@@ -359,7 +397,7 @@ export const Cuidadores = () => {
                   Caracas
                 </p>
               </div>
-            </div>
+              </div>*/}
           </div>
         </div>
       </div>
