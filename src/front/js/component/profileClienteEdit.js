@@ -48,7 +48,7 @@ export const ProfileClienteEdit = () => {
                 <p class="card-text fw-bold">
                   <i class="fa-solid fa-location-dot me-1"></i>Caracas
                 </p>
-                <p class="card-text fw-bold">
+                <p class="card-text fw-bold" style={{ color: "#00543B" }}>
                   Carga una foto y completa tu perfil ;)
                 </p>
               </div>

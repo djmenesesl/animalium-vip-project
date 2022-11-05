@@ -26,7 +26,7 @@ class User(db.Model):
             "apellido": self.apellido,
             "telefono": self.telefono,
             "imagen": self.imagen,
-            "descripcion": self.descripcion
+            "descripcion": self.descripcion,
             "tipo_mascota": self.tipo_mascota,
             "cantidad_mascota": self.cantidad_mascota
             # do not serialize the password, its a security breach
@@ -68,7 +68,7 @@ class Cliente(User):
             "apellido": self.apellido,
             "telefono": self.telefono,
             "imagen": self.imagen,
-            "descripcion": self.descripcion
+            "descripcion": self.descripcion,
             "tipo_mascota": self.tipo_mascota,
             "cantidad_mascota": self.cantidad_mascota
           
