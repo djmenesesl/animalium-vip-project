@@ -2,11 +2,12 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Cuidador, Cliente
+from api.models import db, User, Cuidador, Cliente, Solicitud
 from api.utils import generate_sitemap, APIException
 from werkzeug.security import generate_password_hash, check_password_hash
 import os, bcrypt
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+
 
 api = Blueprint('api', __name__)
 
@@ -168,3 +169,46 @@ def update_cuidador():
     print("Actualización: ", editar_cuidador)
     print("Actualización serialized: ", editar_cuidador.serialize())
     return jsonify(editar_cuidador.serialize()), 201
+
+
+@api.route('/solicitud', methods=['POST'])
+@jwt_required()
+def create_solicitud():
+    cliente_id = get_jwt_identity()
+    body = request.json
+    salt_bytes = bcrypt.gensalt()
+    salt = salt_bytes.decode()
+    print(body)
+    new_solicitud = Solicitud(
+                        id_cuidador=body["id_cuidador"],
+                        id_cliente= cliente_id,
+                        status=body["status"],
+                        fecha_inicial=body["fecha_inicial"], 
+                        fecha_fin=body["fecha_fin"], 
+                    )
+    db.session.add(new_solicitud)
+    db.session.commit()
+    return jsonify(new_solicitud.serialize()), 201
+
+@api.route("/solicitud", methods=['GET'])
+def get_solicitud_info():
+    solicitudes = Solicitud.query.all()
+    lista_solicitudes = list(map(lambda solicitud: solicitud.serialize(), solicitudes))
+    print(lista_solicitudes)
+    return jsonify(lista_solicitudes), 200
+
+@api.route('/solicitud/aprobar/<solicitud_id>', methods=['PATCH'])
+@jwt_required()
+def update_solicitud_aprobar(solicitud_id):
+    solicitud = Solicitud.query.get(solicitud_id) 
+    solicitud.status = "Aprobado"
+    db.session.commit()
+    return jsonify(solicitud.serialize()), 201
+
+@api.route('/solicitud/rechazar/<solicitud_id>', methods=['PATCH'])
+@jwt_required()
+def update_solicitud_rechazar(solicitud_id):
+    solicitud = Solicitud.query.get(solicitud_id) 
+    solicitud.status = "Cancelado"
+    db.session.commit()
+    return jsonify(solicitud.serialize()), 201

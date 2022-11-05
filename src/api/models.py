@@ -73,3 +73,21 @@ class Cliente(User):
             "cantidad_mascota": self.cantidad_mascota
           
         }
+
+class Solicitud(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    id_cuidador = db.Column(db.Integer)
+    id_cliente = db.Column(db.Integer)
+    status = db.Column (db.String(250), nullable=False)
+    fecha_inicial = db.Column (db.Date)
+    fecha_fin = db.Column (db.Date)
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "id_cuidador": self.id_cuidador,
+            "id_cliente": self.id_cliente,
+            "status": self.status,
+            "fecha_inicial":self.fecha_inicial,
+            "fecha_fin": self.fecha_fin
+        }
