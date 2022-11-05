@@ -11,6 +11,10 @@ class User(db.Model):
     telefono = db.Column (db.String(250), nullable=False)
     salt = db.Column(db.String(250), nullable=False)
     imagen = db.Column (db.String(250), nullable=True)
+    descripcion = db.Column (db.String(250), nullable=True)
+    tipo_mascota = db.Column (db.String(250), nullable=False)
+    cantidad_mascota = db.Column (db.String(250), nullable=False)
+    
 
     def __repr__(self):
         return f'<User {self.email}>'
@@ -21,15 +25,19 @@ class User(db.Model):
             "nombre": self.nombre,
             "apellido": self.apellido,
             "telefono": self.telefono,
-            "imagen": self.imagen
+            "imagen": self.imagen,
+            "descripcion": self.descripcion
+            "tipo_mascota": self.tipo_mascota,
+            "cantidad_mascota": self.cantidad_mascota
             # do not serialize the password, its a security breach
         }
 
 class Cuidador(User):
     id = db.Column(db.Integer, primary_key=True)
     ubicacion = db.Column (db.String(250), nullable=False)
-    tipo_mascota = db.Column (db.String(250), nullable=False)
-    cantidad_mascota = db.Column (db.String(250), nullable=False)
+    precio_hora = db.Column (db.String(250), nullable=True)
+    precio_dia = db.Column (db.String(250), nullable=True)
+    
     
     
     def serialize(self):
@@ -42,7 +50,11 @@ class Cuidador(User):
             "ubicacion": self.ubicacion,
             "tipo_mascota": self.tipo_mascota,
             "cantidad_mascota": self.cantidad_mascota,
-            "imagen": self.imagen
+            "imagen": self.imagen,
+            "descripcion": self.descripcion,
+            "precio_hora": self.precio_hora,
+            "precio_dia": self.precio_dia
+
         }
 
 class Cliente(User):
@@ -55,6 +67,9 @@ class Cliente(User):
             "nombre": self.nombre,
             "apellido": self.apellido,
             "telefono": self.telefono,
-            "imagen": self.imagen
+            "imagen": self.imagen,
+            "descripcion": self.descripcion
+            "tipo_mascota": self.tipo_mascota,
+            "cantidad_mascota": self.cantidad_mascota
           
         }

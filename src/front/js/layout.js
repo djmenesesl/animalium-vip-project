@@ -18,7 +18,6 @@ import { RegistroCuidador } from "./pages/registroCuidador";
 import { ProfileCliente } from "./pages/profileCliente";
 import { ProfileCuidador } from "./pages/profileCuidador";
 import { ProfileClientePublic } from "./pages/profileClientePublic";
-import { CardCuidadores } from "./pages/cardCuidadores";
 
 //create your first component
 const Layout = () => {

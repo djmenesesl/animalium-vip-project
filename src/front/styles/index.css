@@ -429,6 +429,8 @@ body {
   background: #20c997;
   box-shadow: none;
   border: none;
+  border-radius: 16px;
+  width: 235px;
 }
 .profile-button:hover {
   background: #20c997;

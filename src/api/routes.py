@@ -151,3 +151,20 @@ def get_cuidador_info():
             "message": "Ruta protegida",
             "user": cuidador.serialize()
         }), 200
+
+@api.route('/cuidador', methods=['PATCH'])
+def update_cuidador():
+    body = request.json
+    print(body)
+    editar_cuidador = Cuidador(
+                        imagen=body["imagen"],
+                        descripcion=body["descripcion"],
+                        precio_hora=body["precio_hora"],
+                        precio_dia=body["precio_dia"],               
+                                               
+                    )
+    db.session.add(editar_cuidador)
+    db.session.commit()
+    print("Actualización: ", editar_cuidador)
+    print("Actualización serialized: ", editar_cuidador.serialize())
+    return jsonify(editar_cuidador.serialize()), 201
