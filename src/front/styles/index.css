@@ -6,6 +6,12 @@
 
   font-family: "Josefin Sans";
 }
+.button:hover {
+  background: #623cea;
+}
+.modal {
+  background-color: transparent;
+}
 .buscador {
   width: 800px;
   height: 250px;

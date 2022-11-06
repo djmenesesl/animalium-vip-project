@@ -54,9 +54,126 @@ export const ProfileClienteEdit = () => {
               </div>
             </div>
             <div className="text-center">
-              <button className="btn btn-primary profile-button" type="button">
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+                data-bs-whatever="@mdo"
+                style={{
+                  background: "#20C997",
+                  color: "white",
+                  borderRadius: "16px",
+                  border: "transparent",
+                }}
+              >
                 Completar perfil
               </button>
+              <div
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content ">
+                    <div class="modal-header">
+                      <h5
+                        class="modal-title"
+                        id="exampleModalLabel"
+                        style={{ marginLeft: "145px" }}
+                      >
+                        Completa tu perfil
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <div class="row">
+                          <div class="col-6">
+                            <label
+                              for="validationDefault04"
+                              class="col-form-label mb-2"
+                            >
+                              ¿Qué mascota tienes?
+                            </label>
+                            <select
+                              style={{ fontSize: "15px" }}
+                              className="form-select"
+                              id="validationDefault04"
+                              required
+                            >
+                              <option selected disabled value="">
+                                Seleccionar...
+                              </option>
+                              <option value="Perro">Perro</option>
+                              <option value="Gato">Gato</option>
+                            </select>
+                          </div>
+                          <div class="col-6">
+                            <label
+                              for="validationDefault04"
+                              class="col-form-label mb-2"
+                            >
+                              Ubicación:
+                            </label>
+                            <select
+                              className="form-select"
+                              id="validationDefault04"
+                              required
+                            >
+                              <option selected disabled value="">
+                                Seleccionar...
+                              </option>
+                              <option value="Caracas">Caracas</option>
+                              <option value="Maturín">Maturín</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="mb-3 mt-5">
+                          <div className="col-md-10">
+                            <div classNameName="App">
+                              <div className="file">
+                                <form className="d-flex justify-content-center ms-5">
+                                  <label htmlFor="archivo" id="archivolabel">
+                                    <i
+                                      className="fa-solid fa-plus d-flex justify-content-center"
+                                      id="plusicon"
+                                    ></i>
+                                    <p id="labelarchivo">Carga tu foto aquí</p>
+                                  </label>
+                                  <input type="file" id="archivo" />
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        style={{
+                          background: "#20C997",
+                          color: "white",
+                          borderRadius: "16px",
+                          border: "transparent",
+                          marginRight: "160px",
+                        }}
+                      >
+                        Actualiza tus datos
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div className="col-md-6 border-right">
