@@ -170,25 +170,27 @@ def update_cliente():
     print("Actualización: ", cliente)
     print("Actualización serialized: ", cliente.serialize())
     return jsonify(cliente.serialize()), 201
-       
-               
+
 @api.route('/cuidador', methods=['PATCH'])
+@jwt_required()
 def update_cuidador():
     body = request.json
     print(body)
-    editar_cuidador = Cuidador(
-                        imagen=body["imagen"],
-                        descripcion=body["descripcion"],
-                        precio_dia=body["precio_dia"],               
-                                               
-                    )
-    db.session.update(editar_cuidador)
+    cuidador_id = get_jwt_identity()
+    cuidador = Cuidador.query.get(cuidador_id)
+    cuidador.imagen=body["imagen"],
+    cuidador.descripcion=body["descripcion"],
+    cuidador.ubicacion=body["ubicacion"],               
+    cuidador.tipo_mascota=body["tipoMascota"],               
+    cuidador.cantidad_mascota=body["cantidadMascota"],               
+    cuidador.precio_dia=body["tarifa"],               
+                                            
     db.session.commit()
-    print("Actualización: ", editar_cuidador)
-    print("Actualización serialized: ", editar_cuidador.serialize())
-    return jsonify(editar_cuidador.serialize()), 201
-
-
+    print("Actualización: ", cuidador)
+    print("Actualización serialized: ", cuidador.serialize())
+    return jsonify(cuidador.serialize()), 201
+       
+         
 @api.route('/solicitud', methods=['POST'])
 @jwt_required()
 def create_solicitud():

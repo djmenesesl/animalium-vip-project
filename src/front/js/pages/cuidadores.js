@@ -131,7 +131,7 @@ export const Cuidadores = () => {
       const body = await response.json();
       console.log(body);
       setCuidadoresTop(body);
-      setBusqueda();
+      setBusqueda(True);
     } catch (error) {
       console.log(error);
     }
@@ -246,7 +246,6 @@ export const Cuidadores = () => {
                 type="button"
                 className="boton-cuidador w-75 p-2 mt-4"
                 onClick={handleSubmit}
-                value={busqueda}
               >
                 <i
                   className="fa-solid fa-magnifying-glass"
@@ -263,7 +262,7 @@ export const Cuidadores = () => {
         <div className="container bg-transparent">
           <div className="d-flex bg-transparent mt-5 ps-5">
             <h1 id="h1" className="bg-transparent">
-              {setBusqueda ? (
+              {busqueda ? (
                 <strong>Resultados</strong>
               ) : (
                 <strong>Cuidadores Destacados</strong>

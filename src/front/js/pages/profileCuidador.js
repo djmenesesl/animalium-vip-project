@@ -5,6 +5,40 @@ import { Context } from "../store/appContext";
 
 export const ProfileCuidador = () => {
   const { store, actions } = useContext(Context);
+  const [ubicacion, setUbicacion] = useState([]);
+  const [cantidadMascota, setCantidadMascota] = useState([]);
+  const [tipoMascota, setTipoMascota] = useState([]);
+  const [tarifa, setTarifa] = useState([]);
+  const [descripcion, setDescripcion] = useState([]);
+  const [imagen, setImagen] = useState([]);
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    try {
+      const response = await fetch(process.env.BACKEND_URL + "/api/cuidador", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "Application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({
+          imagen: imagen,
+          ubicacion: ubicacion,
+          cantidadMascota: cantidadMascota,
+          tipoMascota: tipoMascota,
+          descripcion: descripcion,
+          tarifa: tarifa,
+        }),
+      });
+      if (!response.ok) {
+        alert("Error al actualizar el usuario");
+        return;
+      }
+      alert("Perfil actualizado");
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className="container-fluid px-0">
@@ -48,8 +82,7 @@ export const ProfileCuidador = () => {
                 </p>
                 <p class="card-text">Perro</p>
                 <p class="card-text fw-bold">
-                  <i class="fa-solid fa-location-dot me-1"></i>Monto por día y
-                  hora
+                  <i class="fa-solid fa-location-dot me-1"></i>Tarifa por día:
                 </p>
                 <p class="card-text fw-bold">
                   <i class="fa-solid fa-location-dot me-1"></i>Caracas
@@ -100,101 +133,148 @@ export const ProfileCuidador = () => {
                         aria-label="Close"
                       ></button>
                     </div>
-                    <form>
-                      <div class="modal-body">
-                        <div class="row">
-                          <div class="col-6">
-                            <label
-                              for="validationDefault04"
-                              class="col-form-label mb-2"
-                            >
-                              Tipo de Mascota:
-                            </label>
-                            <select
-                              style={{ fontSize: "15px" }}
-                              className="form-select"
-                              id="validationDefault04"
-                              required
-                            >
-                              <option selected disabled value="">
-                                Seleccionar...
-                              </option>
-                              <option value="Perro">Perro</option>
-                              <option value="Gato">Gato</option>
-                            </select>
+
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-4">
+                          <label
+                            for="validationDefault04"
+                            class="col-form-label mb-2"
+                          >
+                            ¿Qué cuidas?
+                          </label>
+                          <select
+                            style={{ fontSize: "15px" }}
+                            className="form-select"
+                            id="validationDefault04"
+                            required
+                            value={tipoMascota}
+                            onChange={(event) => {
+                              setTipoMascota(event.target.value);
+                            }}
+                          >
+                            <option selected disabled value="">
+                              Seleccionar...
+                            </option>
+                            <option value="Perro">Perro</option>
+                            <option value="Gato">Gato</option>
+                          </select>
+                        </div>
+                        <div class="col-4 mb-2">
+                          <label
+                            for="validationDefault04"
+                            class="col-form-label mb-2"
+                          >
+                            ¿Cuántas?
+                          </label>
+                          <select
+                            style={{ fontSize: "15px" }}
+                            className="form-select"
+                            id="validationDefault04"
+                            required
+                            value={cantidadMascota}
+                            onChange={(event) => {
+                              setCantidadMascota(event.target.value);
+                            }}
+                          >
+                            <option selected disabled value="">
+                              Seleccionar...
+                            </option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                          </select>
+                        </div>
+                        <div class="col-4 mb-2">
+                          <label
+                            htmlFor="validationDefault04"
+                            className="col-form-label mb-2"
+                            style={{ fontSize: "13px" }}
+                          >
+                            Tarifa por dia:
+                          </label>
+
+                          <div class="input-group mb-3">
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Tarifa en $"
+                              aria-label="Username"
+                              value={tarifa}
+                              onChange={(event) => {
+                                setTarifa(event.target.value);
+                              }}
+                            />
                           </div>
-                          <div class="col-6">
-                            <label
-                              htmlFor="validationDefault04"
-                              class="col-form-label mb-2"
-                            >
-                              Tarifa por dia:
-                            </label>
-                            <div class="input-group mb-3">
+                        </div>
+                        <div
+                          className="col-10 mt-2"
+                          style={{ marginLeft: "35px" }}
+                        >
+                          <label
+                            for="validationDefault04"
+                            className="col-form-label mb-2"
+                          >
+                            Ubicación:
+                          </label>
+                          <select
+                            className="form-select"
+                            id="validationDefault04"
+                            required
+                            value={ubicacion}
+                            onChange={(event) => {
+                              setUbicacion(event.target.value);
+                            }}
+                          >
+                            <option selected disabled value="">
+                              Seleccionar...
+                            </option>
+                            <option value="Caracas">Caracas</option>
+                            <option value="Maturín">Maturín</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="mb-3 mt-5" style={{ marginLeft: "142px" }}>
+                        <div className="col-md-10">
+                          <div classNameName="App">
+                            <div className="file">
+                              <label htmlFor="archivo" id="archivolabel">
+                                <i
+                                  className="fa-solid fa-plus d-flex justify-content-center"
+                                  id="plusicon"
+                                ></i>
+                                <p id="labelarchivo">Carga tu foto aquí</p>
+                              </label>
                               <input
-                                type="text"
-                                class="form-control"
-                                placeholder="Coloca el precio en $"
-                                aria-label="Username"
+                                type="file"
+                                id="archivo"
+                                value={imagen}
+                                onChange={(event) => {
+                                  setImagen(event.target.value);
+                                }}
                               />
                             </div>
                           </div>
-                          <div
-                            className="col-10 mt-2"
-                            style={{ marginLeft: "35px" }}
-                          >
-                            <label
-                              for="validationDefault04"
-                              className="col-form-label mb-2"
-                            >
-                              Ubicación:
-                            </label>
-                            <select
-                              className="form-select"
-                              id="validationDefault04"
-                              required
-                            >
-                              <option selected disabled value="">
-                                Seleccionar...
-                              </option>
-                              <option value="Caracas">Caracas</option>
-                              <option value="Maturín">Maturín</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="mb-3 mt-5" style={{ marginLeft: "142px" }}>
-                          <div className="col-md-10">
-                            <div classNameName="App">
-                              <div className="file">
-                                <label htmlFor="archivo" id="archivolabel">
-                                  <i
-                                    className="fa-solid fa-plus d-flex justify-content-center"
-                                    id="plusicon"
-                                  ></i>
-                                  <p id="labelarchivo">Carga tu foto aquí</p>
-                                </label>
-                                <input type="file" id="archivo" />
-                              </div>
-                            </div>
-                          </div>
                         </div>
                       </div>
-                      <div class="modal-footer">
-                        <button
-                          type="button"
-                          class="btn btn-primary"
-                          style={{
-                            background: "#20C997",
-                            color: "white",
-                            borderRadius: "16px",
-                            border: "transparent",
-                            marginRight: "155px",
-                          }}
-                        >
-                          Actualiza tus datos
-                        </button>
-                      </div>
-                    </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        onClick={handleSubmit}
+                        style={{
+                          background: "#20C997",
+                          color: "white",
+                          borderRadius: "16px",
+                          border: "transparent",
+                          marginRight: "155px",
+                        }}
+                      >
+                        Actualiza tus datos
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -225,10 +305,15 @@ export const ProfileCuidador = () => {
                       className="form-control"
                       placeholder="Escribe en esta sección un poco de tí y por qué deberían de contratarte. Por ejemplo : ¨Mi casa es espaciosa y tengo un amplio jardín. Los paseo en las mañanas y permito que duerman en mi cama."
                       rows="5"
+                      value={descripcion}
+                      onChange={(event) => {
+                        setDescripcion(event.target.value);
+                      }}
                     ></textarea>
                     <button
                       className="btn btn-primary mt-2"
                       type="button"
+                      onClick={handleSubmit}
                       style={{
                         background: "#20C997",
                         color: "white",
