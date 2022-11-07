@@ -11,9 +11,10 @@ class User(db.Model):
     telefono = db.Column (db.String(250), nullable=False)
     salt = db.Column(db.String(250), nullable=False)
     imagen = db.Column (db.String(250), nullable=True)
+    ubicacion = db.Column (db.String(250), nullable=True)
     descripcion = db.Column (db.String(250), nullable=True)
-    tipo_mascota = db.Column (db.String(250), nullable=False)
-    cantidad_mascota = db.Column (db.String(250), nullable=False)
+    tipo_mascota = db.Column (db.String(250), nullable=True)
+    cantidad_mascota = db.Column (db.String(250), nullable=True)
     
 
     def __repr__(self):
@@ -34,12 +35,8 @@ class User(db.Model):
 
 class Cuidador(User):
     id = db.Column(db.Integer, primary_key=True)
-    ubicacion = db.Column (db.String(250), nullable=False)
-    precio_hora = db.Column (db.String(250), nullable=True)
     precio_dia = db.Column (db.String(250), nullable=True)
-    
-    
-    
+         
     def serialize(self):
         return {
             "id": self.id,
@@ -52,7 +49,6 @@ class Cuidador(User):
             "cantidad_mascota": self.cantidad_mascota,
             "imagen": self.imagen,
             "descripcion": self.descripcion,
-            "precio_hora": self.precio_hora,
             "precio_dia": self.precio_dia
 
         }
@@ -68,6 +64,7 @@ class Cliente(User):
             "apellido": self.apellido,
             "telefono": self.telefono,
             "imagen": self.imagen,
+            "ubicacion": self.ubicacion,
             "descripcion": self.descripcion,
             "tipo_mascota": self.tipo_mascota,
             "cantidad_mascota": self.cantidad_mascota

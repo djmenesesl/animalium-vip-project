@@ -3,26 +3,11 @@ import { Link } from "react-router-dom";
 
 import { Context } from "../store/appContext";
 
-export const ProfileCuidador = () => {
+export const ProfileCuidadorPublic = () => {
   const { store, actions } = useContext(Context);
 
   return (
     <div className="container-fluid px-0">
-      <div
-        className="alert alert-dismissible fade show ps-5"
-        role="alert"
-        style={{ background: "#B0FAE4", color: "#00543B", fontSize: "16px" }}
-      >
-        <i class="fa-solid fa-circle-info bg-transparent me-1"></i>Completa tu
-        perfil para empezar a cuidar mascotas
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"
-        ></button>
-      </div>
-
       <div className="container rounded bg-white mt-5 mb-5 d-flex justify-content-center">
         <div className="row ms-5">
           <div
@@ -73,7 +58,7 @@ export const ProfileCuidador = () => {
                   border: "transparent",
                 }}
               >
-                Completar perfil
+                Contactar a Miguel
               </button>
 
               <div
@@ -86,13 +71,6 @@ export const ProfileCuidador = () => {
                 <div class="modal-dialog">
                   <div class="modal-content ">
                     <div class="modal-header">
-                      <h5
-                        class="modal-title"
-                        id="exampleModalLabel"
-                        style={{ marginLeft: "145px" }}
-                      >
-                        Completa tu perfil
-                      </h5>
                       <button
                         type="button"
                         class="btn-close"
@@ -100,86 +78,32 @@ export const ProfileCuidador = () => {
                         aria-label="Close"
                       ></button>
                     </div>
-                    <form>
-                      <div class="modal-body">
-                        <div class="row">
-                          <div class="col-6">
-                            <label
-                              for="validationDefault04"
-                              class="col-form-label mb-2"
-                            >
-                              Tipo de Mascota:
-                            </label>
-                            <select
-                              style={{ fontSize: "15px" }}
-                              className="form-select"
-                              id="validationDefault04"
-                              required
-                            >
-                              <option selected disabled value="">
-                                Seleccionar...
-                              </option>
-                              <option value="Perro">Perro</option>
-                              <option value="Gato">Gato</option>
-                            </select>
-                          </div>
-                          <div class="col-6">
-                            <label
-                              htmlFor="validationDefault04"
-                              class="col-form-label mb-2"
-                            >
-                              Tarifa por dia:
-                            </label>
-                            <div class="input-group mb-3">
-                              <input
-                                type="text"
-                                class="form-control"
-                                placeholder="Coloca el precio en $"
-                                aria-label="Username"
-                              />
-                            </div>
-                          </div>
-                          <div
-                            className="col-10 mt-2"
-                            style={{ marginLeft: "35px" }}
+
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-12">
+                          <h5
+                            class="modal-title"
+                            id="exampleModalLabel"
+                            style={{ marginLeft: "10px" }}
                           >
-                            <label
-                              for="validationDefault04"
-                              className="col-form-label mb-2"
-                            >
-                              Ubicación:
-                            </label>
-                            <select
-                              className="form-select"
-                              id="validationDefault04"
-                              required
-                            >
-                              <option selected disabled value="">
-                                Seleccionar...
-                              </option>
-                              <option value="Caracas">Caracas</option>
-                              <option value="Maturín">Maturín</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="mb-3 mt-5" style={{ marginLeft: "142px" }}>
-                          <div className="col-md-10">
-                            <div classNameName="App">
-                              <div className="file">
-                                <label htmlFor="archivo" id="archivolabel">
-                                  <i
-                                    className="fa-solid fa-plus d-flex justify-content-center"
-                                    id="plusicon"
-                                  ></i>
-                                  <p id="labelarchivo">Carga tu foto aquí</p>
-                                </label>
-                                <input type="file" id="archivo" />
-                              </div>
-                            </div>
-                          </div>
+                            ¡Inicia sesión para poder continuar!
+                          </h5>
                         </div>
                       </div>
-                      <div class="modal-footer">
+                      <div class="row mt-4">
+                        <div class="col-10">
+                          <p
+                            class="modal-title"
+                            id="exampleModalLabel"
+                            style={{ marginLeft: "90px", fontSize: "16px" }}
+                          >
+                            Para poder contactar con el cuidador es necesario
+                            que inicies sesión.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="mb-3 mt-5" style={{ marginLeft: "142px" }}>
                         <button
                           type="button"
                           class="btn btn-primary"
@@ -188,13 +112,41 @@ export const ProfileCuidador = () => {
                             color: "white",
                             borderRadius: "16px",
                             border: "transparent",
-                            marginRight: "155px",
+                            marginRight: "150px",
                           }}
                         >
-                          Actualiza tus datos
+                          <Link
+                            target={"blank"}
+                            to="/login"
+                            style={{ color: "white" }}
+                          >
+                            Iniciar Sesión
+                          </Link>
                         </button>
                       </div>
-                    </form>
+                      <div
+                        class="row mt-4"
+                        style={{ marginLeft: "50px", fontSize: "16px" }}
+                      >
+                        <div class="col-10">
+                          <p className="text-center mt-3">
+                            ¿No tienes cuenta aún?
+                            <Link
+                              target={"_blank"}
+                              to="/registro"
+                              style={{
+                                color: "#20C997",
+                                marginLeft: "5px",
+                                fontWeight: "bold",
+                              }}
+                            >
+                              Regístrate
+                            </Link>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer"></div>
                   </div>
                 </div>
               </div>

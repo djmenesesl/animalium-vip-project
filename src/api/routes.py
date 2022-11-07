@@ -153,6 +153,25 @@ def get_cuidador_info():
             "user": cuidador.serialize()
         }), 200
 
+@api.route('/cliente', methods=['PATCH'])
+@jwt_required()
+def update_cliente():
+    body = request.json
+    print(body)
+    cliente_id = get_jwt_identity()
+    cliente = Cliente.query.get(cliente_id)
+    cliente.imagen=body["imagen"],
+    cliente.descripcion=body["descripcion"],
+    cliente.ubicacion=body["ubicacion"],               
+    cliente.tipo_mascota=body["tipoMascota"],               
+    cliente.cantidad_mascota=body["cantidadMascota"],               
+                                            
+    db.session.commit()
+    print("Actualización: ", cliente)
+    print("Actualización serialized: ", cliente.serialize())
+    return jsonify(cliente.serialize()), 201
+       
+               
 @api.route('/cuidador', methods=['PATCH'])
 def update_cuidador():
     body = request.json
@@ -160,11 +179,10 @@ def update_cuidador():
     editar_cuidador = Cuidador(
                         imagen=body["imagen"],
                         descripcion=body["descripcion"],
-                        precio_hora=body["precio_hora"],
                         precio_dia=body["precio_dia"],               
                                                
                     )
-    db.session.add(editar_cuidador)
+    db.session.update(editar_cuidador)
     db.session.commit()
     print("Actualización: ", editar_cuidador)
     print("Actualización serialized: ", editar_cuidador.serialize())

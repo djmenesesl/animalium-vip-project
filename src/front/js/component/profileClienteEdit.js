@@ -1,8 +1,40 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
+import { Link, useNavigate } from "react-router-dom";
 
 export const ProfileClienteEdit = () => {
-  const { store, actions } = useContext(Context);
+  const [ubicacion, setUbicacion] = useState([]);
+  const [cantidadMascota, setCantidadMascota] = useState([]);
+  const [tipoMascota, setTipoMascota] = useState([]);
+  const [descripcion, setDescripcion] = useState([]);
+  const [imagen, setImagen] = useState([]);
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    try {
+      const response = await fetch(process.env.BACKEND_URL + "/api/cliente", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "Application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({
+          imagen: imagen,
+          ubicacion: ubicacion,
+          cantidadMascota: cantidadMascota,
+          tipoMascota: tipoMascota,
+          descripcion: descripcion,
+        }),
+      });
+      if (!response.ok) {
+        alert("Error al actualizar el usuario");
+        return;
+      }
+      alert("Perfil actualizado");
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className="container-fluid px-0">
@@ -93,79 +125,118 @@ export const ProfileClienteEdit = () => {
                         aria-label="Close"
                       ></button>
                     </div>
+
                     <div class="modal-body">
-                      <form>
-                        <div class="row">
-                          <div class="col-6">
-                            <label
-                              for="validationDefault04"
-                              class="col-form-label mb-2"
-                            >
-                              ¿Qué mascota tienes?
-                            </label>
-                            <select
-                              style={{ fontSize: "15px" }}
-                              className="form-select"
-                              id="validationDefault04"
-                              required
-                            >
-                              <option selected disabled value="">
-                                Seleccionar...
-                              </option>
-                              <option value="Perro">Perro</option>
-                              <option value="Gato">Gato</option>
-                            </select>
-                          </div>
-                          <div class="col-6">
-                            <label
-                              for="validationDefault04"
-                              class="col-form-label mb-2"
-                            >
-                              Ubicación:
-                            </label>
-                            <select
-                              className="form-select"
-                              id="validationDefault04"
-                              required
-                            >
-                              <option selected disabled value="">
-                                Seleccionar...
-                              </option>
-                              <option value="Caracas">Caracas</option>
-                              <option value="Maturín">Maturín</option>
-                            </select>
-                          </div>
+                      <div class="row">
+                        <div class="col-4">
+                          <label
+                            for="validationDefault04"
+                            class="col-form-label mb-2"
+                          >
+                            ¿Qué mascota tienes?
+                          </label>
+                          <select
+                            style={{ fontSize: "15px" }}
+                            className="form-select"
+                            id="validationDefault04"
+                            required
+                            value={tipoMascota}
+                            onChange={(event) => {
+                              setTipoMascota(event.target.value);
+                            }}
+                          >
+                            <option selected disabled value="">
+                              Seleccionar...
+                            </option>
+                            <option value="Perro">Perro</option>
+                            <option value="Gato">Gato</option>
+                          </select>
                         </div>
-                        <div class="mb-3 mt-5">
-                          <div className="col-md-10">
-                            <div classNameName="App">
-                              <div className="file">
-                                <form className="d-flex justify-content-center ms-5">
-                                  <label htmlFor="archivo" id="archivolabel">
-                                    <i
-                                      className="fa-solid fa-plus d-flex justify-content-center"
-                                      id="plusicon"
-                                    ></i>
-                                    <p id="labelarchivo">Carga tu foto aquí</p>
-                                  </label>
-                                  <input type="file" id="archivo" />
-                                </form>
-                              </div>
+                        <div class="col-4">
+                          <label
+                            for="validationDefault04"
+                            class="col-form-label mb-2"
+                          >
+                            ¿Cuántas?
+                          </label>
+                          <select
+                            style={{ fontSize: "15px" }}
+                            className="form-select"
+                            id="validationDefault04"
+                            required
+                            value={cantidadMascota}
+                            onChange={(event) => {
+                              setCantidadMascota(event.target.value);
+                            }}
+                          >
+                            <option selected disabled value="">
+                              Seleccionar...
+                            </option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                          </select>
+                        </div>
+                        <div class="col-4">
+                          <label
+                            for="validationDefault04"
+                            class="col-form-label mb-2"
+                          >
+                            Ubicación:
+                          </label>
+                          <select
+                            className="form-select"
+                            id="validationDefault04"
+                            required
+                            value={ubicacion}
+                            onChange={(event) => {
+                              setUbicacion(event.target.value);
+                            }}
+                          >
+                            <option selected disabled value="">
+                              Seleccionar...
+                            </option>
+                            <option value="Caracas">Caracas</option>
+                            <option value="Maturín">Maturín</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="mb-3 mt-5" style={{ marginLeft: "142px" }}>
+                        <div className="col-md-10">
+                          <div classNameName="App">
+                            <div className="file">
+                              <label htmlFor="archivo" id="archivolabel">
+                                <i
+                                  className="fa-solid fa-plus d-flex justify-content-center"
+                                  id="plusicon"
+                                ></i>
+                                <p id="labelarchivo">Carga tu foto aquí</p>
+                              </label>
+                              <input
+                                type="file"
+                                id="archivo"
+                                value={imagen}
+                                onChange={(event) => {
+                                  setImagen(event.target.value);
+                                }}
+                              />
                             </div>
                           </div>
                         </div>
-                      </form>
+                      </div>
                     </div>
                     <div class="modal-footer">
                       <button
                         type="button"
                         class="btn btn-primary"
+                        onClick={handleSubmit}
                         style={{
                           background: "#20C997",
                           color: "white",
                           borderRadius: "16px",
                           border: "transparent",
-                          marginRight: "160px",
+                          marginRight: "155px",
                         }}
                       >
                         Actualiza tus datos
@@ -201,10 +272,15 @@ export const ProfileClienteEdit = () => {
                       className="form-control"
                       placeholder="Escribe en esta sección un poco de tí y por qué deberían de contratarte. Por ejemplo : ¨Mi casa es espaciosa y tengo un amplio jardín. Los paseo en las mañanas y permito que duerman en mi cama."
                       rows="5"
+                      value={descripcion}
+                      onChange={(event) => {
+                        setDescripcion(event.target.value);
+                      }}
                     ></textarea>
                     <button
                       className="btn btn-primary mt-2"
                       type="button"
+                      onClick={handleSubmit}
                       style={{
                         background: "#20C997",
                         color: "white",

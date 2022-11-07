@@ -94,7 +94,7 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  height: 570px;
+  height: 600px;
 }
 
 .bg-card-reserve {
@@ -427,10 +427,7 @@
 body {
   background: rgb(99, 39, 120);
 }
-.form-control:focus {
-  box-shadow: none;
-  border-color: #20c997;
-}
+
 .profile-button {
   background: #20c997;
   box-shadow: none;
