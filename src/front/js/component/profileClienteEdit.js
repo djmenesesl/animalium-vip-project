@@ -115,11 +115,15 @@ export const ProfileClienteEdit = () => {
                   <i class="fa-solid fa-star me-1"></i>0 Reseñas
                 </p>
                 <p class="card-text fw-bold">
-                  <i class="fa-solid fa-paw me-1"></i>Mariana tiene:
+                  <i class="fa-solid fa-paw me-1"></i>
+                  {store.usuario.info?.nombre} tiene:
                 </p>
-                <p class="card-text">Acá va la mascota que tienes</p>
+                <p class="card-text">
+                  {`${store.usuario.info?.cantidad_mascota} ${store.usuario.info?.tipo_mascota}`}
+                </p>
                 <p class="card-text fw-bold">
-                  <i class="fa-solid fa-location-dot me-1"></i>Caracas
+                  <i class="fa-solid fa-location-dot me-1"></i>
+                  {store.usuario.info?.ubicacion}
                 </p>
                 <p class="card-text fw-bold" style={{ color: "#00543B" }}>
                   Carga una foto y completa tu perfil ;)
@@ -308,7 +312,7 @@ export const ProfileClienteEdit = () => {
                 <div className="col-md-10">
                   <form>
                     <label className="labels mb-2" style={{ fontSize: "16px" }}>
-                      Acerca de Mariana:
+                      Acerca de {store.usuario.info?.nombre}:
                     </label>
                     <textarea
                       type="text"
@@ -340,7 +344,7 @@ export const ProfileClienteEdit = () => {
                     className="labels mt-4 mb-2"
                     style={{ fontSize: "16px" }}
                   >
-                    Mascotas de Mariana:
+                    Mascotas de {store.usuario.info?.nombre}:
                   </label>
                   <div classNameName="App">
                     <div className="file">

@@ -33,7 +33,7 @@ export const ProfileCuidador = () => {
     }
   }
 
-  async function handleProfileInfo() {
+  async function handleProfileInfoCuidador() {
     try {
       const userInfo = await setProfileCuidador();
       console.log(userInfo);
@@ -49,7 +49,7 @@ export const ProfileCuidador = () => {
   }
 
   useEffect(() => {
-    handleProfileInfo();
+    handleProfileInfoCuidador();
   }, []);
 
   async function handleSubmit(event) {
@@ -75,6 +75,7 @@ export const ProfileCuidador = () => {
         return;
       }
       alert("Perfil actualizado");
+      handleProfileInfoCuidador();
     } catch (error) {
       console.log(error);
     }
@@ -118,14 +119,17 @@ export const ProfileCuidador = () => {
                   <i class="fa-solid fa-star me-1"></i>0 Reseñas
                 </p>
                 <p class="card-text fw-bold">
-                  <i class="fa-solid fa-paw me-1"></i>Miguel cuida a:
+                  <i class="fa-solid fa-paw me-1"></i>
+                  {store.usuario.info?.nombre} cuida a:
                 </p>
-                <p class="card-text">Perro</p>
+                <p class="card-text">{store.usuario.info?.tipo_mascota}</p>
                 <p class="card-text fw-bold">
-                  <i class="fa-solid fa-coins me-1"></i>Tarifa por día:
+                  <i class="fa-solid fa-coins me-1"></i>Tarifa por día:{" "}
+                  {store.usuario.info?.precio_dia}
                 </p>
                 <p class="card-text fw-bold">
-                  <i class="fa-solid fa-location-dot me-1"></i>Caracas
+                  <i class="fa-solid fa-location-dot me-1"></i>
+                  {store.usuario.info?.ubicacion}
                 </p>
                 <p class="card-text fw-bold" style={{ color: "#00543B" }}>
                   Carga una foto y completa tu perfil ;)
@@ -323,7 +327,9 @@ export const ProfileCuidador = () => {
           <div className="col-md-6 border-right">
             <div className="p-3">
               <div className="d-flex justify-content-between align-items-center mb-3">
-                <h2 className="text-right">Hola! Me llamo Miguel</h2>
+                <h2 className="text-right">
+                  Hola! Me llamo {store.usuario.info?.nombre}
+                </h2>
               </div>
               <div className="d-flex justify-content-between align-items-center mb-3">
                 <h6 className="text-right">
@@ -338,7 +344,7 @@ export const ProfileCuidador = () => {
                 <div className="col-md-10">
                   <form>
                     <label className="labels mb-2" style={{ fontSize: "16px" }}>
-                      Acerca de Miguel:
+                      Acerca de {store.usuario.info?.nombre}:
                     </label>
                     <textarea
                       type="text"
@@ -370,7 +376,7 @@ export const ProfileCuidador = () => {
                     className="labels mt-4 mb-2"
                     style={{ fontSize: "16px" }}
                   >
-                    Mascotas que ha cuidado Miguel:
+                    Mascotas que ha cuidado {store.usuario.info?.nombre}:
                   </label>
                   <div classNameName="App">
                     <div className="file">
@@ -380,7 +386,9 @@ export const ProfileCuidador = () => {
                             className="fa-solid fa-plus d-flex justify-content-center"
                             id="plusicon"
                           ></i>
-                          <p id="labelarchivo">Carga fotos de tus mascotas</p>
+                          <p id="labelarchivo">
+                            Carga fotos de las mascotas que has cuidado
+                          </p>
                         </label>
                         <input type="file" id="archivo" />
                       </form>
