@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { DatePicker } from "antd";
@@ -16,6 +16,7 @@ export const Home = () => {
   const [cuidadoresTop, setCuidadoresTop] = useState([]);
   const [ubicacion, setUbicacion] = useState([]);
   const [busqueda, setBusqueda] = useState(false);
+  let navigate = useNavigate();
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -36,6 +37,8 @@ export const Home = () => {
       }
       const body = await response.json();
       console.log(body);
+      actions.addCuidadores(body);
+      navigate("/cuidadores");
       setCuidadoresTop(body);
       setBusqueda(true);
     } catch (error) {

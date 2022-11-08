@@ -262,8 +262,10 @@ export const Cuidadores = () => {
         <div className="container bg-transparent">
           <div className="d-flex bg-transparent mt-5 ps-5">
             <h1 id="h1" className="bg-transparent">
-              {busqueda == true ? (
+              {busqueda == true && store.cuidador.length <= 0 ? (
                 <strong>Resultados</strong>
+              ) : store.cuidador.length > 0 ? (
+                <strong>Cuidadores desde store</strong>
               ) : (
                 <strong>Cuidadores Destacados</strong>
               )}

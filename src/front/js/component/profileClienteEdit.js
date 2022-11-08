@@ -76,7 +76,7 @@ export const ProfileClienteEdit = () => {
       console.log(error);
     }
   }
-
+  console.log(store.usuario.info?.nombre);
   return (
     <div className="container-fluid px-0">
       <div
@@ -291,7 +291,9 @@ export const ProfileClienteEdit = () => {
           <div className="col-md-6 border-right">
             <div className="p-3">
               <div className="d-flex justify-content-between align-items-center mb-3">
-                <h2 className="text-right">Hola! Me llamo Mariana</h2>
+                <h2 className="text-right">
+                  Hola! Me llamo {store.usuario.info?.nombre}
+                </h2>
               </div>
               <div className="d-flex justify-content-between align-items-center mb-3">
                 <h6 className="text-right">

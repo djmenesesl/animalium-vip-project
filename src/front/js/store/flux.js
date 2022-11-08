@@ -2,6 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       usuario: {},
+      cuidador: [],
       message: null,
       demo: [
         {
@@ -39,6 +40,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       exampleFunction: () => {
         getActions().changeColor(0, "green");
+      },
+
+      addCuidadores: (cuidadores) => {
+        let store = getStore();
+        setStore({
+          ...store,
+          cuidador: cuidadores,
+        });
       },
 
       getMessage: async () => {
