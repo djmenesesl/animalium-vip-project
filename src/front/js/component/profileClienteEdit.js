@@ -3,11 +3,51 @@ import { Context } from "../store/appContext";
 import { Link, useNavigate } from "react-router-dom";
 
 export const ProfileClienteEdit = () => {
-  const [ubicacion, setUbicacion] = useState([]);
-  const [cantidadMascota, setCantidadMascota] = useState([]);
-  const [tipoMascota, setTipoMascota] = useState([]);
-  const [descripcion, setDescripcion] = useState([]);
-  const [imagen, setImagen] = useState([]);
+  const { store, actions } = useContext(Context);
+  const [ubicacion, setUbicacion] = useState("");
+  const [cantidadMascota, setCantidadMascota] = useState("");
+  const [tipoMascota, setTipoMascota] = useState("");
+  const [descripcion, setDescripcion] = useState("");
+  const [imagen, setImagen] = useState("");
+
+  async function setProfileCliente() {
+    try {
+      const response = await fetch(process.env.BACKEND_URL + `/api/cliente`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "Application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      if (!response.ok) {
+        alert("Hubo un problema con tu solicitud");
+        return;
+      }
+      const body = await response.json();
+      actions.setInfoUsuario(body.user);
+      return body.user;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function handleProfileInfo() {
+    try {
+      const userInfo = await setProfileCliente();
+      console.log(userInfo);
+      userInfo.descripcion ? setDescripcion(userInfo.descripcion) : "";
+      userInfo.ubicacion && setUbicacion(userInfo.ubicacion);
+      userInfo.cantidad_mascota &&
+        setCantidadMascota(userInfo.cantidad_mascota);
+      userInfo.tipo_mascota && setTipoMascota(userInfo.tipo_mascota);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    handleProfileInfo();
+  }, []);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -31,6 +71,7 @@ export const ProfileClienteEdit = () => {
         return;
       }
       alert("Perfil actualizado");
+      handleProfileInfo();
     } catch (error) {
       console.log(error);
     }
@@ -325,7 +366,7 @@ export const ProfileClienteEdit = () => {
                     <textarea
                       type="text"
                       className="form-control"
-                      placeholder="En esta sección, se mostrarán las reseñas que dejarán tus clientes!"
+                      placeholder="En esta sección, se mostrarán las reseñas que dejarán los cuidadores!"
                       value=""
                     ></textarea>
                   </form>

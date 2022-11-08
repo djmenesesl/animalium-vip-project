@@ -131,7 +131,7 @@ def get_cliente_info():
     if not cliente:
         return jsonify({
             "message": "Not found",
-            "user_id": None
+            
         }), 404
     return jsonify({
             "message": "Ruta protegida",
@@ -146,7 +146,7 @@ def get_cuidador_info():
     if not cuidador:
         return jsonify({
             "message": "Not found",
-            "user_id": None
+            
         }), 404
     return jsonify({
             "message": "Ruta protegida",

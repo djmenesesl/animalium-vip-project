@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export const CuidadorCard = ({ item }) => (
+export const InfoCliente = ({ item }) => (
   <div className="container-fluid px-0">
     <div
       className="alert alert-dismissible fade show ps-5"
@@ -8,7 +8,7 @@ export const CuidadorCard = ({ item }) => (
       style={{ background: "#B0FAE4", color: "#00543B", fontSize: "16px" }}
     >
       <i class="fa-solid fa-circle-info bg-transparent me-1"></i>Completa tu
-      perfil para empezar a cuidar mascotas
+      perfil para empezar a disfrutar del servicio Animalium
       <button
         type="button"
         class="btn-close"
@@ -38,14 +38,13 @@ export const CuidadorCard = ({ item }) => (
                 <i class="fa-solid fa-star me-1"></i>0 Reseñas
               </p>
               <p class="card-text fw-bold">
-                <i class="fa-solid fa-paw me-1"></i>Miguel cuida a:
+                <i class="fa-solid fa-paw me-1"></i>
+                {item.nombre} tiene:
               </p>
-              <p class="card-text">Perro</p>
+              <p class="card-text">{item.tipoMascota} </p>
               <p class="card-text fw-bold">
-                <i class="fa-solid fa-location-dot me-1"></i>Tarifa por día:
-              </p>
-              <p class="card-text fw-bold">
-                <i class="fa-solid fa-location-dot me-1"></i>Caracas
+                <i class="fa-solid fa-location-dot me-1"></i>
+                {item.ubicacion}
               </p>
               <p class="card-text fw-bold" style={{ color: "#00543B" }}>
                 Carga una foto y completa tu perfil ;)
@@ -68,7 +67,6 @@ export const CuidadorCard = ({ item }) => (
             >
               Completar perfil
             </button>
-
             <div
               class="modal fade"
               id="exampleModal"
@@ -101,7 +99,7 @@ export const CuidadorCard = ({ item }) => (
                           for="validationDefault04"
                           class="col-form-label mb-2"
                         >
-                          ¿Qué cuidas?
+                          ¿Qué mascota tienes?
                         </label>
                         <select
                           style={{ fontSize: "15px" }}
@@ -120,7 +118,7 @@ export const CuidadorCard = ({ item }) => (
                           <option value="Gato">Gato</option>
                         </select>
                       </div>
-                      <div class="col-4 mb-2">
+                      <div class="col-4">
                         <label
                           for="validationDefault04"
                           class="col-form-label mb-2"
@@ -146,35 +144,10 @@ export const CuidadorCard = ({ item }) => (
                           <option value="4">4</option>
                         </select>
                       </div>
-                      <div class="col-4 mb-2">
-                        <label
-                          htmlFor="validationDefault04"
-                          className="col-form-label mb-2"
-                          style={{ fontSize: "13px" }}
-                        >
-                          Tarifa por dia:
-                        </label>
-
-                        <div class="input-group mb-3">
-                          <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Tarifa en $"
-                            aria-label="Username"
-                            value={tarifa}
-                            onChange={(event) => {
-                              setTarifa(event.target.value);
-                            }}
-                          />
-                        </div>
-                      </div>
-                      <div
-                        className="col-10 mt-2"
-                        style={{ marginLeft: "35px" }}
-                      >
+                      <div class="col-4">
                         <label
                           for="validationDefault04"
-                          className="col-form-label mb-2"
+                          class="col-form-label mb-2"
                         >
                           Ubicación:
                         </label>
@@ -243,11 +216,11 @@ export const CuidadorCard = ({ item }) => (
         <div className="col-md-6 border-right">
           <div className="p-3">
             <div className="d-flex justify-content-between align-items-center mb-3">
-              <h2 className="text-right">Hola! Me llamo Miguel</h2>
+              <h2 className="text-right">Hola! Me llamo {item.nombre}</h2>
             </div>
             <div className="d-flex justify-content-between align-items-center mb-3">
               <h6 className="text-right">
-                Es cuidador en animalium desde 2022{" "}
+                Sus mascotas son parte de animalium desde 2022{" "}
                 <i
                   class="fa-solid fa-paw me-1"
                   style={{ color: "#28FCBD" }}
@@ -258,7 +231,7 @@ export const CuidadorCard = ({ item }) => (
               <div className="col-md-10">
                 <form>
                   <label className="labels mb-2" style={{ fontSize: "16px" }}>
-                    Acerca de Miguel:
+                    Acerca de {item.nombre}:
                   </label>
                   <textarea
                     type="text"
@@ -290,7 +263,7 @@ export const CuidadorCard = ({ item }) => (
                   className="labels mt-4 mb-2"
                   style={{ fontSize: "16px" }}
                 >
-                  Mascotas que ha cuidado Miguel:
+                  Mascotas de {item.nombre}:
                 </label>
                 <div classNameName="App">
                   <div className="file">

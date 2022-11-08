@@ -82,7 +82,7 @@ export const Cuidadores = () => {
   const [cantidad, setCantidad] = useState([]);
   const [cuidadoresTop, setCuidadoresTop] = useState([]);
   const [ubicacion, setUbicacion] = useState([]);
-  const [busqueda, setBusqueda] = useState([]);
+  const [busqueda, setBusqueda] = useState(false);
 
   async function setCuidadores() {
     try {
@@ -131,7 +131,7 @@ export const Cuidadores = () => {
       const body = await response.json();
       console.log(body);
       setCuidadoresTop(body);
-      setBusqueda(True);
+      setBusqueda(true);
     } catch (error) {
       console.log(error);
     }
@@ -262,7 +262,7 @@ export const Cuidadores = () => {
         <div className="container bg-transparent">
           <div className="d-flex bg-transparent mt-5 ps-5">
             <h1 id="h1" className="bg-transparent">
-              {busqueda ? (
+              {busqueda == true ? (
                 <strong>Resultados</strong>
               ) : (
                 <strong>Cuidadores Destacados</strong>

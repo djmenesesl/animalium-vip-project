@@ -22,6 +22,16 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ usuario: usuario });
       },
 
+      setInfoUsuario: (infoUsuario) => {
+        const store = getStore();
+        setStore({
+          usuario: {
+            ...store.usuario,
+            info: infoUsuario,
+          },
+        });
+      },
+
       removeToken: () => {
         localStorage.removeItem("token");
         setStore({ usuario: {} });

@@ -11,11 +11,12 @@ import moment from "moment";
 export const Home = () => {
   const { store, actions } = useContext(Context);
   const [dates, setDates] = useState([]);
-
   const [mascota, setMascota] = useState([]);
   const [cantidad, setCantidad] = useState([]);
-
+  const [cuidadoresTop, setCuidadoresTop] = useState([]);
   const [ubicacion, setUbicacion] = useState([]);
+  const [busqueda, setBusqueda] = useState(false);
+
   async function handleSubmit(event) {
     event.preventDefault();
     try {
@@ -35,6 +36,8 @@ export const Home = () => {
       }
       const body = await response.json();
       console.log(body);
+      setCuidadoresTop(body);
+      setBusqueda(true);
     } catch (error) {
       console.log(error);
     }
@@ -194,7 +197,14 @@ export const Home = () => {
           </div>
           <div className="bg-transparent" style={{ paddingLeft: "32px" }}>
             <button type="button" className="boton-cuidador w-25 p-2 mt-2">
-              Buscar cuidador
+              <Link
+                to="/cuidadores"
+                className="nav-link active"
+                aria-current="page"
+                style={{ color: "white" }}
+              >
+                Buscar cuidador
+              </Link>
             </button>
           </div>
         </div>

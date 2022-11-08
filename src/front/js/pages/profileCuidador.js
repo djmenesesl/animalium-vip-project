@@ -5,12 +5,52 @@ import { Context } from "../store/appContext";
 
 export const ProfileCuidador = () => {
   const { store, actions } = useContext(Context);
-  const [ubicacion, setUbicacion] = useState([]);
-  const [cantidadMascota, setCantidadMascota] = useState([]);
-  const [tipoMascota, setTipoMascota] = useState([]);
-  const [tarifa, setTarifa] = useState([]);
-  const [descripcion, setDescripcion] = useState([]);
-  const [imagen, setImagen] = useState([]);
+  const [ubicacion, setUbicacion] = useState("");
+  const [cantidadMascota, setCantidadMascota] = useState("");
+  const [tipoMascota, setTipoMascota] = useState("");
+  const [tarifa, setTarifa] = useState("");
+  const [descripcion, setDescripcion] = useState("");
+  const [imagen, setImagen] = useState("");
+
+  async function setProfileCuidador() {
+    try {
+      const response = await fetch(process.env.BACKEND_URL + `/api/cuidador`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "Application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      if (!response.ok) {
+        alert("Hubo un problema con tu solicitud");
+        return;
+      }
+      const body = await response.json();
+      actions.setInfoUsuario(body.user);
+      return body.user;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function handleProfileInfo() {
+    try {
+      const userInfo = await setProfileCuidador();
+      console.log(userInfo);
+      userInfo.descripcion ? setDescripcion(userInfo.descripcion) : "";
+      userInfo.ubicacion && setUbicacion(userInfo.ubicacion);
+      userInfo.cantidad_mascota &&
+        setCantidadMascota(userInfo.cantidad_mascota);
+      userInfo.tipo_mascota && setTipoMascota(userInfo.tipo_mascota);
+      userInfo.precio_dia && setTarifa(userInfo.precio_dia);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    handleProfileInfo();
+  }, []);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -82,7 +122,7 @@ export const ProfileCuidador = () => {
                 </p>
                 <p class="card-text">Perro</p>
                 <p class="card-text fw-bold">
-                  <i class="fa-solid fa-location-dot me-1"></i>Tarifa por día:
+                  <i class="fa-solid fa-coins me-1"></i>Tarifa por día:
                 </p>
                 <p class="card-text fw-bold">
                   <i class="fa-solid fa-location-dot me-1"></i>Caracas
