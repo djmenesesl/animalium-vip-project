@@ -83,20 +83,24 @@ export const ProfileCuidador = () => {
 
   return (
     <div className="container-fluid px-0">
-      <div
-        className="alert alert-dismissible fade show ps-5"
-        role="alert"
-        style={{ background: "#B0FAE4", color: "#00543B", fontSize: "16px" }}
-      >
-        <i class="fa-solid fa-circle-info bg-transparent me-1"></i>Completa tu
-        perfil para empezar a cuidar mascotas
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"
-        ></button>
-      </div>
+      {store.usuario.info?.descripcion ? (
+        ""
+      ) : (
+        <div
+          className="alert alert-dismissible fade show ps-5"
+          role="alert"
+          style={{ background: "#B0FAE4", color: "#00543B", fontSize: "16px" }}
+        >
+          <i class="fa-solid fa-circle-info bg-transparent me-1"></i>Completa tu
+          perfil para empezar a cuidar mascotas
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          ></button>
+        </div>
+      )}
 
       <div className="container rounded bg-white mt-5 mb-5 d-flex justify-content-center">
         <div className="row ms-5">

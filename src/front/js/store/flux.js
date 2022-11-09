@@ -2,7 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       usuario: {},
-      cuidador: [],
+      cuidadores: [],
       message: null,
       demo: [
         {
@@ -46,7 +46,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         let store = getStore();
         setStore({
           ...store,
-          cuidador: cuidadores,
+          cuidadores: cuidadores,
         });
       },
 

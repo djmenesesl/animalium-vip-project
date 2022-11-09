@@ -46,10 +46,7 @@ const Layout = () => {
               path="/cliente/profile/public/:id"
             />
             <Route element={<ProfileCuidador />} path="/cuidador/profile/:id" />
-            <Route
-              element={<ProfileCuidadorPublic />}
-              path="/cuidador/profile/public/:id"
-            />
+            <Route element={<ProfileCuidadorPublic />} path="/cuidador/:id" />
             <Route element={<Single />} path="/single/:theid" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>

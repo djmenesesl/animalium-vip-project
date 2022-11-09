@@ -7,74 +7,6 @@ import moment from "moment";
 
 import { Context } from "../store/appContext";
 import { CuidadorCard } from "../component/cuidadorCard";
-const data = [
-  {
-    imagenUrl:
-      "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667163838/Animalium/pexels-oleksandr-pidvalnyi-1174081_1_uo4xzu.png",
-    iconoUrl:
-      "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667106569/Animalium/supercuidador-icon_pbxfpn.png",
-    nombre: "Natalia Andrade",
-    rating: "5.0",
-    descripcion:
-      "Tengo 22 años, actualmente soy estudiante de medicina Veterinaria. Desde pequeña me han gustado los animales...",
-    ubicacion: "Maturín",
-  },
-  {
-    imagenUrl:
-      "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667163831/Animalium/pexels-hikmet-9682588_2_nvxzrs.png",
-    iconoUrl:
-      "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667106569/Animalium/supercuidador-icon_pbxfpn.png",
-    nombre: "Miguel Rodríguez",
-    rating: "5.0",
-    descripcion:
-      "Crecí con animales y he sido rescatista, trabajo desde mi casa y tengo el tiempo para darles cariño a las mascotas...",
-    ubicacion: "Maturin",
-  },
-  {
-    imagenUrl:
-      "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667163831/Animalium/pexels-hikmet-9682588_2_nvxzrs.png",
-    iconoUrl:
-      "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667106569/Animalium/supercuidador-icon_pbxfpn.png",
-    nombre: "Miguel Rodríguez",
-    rating: "5.0",
-    descripcion:
-      "Crecí con animales y he sido rescatista, trabajo desde mi casa y tengo el tiempo para darles cariño a las mascotas...",
-    ubicacion: "Maturin",
-  },
-  {
-    imagenUrl:
-      "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667163838/Animalium/pexels-oleksandr-pidvalnyi-1174081_1_uo4xzu.png",
-    iconoUrl:
-      "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667106569/Animalium/supercuidador-icon_pbxfpn.png",
-    nombre: "Natalia Andrade",
-    rating: "5.0",
-    descripcion:
-      "Tengo 22 años, actualmente soy estudiante de medicina Veterinaria. Desde pequeña me han gustado los animales...",
-    ubicacion: "Maturín",
-  },
-  {
-    imagenUrl:
-      "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667163831/Animalium/pexels-hikmet-9682588_2_nvxzrs.png",
-    iconoUrl:
-      "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667106569/Animalium/supercuidador-icon_pbxfpn.png",
-    nombre: "Miguel Rodríguez",
-    rating: "5.0",
-    descripcion:
-      "Crecí con animales y he sido rescatista, trabajo desde mi casa y tengo el tiempo para darles cariño a las mascotas...",
-    ubicacion: "Maturin",
-  },
-  {
-    imagenUrl:
-      "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667163831/Animalium/pexels-hikmet-9682588_2_nvxzrs.png",
-    iconoUrl:
-      "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667106569/Animalium/supercuidador-icon_pbxfpn.png",
-    nombre: "Miguel Rodríguez",
-    rating: "5.0",
-    descripcion:
-      "Crecí con animales y he sido rescatista, trabajo desde mi casa y tengo el tiempo para darles cariño a las mascotas...",
-    ubicacion: "Maturin",
-  },
-];
 
 export const Cuidadores = () => {
   const { store, actions } = useContext(Context);
@@ -101,13 +33,17 @@ export const Cuidadores = () => {
       }
       const body = await response.json();
       console.log(body);
-      setCuidadoresTop(body);
+      actions.addCuidadores(body);
     } catch (error) {
       console.log(error);
     }
   }
 
   useEffect(() => {
+    if (store.cuidadores.length > 0) {
+      setBusqueda(true);
+      return;
+    }
     setCuidadores();
   }, []);
 
@@ -130,7 +66,7 @@ export const Cuidadores = () => {
       }
       const body = await response.json();
       console.log(body);
-      setCuidadoresTop(body);
+      actions.addCuidadores(body);
       setBusqueda(true);
     } catch (error) {
       console.log(error);
@@ -262,10 +198,8 @@ export const Cuidadores = () => {
         <div className="container bg-transparent">
           <div className="d-flex bg-transparent mt-5 ps-5">
             <h1 id="h1" className="bg-transparent">
-              {busqueda == true && store.cuidador.length <= 0 ? (
+              {busqueda == true ? (
                 <strong>Resultados</strong>
-              ) : store.cuidador.length > 0 ? (
-                <strong>Cuidadores desde store</strong>
               ) : (
                 <strong>Cuidadores Destacados</strong>
               )}
@@ -274,7 +208,7 @@ export const Cuidadores = () => {
         </div>
         <div className="container-fluid bg-transparent">
           <div className="row d-flex justify-content-center bg-transparent">
-            {cuidadoresTop.map((cardInfo, index) => {
+            {store.cuidadores.map((cardInfo, index) => {
               return <CuidadorCard item={cardInfo} key={index} />;
             })}
             {/*<div id="cardcuidador" className="card bg-transparent">

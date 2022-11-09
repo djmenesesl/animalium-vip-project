@@ -153,6 +153,19 @@ def get_cuidador_info():
             "user": cuidador.serialize()
         }), 200
 
+@api.route("/cuidador/<id>", methods=['GET'])
+def get_cuidador_public(id):
+    cuidador = Cuidador.query.get(id)
+    if not cuidador:
+        return jsonify({
+            "message": "Not found",
+            
+        }), 404
+    return jsonify({
+            "message": "Ruta protegida",
+            "user": cuidador.serialize()
+        }), 200
+
 @api.route('/cliente', methods=['PATCH'])
 @jwt_required()
 def update_cliente():

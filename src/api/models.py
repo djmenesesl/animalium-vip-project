@@ -88,3 +88,24 @@ class Solicitud(db.Model):
             "fecha_inicial":self.fecha_inicial,
             "fecha_fin": self.fecha_fin
         }
+
+"""class Notificacion(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    id_usuario_recibe = db.Column(db.Integer)
+    id_usuario_envia = db.Column(db.Integer)
+    tipo_usuario_recibe = db.Column (db.String(250), nullable=False)
+    tipo_usuario_envia = db.Column (db.String(250), nullable=False)
+    mensaje = db.Column (db.String(250), nullable=False)
+    tipo = db.Column (db.String(250), nullable=False)
+    leida = db.Column (db.String(250), nullable=False)
+    id_solicitud = db.Column(db.Integer)
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "id_usuario_recibe": self.id_cuidador,
+            "id_cliente": self.id_cliente,
+            "status": self.status,
+            "fecha_inicial":self.fecha_inicial,
+            "fecha_fin": self.fecha_fin
+        }"""

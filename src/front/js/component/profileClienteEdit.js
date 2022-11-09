@@ -119,7 +119,7 @@ export const ProfileClienteEdit = () => {
                   {store.usuario.info?.nombre} tiene:
                 </p>
                 <p class="card-text">
-                  {`${store.usuario.info?.cantidad_mascota} ${store.usuario.info?.tipo_mascota}`}
+                  {`${store.usuario.info?.cantidad_mascota} ${store.usuario.info?.tipo_mascota}(s)`}
                 </p>
                 <p class="card-text fw-bold">
                   <i class="fa-solid fa-location-dot me-1"></i>
