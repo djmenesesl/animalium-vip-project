@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link, useNavigate } from "react-router-dom";
+import { ModalContactoCuidador } from "./modalContactoCuidador";
 
-export const ModalContactarLogin = () => {
+export const ModalTerminosYCondiciones = () => {
   const { store, actions } = useContext(Context);
 
   return (
@@ -49,7 +50,7 @@ export const ModalContactarLogin = () => {
                 <div class="col">
                   <p className="terminos-modal text-center mt-3 ">
                     <input
-                      class="input-terminos form-check-input"
+                      className="input-terminos form-check-input me-2"
                       type="checkbox"
                       value=""
                       id="flexCheckDefault"
@@ -70,12 +71,24 @@ export const ModalContactarLogin = () => {
                   </p>
                 </div>
               </div>
-              <div class="mb-3 mt-5">
-                <button type="button" class="btn-contactar btn btn-primary">
-                  <Link target={"blank"} to="" style={{ color: "white" }}>
-                    Continuar
-                  </Link>
+              <div class="mb-3 mt-5" style={{ marginLeft: "142px" }}>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  data-bs-whatever="@mdo"
+                  style={{
+                    background: "#20C997",
+                    color: "white",
+                    borderRadius: "16px",
+                    border: "transparent",
+                    marginRight: "150px",
+                  }}
+                >
+                  Continuar
                 </button>
+                <ModalContactoCuidador />
               </div>
             </div>
             <div class="modal-footer"></div>

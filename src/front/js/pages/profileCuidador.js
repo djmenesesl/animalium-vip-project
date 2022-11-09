@@ -135,9 +135,13 @@ export const ProfileCuidador = () => {
                   <i class="fa-solid fa-location-dot me-1"></i>
                   {store.usuario.info?.ubicacion}
                 </p>
-                <p class="card-text fw-bold" style={{ color: "#00543B" }}>
-                  Carga una foto y completa tu perfil ;)
-                </p>
+                {store.usuario.info?.imagen ? (
+                  ""
+                ) : (
+                  <p class="card-text fw-bold" style={{ color: "#00543B" }}>
+                    Carga una foto y completa tu perfil ;)
+                  </p>
+                )}
               </div>
             </div>
             <div className="text-center">
@@ -348,7 +352,7 @@ export const ProfileCuidador = () => {
                 <div className="col-md-10">
                   <form>
                     <label className="labels mb-2" style={{ fontSize: "16px" }}>
-                      Acerca de {store.usuario.info?.nombre}:
+                      <strong>Acerca de {store.usuario.info?.nombre}:</strong>
                     </label>
                     <textarea
                       type="text"
@@ -380,7 +384,9 @@ export const ProfileCuidador = () => {
                     className="labels mt-4 mb-2"
                     style={{ fontSize: "16px" }}
                   >
-                    Mascotas que ha cuidado {store.usuario.info?.nombre}:
+                    <strong>
+                      Mascotas que ha cuidado {store.usuario.info?.nombre}:
+                    </strong>
                   </label>
                   <div classNameName="App">
                     <div className="file">
@@ -390,9 +396,7 @@ export const ProfileCuidador = () => {
                             className="fa-solid fa-plus d-flex justify-content-center"
                             id="plusicon"
                           ></i>
-                          <p id="labelarchivo">
-                            Carga fotos de las mascotas que has cuidado
-                          </p>
+                          <p id="labelarchivo">Fotos de mascotas cuidadas</p>
                         </label>
                         <input type="file" id="archivo" />
                       </form>
@@ -405,7 +409,7 @@ export const ProfileCuidador = () => {
                       className="labels mt-4 mb-2"
                       style={{ fontSize: "16px" }}
                     >
-                      Reseñas:
+                      <strong>Reseñas:</strong>
                     </label>
                     <textarea
                       type="text"

@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
+import { ModalContactarLogin } from "../component/modalContactarLogin";
+import { ModalTerminosYCondiciones } from "../component/modalTerminosYCondiciones";
 
 import { Context } from "../store/appContext";
 
@@ -74,9 +76,6 @@ export const ProfileCuidadorPublic = () => {
                     <i class="fa-solid fa-location-dot me-1"></i>
                     {cuidador.ubicacion}
                   </p>
-                  <p class="card-text fw-bold" style={{ color: "#00543B" }}>
-                    Carga una foto y completa tu perfil ;)
-                  </p>
                 </div>
               </div>
               <div className="text-center">
@@ -93,158 +92,13 @@ export const ProfileCuidadorPublic = () => {
                     border: "transparent",
                   }}
                 >
-                  Completar perfil
+                  Contactar al cuidador
                 </button>
-
-                <div
-                  class="modal fade"
-                  id="exampleModal"
-                  tabindex="-1"
-                  aria-labelledby="exampleModalLabel"
-                  aria-hidden="true"
-                >
-                  <div class="modal-dialog">
-                    <div class="modal-content ">
-                      <div class="modal-header">
-                        <h5
-                          class="modal-title"
-                          id="exampleModalLabel"
-                          style={{ marginLeft: "145px" }}
-                        >
-                          Completa tu perfil
-                        </h5>
-                        <button
-                          type="button"
-                          class="btn-close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        ></button>
-                      </div>
-
-                      <div class="modal-body">
-                        <div class="row">
-                          <div class="col-4">
-                            <label
-                              for="validationDefault04"
-                              class="col-form-label mb-2"
-                            >
-                              ¿Qué cuidas?
-                            </label>
-                            <select
-                              style={{ fontSize: "15px" }}
-                              className="form-select"
-                              id="validationDefault04"
-                              required
-                              value={cuidador.tipo_mascota}
-                            >
-                              <option selected disabled value="">
-                                Seleccionar...
-                              </option>
-                              <option value="Perro">Perro</option>
-                              <option value="Gato">Gato</option>
-                            </select>
-                          </div>
-                          <div class="col-4 mb-2">
-                            <label
-                              for="validationDefault04"
-                              class="col-form-label mb-2"
-                            >
-                              ¿Cuántas?
-                            </label>
-                            <select
-                              style={{ fontSize: "15px" }}
-                              className="form-select"
-                              id="validationDefault04"
-                              required
-                              value={cuidador.cantidad_mascota}
-                            >
-                              <option selected disabled value="">
-                                Seleccionar...
-                              </option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                            </select>
-                          </div>
-                          <div class="col-4 mb-2">
-                            <label
-                              htmlFor="validationDefault04"
-                              className="col-form-label mb-2"
-                              style={{ fontSize: "13px" }}
-                            >
-                              Tarifa por dia:
-                            </label>
-
-                            <div class="input-group mb-3">
-                              <input
-                                type="text"
-                                class="form-control"
-                                placeholder="Tarifa en $"
-                                aria-label="Username"
-                                value={cuidador.precio_dia}
-                              />
-                            </div>
-                          </div>
-                          <div
-                            className="col-10 mt-2"
-                            style={{ marginLeft: "35px" }}
-                          >
-                            <label
-                              for="validationDefault04"
-                              className="col-form-label mb-2"
-                            >
-                              Ubicación:
-                            </label>
-                            <select
-                              className="form-select"
-                              id="validationDefault04"
-                              required
-                              value={cuidador.ubicacion}
-                            >
-                              <option selected disabled value="">
-                                Seleccionar...
-                              </option>
-                              <option value="Caracas">Caracas</option>
-                              <option value="Maturín">Maturín</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="mb-3 mt-5" style={{ marginLeft: "142px" }}>
-                          <div className="col-md-10">
-                            <div classNameName="App">
-                              <div className="file">
-                                <label htmlFor="archivo" id="archivolabel">
-                                  <i
-                                    className="fa-solid fa-plus d-flex justify-content-center"
-                                    id="plusicon"
-                                  ></i>
-                                  <p id="labelarchivo">Carga tu foto aquí</p>
-                                </label>
-                                <input type="file" id="archivo" />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button
-                          type="button"
-                          class="btn btn-primary"
-                          style={{
-                            background: "#20C997",
-                            color: "white",
-                            borderRadius: "16px",
-                            border: "transparent",
-                            marginRight: "155px",
-                          }}
-                        >
-                          Actualiza tus datos
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                {store.usuario.token ? (
+                  <ModalTerminosYCondiciones />
+                ) : (
+                  <ModalContactarLogin />
+                )}
               </div>
             </div>
             <div className="col-md-6 border-right">
@@ -270,7 +124,7 @@ export const ProfileCuidadorPublic = () => {
                         className="labels mb-2"
                         style={{ fontSize: "16px" }}
                       >
-                        Acerca de {cuidador.nombre}:
+                        <strong>Acerca de {cuidador.nombre}:</strong>
                       </label>
                       <textarea
                         type="text"
@@ -279,18 +133,6 @@ export const ProfileCuidadorPublic = () => {
                         rows="5"
                         value={cuidador.descripcion}
                       ></textarea>
-                      <button
-                        className="btn btn-primary mt-2"
-                        type="button"
-                        style={{
-                          background: "#20C997",
-                          color: "white",
-                          borderRadius: "8px",
-                          border: "transparent",
-                        }}
-                      >
-                        Actualizar
-                      </button>
                     </form>
                   </div>
                   <div className="col-md-10">
@@ -298,7 +140,9 @@ export const ProfileCuidadorPublic = () => {
                       className="labels mt-4 mb-2"
                       style={{ fontSize: "16px" }}
                     >
-                      Mascotas que ha cuidado {cuidador.nombre}:
+                      <strong>
+                        Mascotas que ha cuidado {cuidador.nombre}:
+                      </strong>
                     </label>
                     <div classNameName="App">
                       <div className="file">
@@ -308,9 +152,7 @@ export const ProfileCuidadorPublic = () => {
                               className="fa-solid fa-plus d-flex justify-content-center"
                               id="plusicon"
                             ></i>
-                            <p id="labelarchivo">
-                              Carga fotos de las mascotas que has cuidado
-                            </p>
+                            <p id="labelarchivo">Fotos de mascotas cuidadas</p>
                           </label>
                           <input type="file" id="archivo" />
                         </form>
@@ -323,7 +165,7 @@ export const ProfileCuidadorPublic = () => {
                         className="labels mt-4 mb-2"
                         style={{ fontSize: "16px" }}
                       >
-                        Reseñas:
+                        <strong>Reseñas:</strong>
                       </label>
                       <textarea
                         type="text"

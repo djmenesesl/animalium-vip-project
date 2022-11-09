@@ -79,20 +79,24 @@ export const ProfileClienteEdit = () => {
   console.log(store.usuario.info?.nombre);
   return (
     <div className="container-fluid px-0">
-      <div
-        className="alert alert-dismissible fade show ps-5"
-        role="alert"
-        style={{ background: "#B0FAE4", color: "#00543B", fontSize: "16px" }}
-      >
-        <i class="fa-solid fa-circle-info bg-transparent me-1"></i>Completa tu
-        perfil para empezar a disfrutar del servicio Animalium
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"
-        ></button>
-      </div>
+      {store.usuario.info?.descripcion ? (
+        ""
+      ) : (
+        <div
+          className="alert alert-dismissible fade show ps-5"
+          role="alert"
+          style={{ background: "#B0FAE4", color: "#00543B", fontSize: "16px" }}
+        >
+          <i class="fa-solid fa-circle-info bg-transparent me-1"></i>Completa tu
+          perfil para empezar a cuidar mascotas
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          ></button>
+        </div>
+      )}
 
       <div className="container rounded bg-white mt-5 mb-5 d-flex justify-content-center">
         <div className="row ms-5">
@@ -125,9 +129,13 @@ export const ProfileClienteEdit = () => {
                   <i class="fa-solid fa-location-dot me-1"></i>
                   {store.usuario.info?.ubicacion}
                 </p>
-                <p class="card-text fw-bold" style={{ color: "#00543B" }}>
-                  Carga una foto y completa tu perfil ;)
-                </p>
+                {store.usuario.info?.imagen ? (
+                  ""
+                ) : (
+                  <p class="card-text fw-bold" style={{ color: "#00543B" }}>
+                    Carga una foto y completa tu perfil ;)
+                  </p>
+                )}
               </div>
             </div>
             <div className="text-center">
@@ -312,7 +320,7 @@ export const ProfileClienteEdit = () => {
                 <div className="col-md-10">
                   <form>
                     <label className="labels mb-2" style={{ fontSize: "16px" }}>
-                      Acerca de {store.usuario.info?.nombre}:
+                      <strong>Acerca de {store.usuario.info?.nombre}:</strong>
                     </label>
                     <textarea
                       type="text"
@@ -344,7 +352,7 @@ export const ProfileClienteEdit = () => {
                     className="labels mt-4 mb-2"
                     style={{ fontSize: "16px" }}
                   >
-                    Mascotas de {store.usuario.info?.nombre}:
+                    <strong>Mascotas de {store.usuario.info?.nombre}:</strong>
                   </label>
                   <div classNameName="App">
                     <div className="file">
@@ -367,7 +375,7 @@ export const ProfileClienteEdit = () => {
                       className="labels mt-4 mb-2"
                       style={{ fontSize: "16px" }}
                     >
-                      Reseñas:
+                      <strong>Reseñas:</strong>
                     </label>
                     <textarea
                       type="text"
