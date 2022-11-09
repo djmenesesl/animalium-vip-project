@@ -1,41 +1,18 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
-import { Container, FormGroup, Input } from "reactstrap";
 import { Context } from "../store/appContext";
+import { Link, useNavigate } from "react-router-dom";
 
-export const ProfileCuidador = () => {
+export const ProfileClienteEditViejo = () => {
   const { store, actions } = useContext(Context);
   const [ubicacion, setUbicacion] = useState("");
   const [cantidadMascota, setCantidadMascota] = useState("");
   const [tipoMascota, setTipoMascota] = useState("");
-  const [tarifa, setTarifa] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [imagen, setImagen] = useState("");
-  const [loading, setLoading] = useState(false);
 
-  const uploadImage = async (e) => {
-    const files = e.target.files;
-    const data = new FormData();
-    data.append("file", files[0]);
-    data.append("upload_preset", "images");
-    setLoading(true);
-    const res = await fetch(
-      "https://api.cloudinary.com/v1_1/mlpez/image/upload",
-      {
-        method: "POST",
-        body: data,
-      }
-    );
-    const file = await res.json();
-    //console.log(res)
-    setImagen(file.secure_url);
-    console.log(file.secure_url);
-    setLoading(false);
-  };
-
-  async function setProfileCuidador() {
+  async function setProfileCliente() {
     try {
-      const response = await fetch(process.env.BACKEND_URL + `/api/cuidador`, {
+      const response = await fetch(process.env.BACKEND_URL + `/api/cliente`, {
         method: "GET",
         headers: {
           "Content-Type": "Application/json",
@@ -54,30 +31,28 @@ export const ProfileCuidador = () => {
     }
   }
 
-  async function handleProfileInfoCuidador() {
+  async function handleProfileInfo() {
     try {
-      const userInfo = await setProfileCuidador();
+      const userInfo = await setProfileCliente();
       console.log(userInfo);
       userInfo.descripcion ? setDescripcion(userInfo.descripcion) : "";
       userInfo.ubicacion && setUbicacion(userInfo.ubicacion);
       userInfo.cantidad_mascota &&
         setCantidadMascota(userInfo.cantidad_mascota);
       userInfo.tipo_mascota && setTipoMascota(userInfo.tipo_mascota);
-      userInfo.precio_dia && setTarifa(userInfo.precio_dia);
-      userInfo.imagen && setImagen(userInfo.imagen);
     } catch (error) {
       console.log(error);
     }
   }
 
   useEffect(() => {
-    handleProfileInfoCuidador();
+    handleProfileInfo();
   }, []);
 
   async function handleSubmit(event) {
     event.preventDefault();
     try {
-      const response = await fetch(process.env.BACKEND_URL + "/api/cuidador", {
+      const response = await fetch(process.env.BACKEND_URL + "/api/cliente", {
         method: "PATCH",
         headers: {
           "Content-Type": "Application/json",
@@ -89,7 +64,6 @@ export const ProfileCuidador = () => {
           cantidadMascota: cantidadMascota,
           tipoMascota: tipoMascota,
           descripcion: descripcion,
-          tarifa: tarifa,
         }),
       });
       if (!response.ok) {
@@ -97,12 +71,12 @@ export const ProfileCuidador = () => {
         return;
       }
       alert("Perfil actualizado");
-      handleProfileInfoCuidador();
+      handleProfileInfo();
     } catch (error) {
       console.log(error);
     }
   }
-
+  console.log(store.usuario.info?.nombre);
   return (
     <div className="container-fluid px-0">
       {store.usuario.info?.descripcion ? (
@@ -132,20 +106,11 @@ export const ProfileCuidador = () => {
             style={{ height: "580px" }}
           >
             <div className="d-flex flex-column align-items-center text-center p-3 py-4">
-              {store.usuario.info?.imagen ? (
-                <img
-                  className="rounded-circle mt-1"
-                  style={{ width: "150px", height: "150px" }}
-                  src={store.usuario.info?.imagen}
-                ></img>
-              ) : (
-                <img
-                  className="rounded-circle mt-1"
-                  style={{ width: "150px", height: "150px" }}
-                  src="https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667244121/Animalium/Avatar-profile_n9gilo.png"
-                ></img>
-              )}
-
+              <img
+                className="rounded-circle mt-1"
+                width="150px"
+                src="https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667244121/Animalium/Avatar-profile_n9gilo.png"
+              ></img>
               <div class="card-body text-start">
                 <p class="card-text fw-bold">
                   <i class="fa-solid fa-shield-halved"></i> Identidad verificada
@@ -155,12 +120,10 @@ export const ProfileCuidador = () => {
                 </p>
                 <p class="card-text fw-bold">
                   <i class="fa-solid fa-paw me-1"></i>
-                  {store.usuario.info?.nombre} cuida a:
+                  {store.usuario.info?.nombre} tiene:
                 </p>
-                <p class="card-text">{store.usuario.info?.tipo_mascota}</p>
-                <p class="card-text fw-bold">
-                  <i class="fa-solid fa-coins me-1"></i>Tarifa por día:{" "}
-                  {store.usuario.info?.precio_dia}$
+                <p class="card-text">
+                  {`${store.usuario.info?.cantidad_mascota} ${store.usuario.info?.tipo_mascota}(s)`}
                 </p>
                 <p class="card-text fw-bold">
                   <i class="fa-solid fa-location-dot me-1"></i>
@@ -191,7 +154,6 @@ export const ProfileCuidador = () => {
               >
                 Completar perfil
               </button>
-
               <div
                 class="modal fade"
                 id="exampleModal"
@@ -201,21 +163,11 @@ export const ProfileCuidador = () => {
               >
                 <div class="modal-dialog">
                   <div class="modal-content ">
-                    <div
-                      class="modal-header"
-                      style={{
-                        backgroundColor: "#20C997",
-                        color: "white",
-                      }}
-                    >
+                    <div class="modal-header">
                       <h5
                         class="modal-title"
                         id="exampleModalLabel"
-                        style={{
-                          marginLeft: "145px",
-                          backgroundColor: "#20C997",
-                          color: "white",
-                        }}
+                        style={{ marginLeft: "145px" }}
                       >
                         Completa tu perfil
                       </h5>
@@ -234,7 +186,7 @@ export const ProfileCuidador = () => {
                             for="validationDefault04"
                             class="col-form-label mb-2"
                           >
-                            ¿Qué cuidas?
+                            ¿Qué mascota tienes?
                           </label>
                           <select
                             style={{ fontSize: "15px" }}
@@ -253,7 +205,7 @@ export const ProfileCuidador = () => {
                             <option value="Gato">Gato</option>
                           </select>
                         </div>
-                        <div class="col-4 mb-2">
+                        <div class="col-4">
                           <label
                             for="validationDefault04"
                             class="col-form-label mb-2"
@@ -279,35 +231,10 @@ export const ProfileCuidador = () => {
                             <option value="4">4</option>
                           </select>
                         </div>
-                        <div class="col-4 mb-2">
-                          <label
-                            htmlFor="validationDefault04"
-                            className="col-form-label mb-2"
-                            style={{ fontSize: "13px" }}
-                          >
-                            Tarifa por dia:
-                          </label>
-
-                          <div class="input-group mb-3">
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Tarifa en $"
-                              aria-label="Username"
-                              value={tarifa}
-                              onChange={(event) => {
-                                setTarifa(event.target.value);
-                              }}
-                            />
-                          </div>
-                        </div>
-                        <div
-                          className="col-10 mt-2"
-                          style={{ marginLeft: "35px" }}
-                        >
+                        <div class="col-4">
                           <label
                             for="validationDefault04"
-                            className="col-form-label mb-2"
+                            class="col-form-label mb-2"
                           >
                             Ubicación:
                           </label>
@@ -328,40 +255,25 @@ export const ProfileCuidador = () => {
                           </select>
                         </div>
                       </div>
-                      <div class="mb-3 mt-5">
-                        <div className="col-md-12">
-                          <div className="App">
-                            <div>
-                              <Container style={{ textAlign: "center" }}>
-                                <h6>Sube tu foto de perfil</h6>
-                                <FormGroup>
-                                  <Input
-                                    type="file"
-                                    name="file"
-                                    id="archivo"
-                                    placeholder="Sube tu imagen aqui"
-                                    onChange={uploadImage}
-                                  />
-                                  {loading ? (
-                                    <h6
-                                      style={{
-                                        color: "#20C997",
-                                        marginTop: "20px",
-                                      }}
-                                    >
-                                      Cargando imagen...
-                                    </h6>
-                                  ) : (
-                                    <img
-                                      src={imagen}
-                                      style={{
-                                        width: "200px",
-                                        marginTop: "20px",
-                                      }}
-                                    />
-                                  )}
-                                </FormGroup>
-                              </Container>
+                      <div class="mb-3 mt-5" style={{ marginLeft: "142px" }}>
+                        <div className="col-md-10">
+                          <div classNameName="App">
+                            <div className="file">
+                              <label htmlFor="archivo" id="archivolabel">
+                                <i
+                                  className="fa-solid fa-plus d-flex justify-content-center"
+                                  id="plusicon"
+                                ></i>
+                                <p id="labelarchivo">Carga tu foto aquí</p>
+                              </label>
+                              <input
+                                type="file"
+                                id="archivo"
+                                value={imagen}
+                                onChange={(event) => {
+                                  setImagen(event.target.value);
+                                }}
+                              />
                             </div>
                           </div>
                         </div>
@@ -397,7 +309,7 @@ export const ProfileCuidador = () => {
               </div>
               <div className="d-flex justify-content-between align-items-center mb-3">
                 <h6 className="text-right">
-                  Es cuidador en animalium desde 2022{" "}
+                  Sus mascotas son parte de animalium desde 2022{" "}
                   <i
                     class="fa-solid fa-paw me-1"
                     style={{ color: "#28FCBD" }}
@@ -440,9 +352,7 @@ export const ProfileCuidador = () => {
                     className="labels mt-4 mb-2"
                     style={{ fontSize: "16px" }}
                   >
-                    <strong>
-                      Mascotas que ha cuidado {store.usuario.info?.nombre}:
-                    </strong>
+                    <strong>Mascotas de {store.usuario.info?.nombre}:</strong>
                   </label>
                   <div classNameName="App">
                     <div className="file">
@@ -452,7 +362,7 @@ export const ProfileCuidador = () => {
                             className="fa-solid fa-plus d-flex justify-content-center"
                             id="plusicon"
                           ></i>
-                          <p id="labelarchivo">Fotos de mascotas cuidadas</p>
+                          <p id="labelarchivo">Carga fotos de tus mascotas</p>
                         </label>
                         <input type="file" id="archivo" />
                       </form>
@@ -470,7 +380,7 @@ export const ProfileCuidador = () => {
                     <textarea
                       type="text"
                       className="form-control"
-                      placeholder="En esta sección, se mostrarán las reseñas que dejarán tus clientes!"
+                      placeholder="En esta sección, se mostrarán las reseñas que dejarán los cuidadores!"
                       value=""
                     ></textarea>
                   </form>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link, useNavigate } from "react-router-dom";
+import "../../styles/home.css";
+import { Container, FormGroup, Input } from "reactstrap";
 
 export const ProfileClienteEdit = () => {
   const { store, actions } = useContext(Context);
@@ -9,6 +11,27 @@ export const ProfileClienteEdit = () => {
   const [tipoMascota, setTipoMascota] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [imagen, setImagen] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const uploadImage = async (e) => {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "images");
+    setLoading(true);
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/mlpez/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+    const file = await res.json();
+    //console.log(res)
+    setImagen(file.secure_url);
+    console.log(file.secure_url);
+    setLoading(false);
+  };
 
   async function setProfileCliente() {
     try {
@@ -40,6 +63,7 @@ export const ProfileClienteEdit = () => {
       userInfo.cantidad_mascota &&
         setCantidadMascota(userInfo.cantidad_mascota);
       userInfo.tipo_mascota && setTipoMascota(userInfo.tipo_mascota);
+      userInfo.imagen && setImagen(userInfo.imagen);
     } catch (error) {
       console.log(error);
     }
@@ -106,11 +130,19 @@ export const ProfileClienteEdit = () => {
             style={{ height: "580px" }}
           >
             <div className="d-flex flex-column align-items-center text-center p-3 py-4">
-              <img
-                className="rounded-circle mt-1"
-                width="150px"
-                src="https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667244121/Animalium/Avatar-profile_n9gilo.png"
-              ></img>
+              {store.usuario.info?.imagen ? (
+                <img
+                  className="rounded-circle mt-1"
+                  style={{ width: "150px", height: "150px" }}
+                  src={store.usuario.info?.imagen}
+                ></img>
+              ) : (
+                <img
+                  className="rounded-circle mt-1"
+                  style={{ width: "150px", height: "150px" }}
+                  src="https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667244121/Animalium/Avatar-profile_n9gilo.png"
+                ></img>
+              )}
               <div class="card-body text-start">
                 <p class="card-text fw-bold">
                   <i class="fa-solid fa-shield-halved"></i> Identidad verificada
@@ -163,11 +195,21 @@ export const ProfileClienteEdit = () => {
               >
                 <div class="modal-dialog">
                   <div class="modal-content ">
-                    <div class="modal-header">
+                    <div
+                      class="modal-header"
+                      style={{
+                        backgroundColor: "#20C997",
+                        color: "white",
+                      }}
+                    >
                       <h5
                         class="modal-title"
                         id="exampleModalLabel"
-                        style={{ marginLeft: "145px" }}
+                        style={{
+                          marginLeft: "145px",
+                          backgroundColor: "#20C997",
+                          color: "white",
+                        }}
                       >
                         Completa tu perfil
                       </h5>
@@ -255,25 +297,40 @@ export const ProfileClienteEdit = () => {
                           </select>
                         </div>
                       </div>
-                      <div class="mb-3 mt-5" style={{ marginLeft: "142px" }}>
-                        <div className="col-md-10">
-                          <div classNameName="App">
-                            <div className="file">
-                              <label htmlFor="archivo" id="archivolabel">
-                                <i
-                                  className="fa-solid fa-plus d-flex justify-content-center"
-                                  id="plusicon"
-                                ></i>
-                                <p id="labelarchivo">Carga tu foto aquí</p>
-                              </label>
-                              <input
-                                type="file"
-                                id="archivo"
-                                value={imagen}
-                                onChange={(event) => {
-                                  setImagen(event.target.value);
-                                }}
-                              />
+                      <div class="mb-3 mt-5">
+                        <div className="col-md-12">
+                          <div className="App">
+                            <div>
+                              <Container style={{ textAlign: "center" }}>
+                                <h6>Sube tu foto de perfil</h6>
+                                <FormGroup>
+                                  <Input
+                                    type="file"
+                                    name="file"
+                                    id="archivo"
+                                    placeholder="Sube tu imagen aqui"
+                                    onChange={uploadImage}
+                                  />
+                                  {loading ? (
+                                    <h6
+                                      style={{
+                                        color: "#20C997",
+                                        marginTop: "20px",
+                                      }}
+                                    >
+                                      Cargando imagen...
+                                    </h6>
+                                  ) : (
+                                    <img
+                                      src={imagen}
+                                      style={{
+                                        width: "200px",
+                                        marginTop: "20px",
+                                      }}
+                                    />
+                                  )}
+                                </FormGroup>
+                              </Container>
                             </div>
                           </div>
                         </div>

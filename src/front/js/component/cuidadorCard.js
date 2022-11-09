@@ -6,7 +6,7 @@ export const CuidadorCard = ({ item }) => {
   return (
     <div id="cardcuidador" className="card bg-transparent">
       <img
-        src=""
+        src={imagen}
         id="imgcuidador"
         className="card-img-top bg-transparent"
         alt="..."

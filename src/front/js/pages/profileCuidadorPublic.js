@@ -70,7 +70,7 @@ export const ProfileCuidadorPublic = () => {
                   <p class="card-text">{cuidador.tipo_mascota}</p>
                   <p class="card-text fw-bold">
                     <i class="fa-solid fa-coins me-1"></i>Tarifa por día:{" "}
-                    {cuidador.precio_dia}
+                    {cuidador.precio_dia}$
                   </p>
                   <p class="card-text fw-bold">
                     <i class="fa-solid fa-location-dot me-1"></i>
