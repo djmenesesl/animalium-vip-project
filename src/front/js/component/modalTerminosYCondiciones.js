@@ -49,9 +49,9 @@ export const ModalTerminosYCondiciones = () => {
               </div>
               <div class="row mt-4" style={{ fontSize: "16px" }}>
                 <div class="col">
-                  <p className="terminos-modal text-center mt-3 ">
+                  <p className="terminos-modal text-center mt-3">
                     <input
-                      className="input-terminos form-check-input me-2"
+                      class="input-terminos form-check-input me-2"
                       type="checkbox"
                       value=""
                       id="flexCheckDefault"
@@ -72,27 +72,15 @@ export const ModalTerminosYCondiciones = () => {
                   </p>
                 </div>
               </div>
-              <div class="mb-3 mt-5" style={{ marginLeft: "142px" }}>
+              <div class="mb-3 mt-5">
                 <button
                   type="button"
-                  class="btn btn-primary"
+                  class="btn-contactar btn btn-primary"
                   data-bs-toggle="modal"
-                  data-bs-target="#exampleModalCuidador"
-                  data-bs-whatever="@mdo"
-                  /*onClick={() => {
-                    setCardContacto(true);
-                  }}*/
-                  style={{
-                    background: "#20C997",
-                    color: "white",
-                    borderRadius: "16px",
-                    border: "transparent",
-                    marginRight: "150px",
-                  }}
+                  data-bs-target="#exampleModal"
                 >
                   Continuar
                 </button>
-                {/*{cardContacto && <ModalContactoCuidador />}*/}
                 <ModalContactoCuidador />
               </div>
             </div>

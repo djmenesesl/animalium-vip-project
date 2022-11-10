@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ModalContactarLogin } from "../component/modalContactarLogin";
+import { ModalContactoCuidador } from "../component/modalContactoCuidador";
 import { ModalTerminosYCondiciones } from "../component/modalTerminosYCondiciones";
 
 import { Context } from "../store/appContext";
@@ -8,6 +9,7 @@ import { Context } from "../store/appContext";
 export const ProfileCuidadorPublic = () => {
   const { store, actions } = useContext(Context);
   const [cuidador, setCuidador] = useState();
+  const [botonActivo, setBotonActivo] = useState(false);
   const params = useParams();
   console.log(params);
 
@@ -84,6 +86,44 @@ export const ProfileCuidadorPublic = () => {
                     <i class="fa-solid fa-location-dot me-1"></i>
                     {cuidador.ubicacion}
                   </p>
+
+                  <p class="card-text fw-bold">
+                    <input
+                      class="input-terminos form-check-input me-2"
+                      type="checkbox"
+                      value={botonActivo}
+                      onChange={(event) => {
+                        setBotonActivo(event.target.value);
+                      }}
+                      id="flexCheckDefault"
+                    />
+                    Acepto los
+                    <Link
+                      target={"_blank"}
+                      to=""
+                      style={{
+                        color: "#20C997",
+                        marginLeft: "5px",
+                        textDecoration: "underline",
+                      }}
+                    >
+                      Términos y
+                    </Link>{" "}
+                  </p>
+                  <p class="card-text fw-bold ms-3">
+                    <Link
+                      target={"_blank"}
+                      to=""
+                      style={{
+                        color: "#20C997",
+                        marginLeft: "5px",
+                        textDecoration: "underline",
+                      }}
+                    >
+                      Condiciones
+                    </Link>{" "}
+                    del servicio
+                  </p>
                 </div>
               </div>
               <div className="text-center">
@@ -93,6 +133,7 @@ export const ProfileCuidadorPublic = () => {
                   data-bs-toggle="modal"
                   data-bs-target="#exampleModal"
                   data-bs-whatever="@mdo"
+                  disabled={!botonActivo}
                   style={{
                     background: "#20C997",
                     color: "white",
@@ -103,7 +144,7 @@ export const ProfileCuidadorPublic = () => {
                   Contactar al cuidador
                 </button>
                 {store.usuario.token ? (
-                  <ModalTerminosYCondiciones />
+                  <ModalContactoCuidador />
                 ) : (
                   <ModalContactarLogin />
                 )}

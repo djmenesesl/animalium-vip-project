@@ -135,7 +135,11 @@ export const ProfileCuidador = () => {
               {store.usuario.info?.imagen ? (
                 <img
                   className="rounded-circle mt-1"
-                  style={{ width: "150px", height: "150px" }}
+                  style={{
+                    width: "150px",
+                    height: "150px",
+                    objectFit: "cover",
+                  }}
                   src={store.usuario.info?.imagen}
                 ></img>
               ) : (

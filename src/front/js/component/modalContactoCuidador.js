@@ -8,11 +8,11 @@ export const ModalContactoCuidador = () => {
   return (
     <div className="container-fluid px-0">
       <div
-        class="modal fade show"
-        id="exampleModalCuidador"
+        class="modal fade"
+        id="exampleModal"
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
-        aria-hidden="false"
+        aria-hidden="true"
       >
         <div class="modal-dialog">
           <div class="modal-content">
@@ -50,20 +50,30 @@ export const ModalContactoCuidador = () => {
               <div class="row" style={{ fontSize: "16px" }}>
                 <div class="col">
                   <p className="terminos-modal text-center mt-3 ">
-                    <i class="modal-icon fa-solid fa-mobile-retro"></i>
+                    <i class="modal-icon fa-solid fa-mobile-retro me-2"></i>
                     04242448421
                   </p>
                   <p className="terminos-modal text-center mt-3 ">
-                    <i class="modal-icon fa-regular fa-envelope"></i>
+                    <i class="modal-icon fa-regular fa-envelope me-2"></i>
                     cesar@gmail.com
                   </p>
                 </div>
               </div>
               <div class="mb-3 mt-5">
-                <button type="button" class="btn-contactar btn btn-primary">
-                  <Link target={"blank"} to="/login" style={{ color: "white" }}>
-                    Continuar
-                  </Link>
+                <button
+                  type="button"
+                  class="btn-contactar btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  data-bs-whatever="@mdo"
+                  style={{
+                    background: "#20C997",
+                    color: "white",
+                    borderRadius: "16px",
+                    border: "transparent",
+                  }}
+                >
+                  Continuar
                 </button>
               </div>
             </div>

@@ -10,6 +10,7 @@ export const CuidadorCard = ({ item }) => {
         id="imgcuidador"
         className="card-img-top bg-transparent"
         alt="..."
+        style={{ objectFit: "cover" }}
       />
 
       <img
