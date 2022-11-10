@@ -84,7 +84,7 @@ export const Navbar = () => {
             </li>
           </ul>
           <div>
-            {store.usuario.token ? (
+            {localStorage.getItem("token") ? (
               <div className="dropdown me-1">
                 <button
                   className="btn dropdown-toggle bg-transparent text-center boton-profile-navbar"

@@ -143,8 +143,8 @@ export const ProfileCuidadorPublic = () => {
                 >
                   Contactar al cuidador
                 </button>
-                {store.usuario.token ? (
-                  <ModalContactoCuidador />
+                {localStorage.getItem("token") ? (
+                  <ModalContactoCuidador cuidador={cuidador} />
                 ) : (
                   <ModalContactarLogin />
                 )}

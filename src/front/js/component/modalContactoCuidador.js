@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link, useNavigate } from "react-router-dom";
 
-export const ModalContactoCuidador = () => {
+export const ModalContactoCuidador = (props) => {
   const { store, actions } = useContext(Context);
 
   return (
@@ -51,11 +51,11 @@ export const ModalContactoCuidador = () => {
                 <div class="col">
                   <p className="terminos-modal text-center mt-3 ">
                     <i class="modal-icon fa-solid fa-mobile-retro me-2"></i>
-                    04242448421
+                    {props.cuidador.telefono}
                   </p>
                   <p className="terminos-modal text-center mt-3 ">
                     <i class="modal-icon fa-regular fa-envelope me-2"></i>
-                    cesar@gmail.com
+                    {props.cuidador.email}
                   </p>
                 </div>
               </div>
