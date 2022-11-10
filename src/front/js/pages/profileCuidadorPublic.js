@@ -50,11 +50,19 @@ export const ProfileCuidadorPublic = () => {
               style={{ height: "580px" }}
             >
               <div className="d-flex flex-column align-items-center text-center p-3 py-4">
-                <img
-                  className="rounded-circle mt-1"
-                  width="150px"
-                  src="https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667244121/Animalium/Avatar-profile_n9gilo.png"
-                ></img>
+                {cuidador.imagen ? (
+                  <img
+                    className="rounded-circle mt-1"
+                    style={{ width: "150px", height: "150px" }}
+                    src={cuidador.imagen}
+                  ></img>
+                ) : (
+                  <img
+                    className="rounded-circle mt-1"
+                    style={{ width: "150px", height: "150px" }}
+                    src="https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667244121/Animalium/Avatar-profile_n9gilo.png"
+                  ></img>
+                )}
                 <div class="card-body text-start">
                   <p class="card-text fw-bold">
                     <i class="fa-solid fa-shield-halved"></i> Identidad

@@ -5,6 +5,7 @@ import { ModalContactoCuidador } from "./modalContactoCuidador";
 
 export const ModalTerminosYCondiciones = () => {
   const { store, actions } = useContext(Context);
+  //const [cardContacto, setCardContacto] = useState(false);
 
   return (
     <div className="container-fluid px-0">
@@ -76,8 +77,11 @@ export const ModalTerminosYCondiciones = () => {
                   type="button"
                   class="btn btn-primary"
                   data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
+                  data-bs-target="#exampleModalCuidador"
                   data-bs-whatever="@mdo"
+                  /*onClick={() => {
+                    setCardContacto(true);
+                  }}*/
                   style={{
                     background: "#20C997",
                     color: "white",
@@ -88,6 +92,7 @@ export const ModalTerminosYCondiciones = () => {
                 >
                   Continuar
                 </button>
+                {/*{cardContacto && <ModalContactoCuidador />}*/}
                 <ModalContactoCuidador />
               </div>
             </div>

@@ -8,11 +8,11 @@ export const ModalContactoCuidador = () => {
   return (
     <div className="container-fluid px-0">
       <div
-        class="modal fade"
-        id="exampleModal"
+        class="modal fade show"
+        id="exampleModalCuidador"
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
+        aria-hidden="false"
       >
         <div class="modal-dialog">
           <div class="modal-content">

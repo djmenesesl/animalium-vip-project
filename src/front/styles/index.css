@@ -517,3 +517,64 @@ body {
 .boton-profile-navbar.dropdown-toggle::after {
   display: none;
 }
+
+/*CSS de los modales*/
+
+/*.btn-contactar {
+  padding: 8px 16px;
+  width: 235px;
+  height: 42px;
+  left: 560px;
+  top: 482px;
+  background: #20c997;
+  border: 1px solid #28fcbd;
+  border-radius: 16px;
+  font-family: "Nunito";
+  font-size: 16px;
+}
+.terminos-modal {
+  font-family: "Nunito";
+  font-size: 16px;
+  display: block;
+  margin-bottom: 0px;
+}
+.input-terminos {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+.modal-title {
+  font-family: "Nunito";
+  font-weight: 500;
+  line-height: 150%;
+}
+.modal-title-1 {
+  font-family: "Josefin Sans";
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 120%;
+}
+.modal-content {
+  width: 607px;
+  height: 407px;
+  border-radius: 10px;
+}
+.checkcircle {
+  color: #20c997;
+  font-size: 57px;
+}
+.modal-icon {
+  color: #00543b;
+  margin-right: 5px;
+}
+#modalimg {
+  width: 75px;
+  height: 75px;
+  margin-right: 30px;
+}
+.modaltittles {
+  margin-bottom: 30px;
+}
+.modal-footer {
+  margin-top: 10px;
+}*/
