@@ -15,7 +15,7 @@ export const ModalContactoCuidador = (props) => {
         aria-hidden="true"
       >
         <div class="modal-dialog">
-          <div class="modal-content">
+          <div class="modal-content-contactar">
             <div class="modal-header">
               <button
                 type="button"
@@ -24,17 +24,16 @@ export const ModalContactoCuidador = (props) => {
                 aria-label="Close"
               ></button>
             </div>
-
             <div class="modal-body">
               <div class="row">
                 <div class="col-12">
-                  <h5 class="modal-title-1" id="exampleModalLabel">
+                  <h5 class="modal-title-1-contactar" id="exampleModalLabel">
                     ¡Informamos al cuidador acerca de tu solicitud!
                   </h5>
                 </div>
               </div>
               <div class="row">
-                <div class="checkcircle">
+                <div class="checkcircle-contactar">
                   <i class="fa-regular fa-circle-check"></i>
                 </div>
                 <div class="col">
@@ -50,7 +49,7 @@ export const ModalContactoCuidador = (props) => {
               <div class="row" style={{ fontSize: "16px" }}>
                 <div class="col">
                   <p className="terminos-modal text-center mt-3 ">
-                    <i class="modal-icon fa-solid fa-mobile-retro me-2"></i>
+                    <i class="modal-icon-contactar fa-solid fa-mobile-retro me-2"></i>
                     {props.cuidador.telefono}
                   </p>
                   <p className="terminos-modal text-center mt-3 ">
@@ -77,7 +76,7 @@ export const ModalContactoCuidador = (props) => {
                 </button>
               </div>
             </div>
-            <div class="modal-footer"></div>
+            <div class="modal-footer-contactar"></div>
           </div>
         </div>
       </div>

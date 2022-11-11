@@ -7,7 +7,12 @@ export const SobreNosotros = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="container-fluid me-5">
+    <div className="container-fluid">
+      <div
+        className="container bg-team mt-3 mb-5"
+        style={{ height: "435.23px", width: "1052.42px" }}
+      ></div>
+
       <div
         className="card mb-5 shadow d-flex justify-content-center container"
         style={{ maxWidth: "1065px", height: "252px", borderRadius: "10px" }}
@@ -23,7 +28,7 @@ export const SobreNosotros = () => {
             }}
           >
             <img
-              src="https://res.cloudinary.com/dz8eyr7mb/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1668138860/Animalium/Gaby-brief_g7hykf.jpg"
+              src="https://res.cloudinary.com/dz8eyr7mb/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1668190823/Gaby-brief_p6g5m4.jpg"
               className="img-fluid rounded-start"
               alt="..."
             />
@@ -36,9 +41,11 @@ export const SobreNosotros = () => {
               <h4 className="card-title fw-bold">
                 Gabriela Tochon | UX Designer
               </h4>
-              <p className="card-text fs-5">
-                Me encantan las mascotas, estoy disponible para darles atención
-                y cuidarlos❤️ Lo más importante es que ellos...
+              <p className="card-text fs-6">
+                Empecé mi camino como diseñadora UX en el 2020 ❤️ .Amo mucho
+                pintar, ir a eventos de pintura, recitales, leer, ver pelis, ir
+                a la playa y hacer cursos para seguir creciendo
+                profesionalmente.
               </p>
               <p className="card-text">
                 <small className="text fs-6">
@@ -64,7 +71,7 @@ export const SobreNosotros = () => {
             }}
           >
             <img
-              src="https://res.cloudinary.com/dz8eyr7mb/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1668138860/Animalium/Gaby-brief_g7hykf.jpg"
+              src="https://res.cloudinary.com/dz8eyr7mb/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1668190831/Danii-brief_z3suvy.jpg"
               className="img-fluid rounded-start"
               alt="..."
             />
@@ -77,9 +84,11 @@ export const SobreNosotros = () => {
               <h4 className="card-title fw-bold">
                 Daniel Meneses | Ing. de Petróleo
               </h4>
-              <p className="card-text fs-5">
-                Me encantan las mascotas, estoy disponible para darles atención
-                y cuidarlos❤️ Lo más importante es que ellos...
+              <p className="card-text fs-6">
+                Como Ing. de Petróleo he trabajado en diferentes empresas en el
+                área de perforación de pozos. Me gusta estudiar, viajar, ver
+                peliculas y series, los deportes, planificar y gestionar
+                proyectos.
               </p>
               <p className="card-text">
                 <small className="text fs-6">
@@ -105,7 +114,7 @@ export const SobreNosotros = () => {
             }}
           >
             <img
-              src="https://res.cloudinary.com/dz8eyr7mb/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1668138860/Animalium/Gaby-brief_g7hykf.jpg"
+              src="https://res.cloudinary.com/dz8eyr7mb/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1668190837/Cesar-brief_o6ntua.jpg"
               className="img-fluid rounded-start"
               alt="..."
             />
@@ -118,9 +127,11 @@ export const SobreNosotros = () => {
               <h4 className="card-title fw-bold">
                 Cesar Gorge | Est. de Informática
               </h4>
-              <p className="card-text fs-5">
-                Me encantan las mascotas, estoy disponible para darles atención
-                y cuidarlos❤️ Lo más importante es que ellos...
+              <p className="card-text fs-6">
+                Estudiante de Ing. informática en la Univ. Alejandro de Humboldt
+                y trabajo en el área de coctelería. Tengo un perro llamado Bolt
+                y una gata Nala. Me encanta la tecnologia y el desarrollo, los
+                animales y los deportes.
               </p>
               <p className="card-text">
                 <small className="text fs-6">
@@ -146,7 +157,7 @@ export const SobreNosotros = () => {
             }}
           >
             <img
-              src="https://res.cloudinary.com/dz8eyr7mb/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1668138860/Animalium/Gaby-brief_g7hykf.jpg"
+              src="https://res.cloudinary.com/dz8eyr7mb/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1668190817/Joan-brief_rjalgq.jpg"
               className="img-fluid rounded-start"
               alt="..."
             />
@@ -159,9 +170,11 @@ export const SobreNosotros = () => {
               <h4 className="card-title fw-bold">
                 Joan Flores | Ing. en Informática
               </h4>
-              <p className="card-text fs-5">
-                Me encantan las mascotas, estoy disponible para darles atención
-                y cuidarlos❤️ Lo más importante es que ellos...
+              <p className="card-text fs-6">
+                Me desempeño en infraestructura y seguridad de datos apuntando a
+                las Tecnologías para la Información y las Comunicaciones (TIC),
+                sistemas informáticos, soporte de software y en la gestión de
+                proyectos.
               </p>
               <p className="card-text">
                 <small className="text fs-6">
@@ -206,55 +219,59 @@ export const SobreNosotros = () => {
         <div id="cardpaso2" className="card bg-transparent">
           <div id="cardbodypaso" className="card-body ">
             <h5 id="h5paso" className="card-title">
-              Ser mayor de edad (+18)
+              HTML, CSS, Javascript,
             </h5>
             <div className="text-center">
               <img
-                src="https://res.cloudinary.com/dz8eyr7mb/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1667879204/Animalium/MayorDeEdad_hmuerl.jpg"
+                src="https://res.cloudinary.com/dz8eyr7mb/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1668192954/image_89_pez19r.jpg"
                 id="imgpaso"
-                style={{ height: "57px", width: "62px" }}
+                style={{
+                  height: "170px",
+                  width: "270px",
+                  objectFit: "cover",
+                  paddingRight: "33px",
+                }}
                 alt=""
               />
             </div>
-            <p id="ppaso" className="card-text">
-              Debes de tener 18 años cumplidos para poder ser cuidador
-              Animalium.
-            </p>
           </div>
         </div>
         <div id="cardpaso2" className="card bg-transparent">
           <div id="cardbodypaso" className="card-body">
             <h5 id="h5paso" className="card-title">
-              Información de Contacto
+              Bootstrap
             </h5>
             <div className="text-center">
               <img
-                src="https://res.cloudinary.com/dz8eyr7mb/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1667879288/Animalium/Contacto_1_u6t8fi.jpg"
+                src="https://res.cloudinary.com/dz8eyr7mb/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1668193044/image_90_j0bla6.jpg"
                 id="imgpaso"
                 alt=""
+                style={{
+                  height: "126px",
+                  width: "158px",
+                  objectFit: "cover",
+                }}
               />
             </div>
-            <p id="ppaso" className="card-text">
-              Necesitas un celular activo con WhatsApp y un correo electrónico
-              donde nosotros y el cliente nos podamos comunicar contigo.
-            </p>
           </div>
         </div>
         <div id="cardpaso2" className="card bg-transparent">
           <div id="cardbodypaso" className="card-body">
             <h5 id="h5paso" className="card-title">
-              ¡Foto de Perfil!
+              React
             </h5>
             <div className="text-center">
               <img
-                src="https://res.cloudinary.com/dz8eyr7mb/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1667879317/Animalium/Foto-perfil_mjbmbr.jpg"
+                src="https://res.cloudinary.com/dz8eyr7mb/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1668193094/image_91_rwcpgv.jpg"
                 id="imgpaso"
                 alt=""
+                style={{
+                  height: "143px",
+                  width: "218px",
+                  objectFit: "cover",
+                }}
               />
             </div>
-            <p id="ppaso" className="card-text">
-              Foto tipo carnet donde se pueda apreciar claramente tu rostro.
-            </p>
           </div>
         </div>
       </div>
@@ -262,54 +279,58 @@ export const SobreNosotros = () => {
         <div id="cardpaso2" className="card bg-transparent">
           <div id="cardbodypaso" className="card-body ">
             <h5 id="h5paso" className="card-title">
-              Comprobante de dirección
+              Flask
             </h5>
             <div className="text-center">
               <img
-                src="https://res.cloudinary.com/dz8eyr7mb/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1667879487/Animalium/Locacion_jw7aro.jpg"
+                src="https://res.cloudinary.com/dz8eyr7mb/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1668193173/image_92_md9ocx.jpg"
                 id="imgpaso"
                 alt=""
+                style={{
+                  height: "128px",
+                  width: "229px",
+                  objectFit: "cover",
+                }}
               />
             </div>
-            <p id="ppaso" className="card-text">
-              Necesitas adjuntar un comprobante de servicio de electricidad,
-              agua, telefono, etc.
-            </p>
           </div>
         </div>
         <div id="cardpaso2" className="card bg-transparent">
           <div id="cardbodypaso" className="card-body">
             <h5 id="h5paso" className="card-title">
-              Comprobante de identidad
+              Python
             </h5>
             <div className="text-center">
               <img
-                src="https://res.cloudinary.com/dz8eyr7mb/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1667879447/Animalium/ID_yiu6ez.jpg"
+                src="https://res.cloudinary.com/dz8eyr7mb/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1668193202/image_93_alywps.jpg"
                 id="imgpaso"
-                style={{ height: "42px", width: "65px" }}
+                style={{
+                  height: "157px",
+                  width: "143px",
+                  objectFit: "cover",
+                }}
                 alt=""
               />
             </div>
-            <p id="ppaso" className="card-text">
-              Puede ser tu cedula de identidad o pasaporte.
-            </p>
           </div>
         </div>
         <div id="cardpaso2" className="card bg-transparent">
           <div id="cardbodypaso" className="card-body">
             <h5 id="h5paso" className="card-title">
-              Fotos del espacio donde recibiras a la mascota
+              PostgreSQL
             </h5>
             <div className="text-center">
               <img
-                src="https://res.cloudinary.com/dz8eyr7mb/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1667879390/Animalium/Fotos_jowxi4.jpg"
+                src="https://res.cloudinary.com/dz8eyr7mb/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1668193231/image_94_nm7jic.jpg"
                 id="imgpaso"
                 alt=""
+                style={{
+                  height: "145px",
+                  width: "141px",
+                  objectFit: "cover",
+                }}
               />
             </div>
-            <p id="ppaso" className="card-text">
-              Saca fotos de tu espacio para que los clientes puedan observarlo.
-            </p>
           </div>
         </div>
       </div>

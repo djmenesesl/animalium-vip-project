@@ -146,6 +146,13 @@
   background-size: cover;
 }
 
+.bg-team {
+  background-image: url(https://res.cloudinary.com/dz8eyr7mb/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1668190378/about-us_z76q01.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
 /*Abajo viene css hecho por Cesar 30/10/2022*/
 
 /*Seccion Carousel Resenas Clientes*/
@@ -542,61 +549,28 @@ body {
 
 /*CSS de los modales*/
 
-/*.btn-contactar {
-  padding: 8px 16px;
-  width: 235px;
-  height: 42px;
-  left: 560px;
-  top: 482px;
-  background: #20c997;
-  border: 1px solid #28fcbd;
-  border-radius: 16px;
-  font-family: "Nunito";
-  font-size: 16px;
-}
-.terminos-modal {
-  font-family: "Nunito";
-  font-size: 16px;
-  display: block;
-  margin-bottom: 0px;
-}
-.input-terminos {
-  width: 16px;
-  height: 16px;
-  margin-right: 8px;
-}
-.modal-title {
-  font-family: "Nunito";
-  font-weight: 500;
-  line-height: 150%;
-}
-.modal-title-1 {
+.modal-title-1-contactar {
   font-family: "Josefin Sans";
   font-weight: 500;
   font-size: 24px;
   line-height: 120%;
 }
-.modal-content {
+.modal-content-contactar {
   width: 607px;
   height: 407px;
   border-radius: 10px;
 }
-.checkcircle {
+.checkcircle-contactar {
   color: #20c997;
   font-size: 57px;
 }
-.modal-icon {
+.modal-icon-contactar {
   color: #00543b;
   margin-right: 5px;
 }
-#modalimg {
-  width: 75px;
-  height: 75px;
-  margin-right: 30px;
-}
-.modaltittles {
+.modaltittles-contactar {
   margin-bottom: 30px;
 }
-.modal-footer {
+.modal-footer-contactar {
   margin-top: 10px;
-}*/
+}
