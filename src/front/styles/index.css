@@ -124,6 +124,28 @@
   background-position: center center;
   background-size: cover;
 }
+
+.bg-idea {
+  background-image: url(https://res.cloudinary.com/dz8eyr7mb/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1668140401/Animalium/idea_ljpzxw.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.bg-inspiracion {
+  background-image: url(https://res.cloudinary.com/dz8eyr7mb/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1668140660/Animalium/inspiracion_sbpigo.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.bg-pasos-seguir {
+  background-image: url(https://res.cloudinary.com/dz8eyr7mb/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1668140753/Animalium/nextsteps_g3k2ne.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
 /*Abajo viene css hecho por Cesar 30/10/2022*/
 
 /*Seccion Carousel Resenas Clientes*/

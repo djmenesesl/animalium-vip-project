@@ -28,8 +28,11 @@ export const Login = (props) => {
       alert("User authenticated");
       const body = await response.json();
       console.log(body);
-      debugger;
+
       localStorage.setItem("token", body.token);
+      localStorage.setItem("role", body.role);
+      localStorage.setItem("id", body.id);
+
       actions.setAutUsuario(body);
       navigate(`/${body.role}/profile/${body.id}`);
     } catch (error) {

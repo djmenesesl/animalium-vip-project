@@ -33,30 +33,9 @@ export const ProfileClienteEdit = () => {
     setLoading(false);
   };
 
-  async function setProfileCliente() {
-    try {
-      const response = await fetch(process.env.BACKEND_URL + `/api/cliente`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "Application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
-      if (!response.ok) {
-        alert("Hubo un problema con tu solicitud");
-        return;
-      }
-      const body = await response.json();
-      actions.setInfoUsuario(body.user);
-      return body.user;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   async function handleProfileInfo() {
     try {
-      const userInfo = await setProfileCliente();
+      const userInfo = await actions.setProfileUsuario("cliente");
       console.log(userInfo);
       userInfo.descripcion ? setDescripcion(userInfo.descripcion) : "";
       userInfo.ubicacion && setUbicacion(userInfo.ubicacion);
@@ -133,7 +112,11 @@ export const ProfileClienteEdit = () => {
               {store.usuario.info?.imagen ? (
                 <img
                   className="rounded-circle mt-1"
-                  style={{ width: "150px", height: "150px" }}
+                  style={{
+                    width: "150px",
+                    height: "150px",
+                    objectFit: "cover",
+                  }}
                   src={store.usuario.info?.imagen}
                 ></img>
               ) : (

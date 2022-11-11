@@ -55,7 +55,11 @@ export const ProfileCuidadorPublic = () => {
                 {cuidador.imagen ? (
                   <img
                     className="rounded-circle mt-1"
-                    style={{ width: "150px", height: "150px" }}
+                    style={{
+                      width: "150px",
+                      height: "150px",
+                      objectFit: "cover",
+                    }}
                     src={cuidador.imagen}
                   ></img>
                 ) : (

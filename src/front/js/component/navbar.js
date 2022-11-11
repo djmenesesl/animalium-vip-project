@@ -94,9 +94,18 @@ export const Navbar = () => {
                   aria-expanded="false"
                 >
                   <img
-                    src="https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667342806/Animalium/Avatar_k0z1ns.png"
+                    src={
+                      store.usuario.info?.imagen
+                        ? store.usuario.info.imagen
+                        : "https://res.cloudinary.com/dz8eyr7mb/image/upload/v1667342806/Animalium/Avatar_k0z1ns.png"
+                    }
                     alt=""
-                    className="d-flex justify-content-center text-center"
+                    className="d-flex justify-content-center text-center rounded-circle"
+                    style={{
+                      width: "50px",
+                      height: "50px",
+                      objectFit: "cover",
+                    }}
                   />
                 </button>
                 <ul

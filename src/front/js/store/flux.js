@@ -50,6 +50,31 @@ const getState = ({ getStore, getActions, setStore }) => {
         });
       },
 
+      setProfileUsuario: async (ruta) => {
+        let actions = getActions();
+        try {
+          const response = await fetch(
+            process.env.BACKEND_URL + `/api/${ruta}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "Application/json",
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
+            }
+          );
+          if (!response.ok) {
+            alert("Hubo un problema con tu solicitud");
+            return;
+          }
+          const body = await response.json();
+          actions.setInfoUsuario(body.user);
+          return body.user;
+        } catch (error) {
+          console.log(error);
+        }
+      },
+
       getMessage: async () => {
         try {
           // fetching data from the backend
